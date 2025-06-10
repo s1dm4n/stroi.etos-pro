@@ -1,0 +1,172 @@
+//Сброс CSS
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+
+// Подключаем шрифт
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+//Переменные:
+
+//Текст
+$font-family: 'Roboto', sans-serif;
+$font-weights: (
+  "regular": 400,
+  "medium": 500,
+  "bold": 700
+);
+
+// Цвета
+$color-bg: #272A2F;
+$color-white: #ffffff;
+$color-accent: #E45B5B;
+
+// Брейкпоинты (для медиазапросов, если нужно)
+$bp-xxl: 1440px;
+$bp-xl: 1280px;
+$bp-lg: 1024px;
+$bp-md: 768px;
+$bp-sm: 480px;
+
+//Миксины
+
+//Типография
+@mixin text-style($size, $line-height, $weight, $color: $color-white) {
+  font-family: $font-family;
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+  color: $color;
+  margin: 0;
+}
+
+
+// font-large (главные заголовки)
+@mixin font-large {
+  @include text-style(
+    clamp(3.25rem, 5vw + 1rem, 7.5rem), // Размер: 3.25rem → 7.5rem
+    112%,                                // line-height
+    700,                                 // weight
+    $color-white                       // color
+  );
+
+  @media (max-width: $bp-lg) {
+    line-height: 100%; // На планшетах и мобилах
+  }
+}
+
+// font-medium (подзаголовки)
+@mixin font-medium {
+  @include text-style(
+    clamp(2rem, 3vw + 1rem, 4.5rem), // 2rem → 4.5rem
+    112%,
+    700,
+    $color-white
+  );
+}
+
+// font-title (заголовки секций)
+@mixin font-title {
+  @include text-style(
+    clamp(1.5rem, 2vw + 1rem, 2.625rem), // 1.5rem → 2.625rem
+    124%,
+    700,
+    $color-white
+  );
+
+  @media (max-width: $bp-lg) {
+    font-weight: 500; // На планшетах легче
+  }
+}
+
+// font-main (основной текст)
+@mixin font-main {
+  @include text-style(
+    clamp(1rem, 1.25vw, 1.25rem), // 1rem → 1.25rem
+    160%,
+    400
+  );
+
+  @media (max-width: $bp-lg) {
+    line-height: 136%; // На планшетах и мобилах
+  }
+}
+
+.lines {
+    height: 100vh;
+}
+
+.cols-4 {
+    background: #fff;
+    width: 1px;
+}
+
+// Сетка
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(16,1fr);
+    grid-row-gap: 0;
+    grid-column-gap: 0
+}
+
+@media(max-width: 1600px) {
+    .grid {
+        grid-template-columns:repeat(16,1fr);
+    }
+}
+
+@media(max-width: 1024px) {
+    .grid {
+        grid-template-columns:repeat(8,1fr);
+    }
+}
+
+@media(max-width: 768px) {
+    .grid {
+        grid-template-columns:repeat(8,1fr);
+    }
+}
+
+@media(max-width: 400px) {
+    .grid {
+        grid-template-columns:repeat(8,1fr);
+    }
+}
+
+@media(max-width: 1920px) {
+    $gutter-h: 8rem;
+    }
+
+@media(max-width: 1600px) {
+    $gutter-h: 4rem;
+    }
+
+@media(max-width: 1024px) {
+    $gutter-h:2rem;
+    }
+
+@media(max-width: 768px) {
+    $gutter-h: 1rem;
+    }
+
+//Стили
+
+h1 { @include font-large; }
+h2 { @include font-medium; }
+h3 { @include font-title; }
+p { @include font-main; }
+
+body {
+    background: $color-bg;
+}
+
+// Адаптивность
+
+@media (max-width: 1366px) {
+
+}
+@media (max-width: 1024px) {
+    
+}
+@media (max-width: 480px) {
+    
+}

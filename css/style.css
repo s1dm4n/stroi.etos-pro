@@ -1,0 +1,92 @@
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+.lines {
+  height: 100vh;
+}
+
+.cols-4 {
+  background: #fff;
+  width: 1px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-row-gap: 0;
+  grid-column-gap: 0;
+}
+
+@media (max-width: 1600px) {
+  .grid {
+    grid-template-columns: repeat(16, 1fr);
+  }
+}
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+@media (max-width: 400px) {
+  .grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(3.25rem, 5vw + 1rem, 7.5rem);
+  line-height: 112%;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+@media (max-width: 1024px) {
+  h1 {
+    line-height: 100%;
+  }
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(2rem, 3vw + 1rem, 4.5rem);
+  line-height: 112%;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.625rem);
+  line-height: 124%;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+@media (max-width: 1024px) {
+  h3 {
+    font-weight: 500;
+  }
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  line-height: 160%;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0;
+}
+@media (max-width: 1024px) {
+  p {
+    line-height: 136%;
+  }
+}
+
+body {
+  background: #272A2F;
+}/*# sourceMappingURL=style.css.map */
