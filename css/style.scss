@@ -1,11 +1,18 @@
 //Сброс CSS
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 
+//Подключение mixin
+@import url("mixin.css");
+
+//Подключение grid
+@import url("grid.css");
+
 // Подключаем шрифт
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 //Переменные:
 
+//Переменные:
 //Текст
 $font-family: 'Roboto', sans-serif;
 $font-weights: (
@@ -18,6 +25,7 @@ $font-weights: (
 $color-bg: #272A2F;
 $color-white: #ffffff;
 $color-accent: #E45B5B;
+$color-gray: #C8C8C8; 
 
 // Брейкпоинты (для медиазапросов, если нужно)
 $bp-xxl: 1440px;
@@ -25,8 +33,6 @@ $bp-xl: 1280px;
 $bp-lg: 1024px;
 $bp-md: 768px;
 $bp-sm: 480px;
-
-//Миксины
 
 //Типография
 @mixin text-style($size, $line-height, $weight, $color: $color-white) {
@@ -90,83 +96,146 @@ $bp-sm: 480px;
   }
 }
 
-.lines {
-    height: 100vh;
-}
-
-.cols-4 {
-    background: #fff;
-    width: 1px;
-}
-
-// Сетка
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(16,1fr);
-    grid-row-gap: 0;
-    grid-column-gap: 0
-}
-
-@media(max-width: 1600px) {
-    .grid {
-        grid-template-columns:repeat(16,1fr);
-    }
-}
-
-@media(max-width: 1024px) {
-    .grid {
-        grid-template-columns:repeat(8,1fr);
-    }
-}
-
-@media(max-width: 768px) {
-    .grid {
-        grid-template-columns:repeat(8,1fr);
-    }
-}
-
-@media(max-width: 400px) {
-    .grid {
-        grid-template-columns:repeat(8,1fr);
-    }
-}
-
-@media(max-width: 1920px) {
-    $gutter-h: 8rem;
-    }
-
-@media(max-width: 1600px) {
-    $gutter-h: 4rem;
-    }
-
-@media(max-width: 1024px) {
-    $gutter-h:2rem;
-    }
-
-@media(max-width: 768px) {
-    $gutter-h: 1rem;
-    }
-
-//Стили
-
+//Типография
 h1 { @include font-large; }
 h2 { @include font-medium; }
 h3 { @include font-title; }
 p { @include font-main; }
 
+//Фон
 body {
-    background: $color-bg;
+  background: $color-bg;
+}
+
+// Стилизация шрифтов
+.nav-font {
+  @include text-style(
+    1.125rem, 
+    100%, 
+    500, 
+    $color-gray
+  );
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+//Шапка
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 40;
+  transition: color .3s ease;
+  max-width: 100vw;
+}
+
+.desktop-nav{
+
+  &_flex {
+    display: flex;
+    flex-direction: row;
+    padding: 1.75rem 0;
+    justify-content: space-between;
+  }
+
+  &_logo {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  &_header {
+    /* Бургер‑иконка */
+.nav__burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 23px;
+    cursor: pointer;
+    margin-left: 1rem;
+    background: none;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    width: 38px;
+    padding: 0;
+}
+
+  /* Анимация бургер-меню в крестик */
+  .nav__burger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .nav__burger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav__burger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+.nav__burger span {
+    display: block;
+    height: 3px;
+    background-color: rgb(108, 117, 123);
+    transition: 0.3s ease-in-out;
+}
+
+  .mobile-menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  }
+
+  &_navs-list {
+    display: flex;
+    margin-right: 128px;
+
+    li {
+      padding-right: 3.25rem;
+    }
+
+    li:last-of-type {
+      padding: 0;
+    }
+
+  }
+
+  &_navs-group {
+    display: flex;
+    align-items: center;
+  }
+
+  &_navs-icon {
+
+    display: flex;
+    
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .icon:first-of-type {
+      margin-right: 12px;
+    }
+
+  }
+}
+
+.w100 {
+  width: 100%;
 }
 
 // Адаптивность
+@media (max-width: 1366px) {}
 
-@media (max-width: 1366px) {
+@media (max-width: 1024px) {}
 
-}
-@media (max-width: 1024px) {
-    
-}
-@media (max-width: 480px) {
-    
-}
+@media (max-width: 480px) {}
