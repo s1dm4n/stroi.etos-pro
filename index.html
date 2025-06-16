@@ -1,98 +1,138 @@
- <!DOCTYPE html>
-    <html lang="ru"> <!-- Язык -->
-    <head>
-        <meta charset="UTF-8"> <!-- Кодировка -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Система управления строительством</title> <!-- Заголовок на вкладке в браузере -->
-        <link rel="stylesheet" href="css/style.css"> <!-- CSS -->
-        <link rel="icon" href="img/favicon.ico"> <!-- Favicon -->
-        <meta content="Быстрое внедрение информационной системы управления строительством с тонкой настройкой под задачи заказчика: автоматизация бизнес-процессов на всех этапах проекта строительства" name="description"> <!-- Указать описание для СЕО-->
-        <script
-            src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
-            type="module">
-        </script>
-    </head>
-    <body>
-        <header class="header">
-            <div class="desktop-nav_header gutter w100">
-                <div class="desktop-nav_flex">
-                    <div class="desktop-nav_logo">
-                        <a href="/" class="desktop-nav_logo">
-                            <svg width="124" height="29" viewBox="0 0 124 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!DOCTYPE html>
+<html lang="ru"> <!-- Язык -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Кодировка -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система управления строительством</title>
+    <!-- Заголовок на вкладке в браузере -->
+    <link rel="stylesheet" href="css/style.css"> <!-- CSS -->
+    <link rel="icon" href="img/favicon.ico"> <!-- Favicon -->
+    <meta
+        content="Быстрое внедрение информационной системы управления строительством с тонкой настройкой под задачи заказчика: автоматизация бизнес-процессов на всех этапах проекта строительства"
+        name="description"> <!-- Указать описание для СЕО-->
+</head>
+
+<body>
+    <!-- Начало шапки -->
+    <header class="header">
+        <div class="desktop-nav_header gutter w100">
+            <div class="desktop-nav_flex">
+                <div class="desktop-nav_logo">
+                    <a href="/" class="desktop-nav_logo">
+                        <svg width="124" height="29" viewBox="0 0 124 29" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_245_4260)">
-                            <path d="M0.00165749 7.49988L28 7.49988V0.499879L0.00165749 0.499879V7.49988Z" fill="#E45B5B"/>
-                            <path d="M21 5.16661V28.4999H27.9996V5.16661H21Z" fill="#E45B5B"/>
-                            <path d="M27.9965 11.0001H10.4976V18.0001H27.9965V11.0001Z" fill="#E45B5B"/>
-                            <path d="M27.9983 21.4996H0V28.4996H27.9983V21.4996Z" fill="#E45B5B"/>
-                            <path d="M42.4985 7.50058V28.5H49.4985V7.50058H42.4985Z" fill="#C8C8C8"/>
-                            <path d="M60 0.5L32 0.5V7.49981L60 7.49981V0.5Z" fill="#C8C8C8"/>
-                            <path d="M64.0017 7.5L92 7.5V0.500061L64.0017 0.500061V7.5Z" fill="#C8C8C8"/>
-                            <path d="M85 5.16687V28.5H91.9996V5.16687H85Z" fill="#C8C8C8"/>
-                            <path d="M91.9983 21.4996H64V28.4996H91.9983V21.4996Z" fill="#C8C8C8"/>
-                            <path d="M64 5.16687V28.5H70.9996V5.16687H64Z" fill="#C8C8C8"/>
-                            <path d="M96.0019 7.50006L124 7.50006V0.500122L96.0019 0.500122V7.50006Z" fill="#C8C8C8"/>
-                            <path d="M123.998 21.4997H96V28.4996H123.998V21.4997Z" fill="#C8C8C8"/>
-                            <path d="M96 5.16693V28.5001H103V5.16693H96Z" fill="#C8C8C8"/>
+                                <path d="M0.00165749 7.49988L28 7.49988V0.499879L0.00165749 0.499879V7.49988Z"
+                                    fill="#E45B5B" />
+                                <path d="M21 5.16661V28.4999H27.9996V5.16661H21Z" fill="#E45B5B" />
+                                <path d="M27.9965 11.0001H10.4976V18.0001H27.9965V11.0001Z" fill="#E45B5B" />
+                                <path d="M27.9983 21.4996H0V28.4996H27.9983V21.4996Z" fill="#E45B5B" />
+                                <path d="M42.4985 7.50058V28.5H49.4985V7.50058H42.4985Z" fill="#C8C8C8" />
+                                <path d="M60 0.5L32 0.5V7.49981L60 7.49981V0.5Z" fill="#C8C8C8" />
+                                <path d="M64.0017 7.5L92 7.5V0.500061L64.0017 0.500061V7.5Z" fill="#C8C8C8" />
+                                <path d="M85 5.16687V28.5H91.9996V5.16687H85Z" fill="#C8C8C8" />
+                                <path d="M91.9983 21.4996H64V28.4996H91.9983V21.4996Z" fill="#C8C8C8" />
+                                <path d="M64 5.16687V28.5H70.9996V5.16687H64Z" fill="#C8C8C8" />
+                                <path d="M96.0019 7.50006L124 7.50006V0.500122L96.0019 0.500122V7.50006Z"
+                                    fill="#C8C8C8" />
+                                <path d="M123.998 21.4997H96V28.4996H123.998V21.4997Z" fill="#C8C8C8" />
+                                <path d="M96 5.16693V28.5001H103V5.16693H96Z" fill="#C8C8C8" />
                             </g>
                             <defs>
-                            <clipPath id="clip0_245_4260">
-                            <rect width="124" height="28.0001" fill="white" transform="translate(0 0.499939)"/>
-                            </clipPath>
+                                <clippath id="clip0_245_4260">
+                                    <rect width="124" height="28.0001" fill="white" transform="translate(0 0.499939)" />
+                                </clippath>
                             </defs>
+                        </svg>
+                    </a>
+                </div>
+                <div class="desktop-nav_navs-group">
+                    <ul class="desktop-nav_navs-list">
+                        <li><a href="#modeles" class="desktop-nav_nav nav-font">Модули</a></li>
+                        <li><a href="#advantages" class="desktop-nav_nav nav-font">Преимущества</a></li>
+                        <li><a href="#news" class="desktop-nav_nav nav-font">Новости</a></li>
+                        <li><a href="#demonstration" class="desktop-nav_nav nav-font">Демонстрация</a></li>
+                        <li><a href="#contacts" class="desktop-nav_nav nav-font">Контакты</a></li>
+                    </ul>
+                    <div class="desktop-nav_navs-icon">
+                        <a href="https://t.me/Daniil_LYA" class="icon">
+                            <svg width="27" height="23" viewBox="0 0 27 23" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M16.0263 4.0605C13.7205 5.01962 9.11186 7.00466 2.20061 10.0158C1.07831 10.4622 0.490409 10.8989 0.436901 11.3256C0.346456 12.0473 1.24998 12.3313 2.48031 12.7182C2.64769 12.7708 2.82108 12.8254 2.99884 12.883C4.20931 13.2765 5.83763 13.7369 6.68411 13.7552C7.45195 13.7718 8.30896 13.4553 9.25511 12.8054C15.7126 8.44656 19.0459 6.24341 19.255 6.19576C19.4027 6.16233 19.6073 6.12013 19.746 6.24341C19.8847 6.36669 19.8709 6.59997 19.8562 6.66256C19.7669 7.04425 16.2202 10.3415 14.3848 12.0478C13.8127 12.5798 13.4068 12.9569 13.3238 13.0432C13.138 13.2362 12.9485 13.4188 12.7665 13.5942C11.642 14.6784 10.7985 15.4913 12.8132 16.8189C13.7814 17.4569 14.5559 17.9844 15.3288 18.5107C16.1728 19.0856 17.0146 19.6589 18.104 20.3729C18.3814 20.5548 18.6464 20.7437 18.9046 20.9277C19.8868 21.628 20.7692 22.2572 21.8595 22.1567C22.493 22.0986 23.1473 21.5028 23.4797 19.7262C24.2652 15.5276 25.809 6.43022 26.1658 2.68159C26.1971 2.35317 26.1577 1.93283 26.1262 1.74832C26.0944 1.5638 26.0285 1.30088 25.7886 1.10626C25.5046 0.875779 25.0662 0.82718 24.8699 0.830475C23.9783 0.846359 22.6101 1.32205 16.0263 4.0605Z"
+                                    fill="#C8C8C8" />
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/qr/6J3FDYUE7DTXO1" class="icon">
+                            <svg width="24" height="23" viewBox="0 0 24 23" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M18.4561 16.1522C18.184 16.9223 17.1025 17.5594 16.2401 17.7457C15.6497 17.8711 14.8798 17.9702 12.2856 16.8952C9.37202 15.6881 5.32616 11.3882 5.32616 8.5268C5.32616 7.07012 6.16604 5.3739 7.6347 5.3739C8.34137 5.3739 8.49716 5.38768 8.7297 5.9455C9.00176 6.60271 9.66554 8.22191 9.74456 8.3879C10.0708 9.06881 9.41266 9.46742 8.93515 10.0603C8.78275 10.2387 8.61005 10.4316 8.80308 10.7636C8.99499 11.0888 9.65876 12.1706 10.6341 13.039C11.8939 14.1614 12.9156 14.5198 13.2813 14.6722C13.5534 14.7851 13.8785 14.7588 14.0772 14.5465C14.3289 14.2744 14.6416 13.8229 14.9599 13.378C15.1846 13.0595 15.4702 13.0198 15.7693 13.1327C15.9714 13.2027 18.5396 14.3954 18.648 14.5862C18.7281 14.7251 18.7281 15.3821 18.4561 16.1522ZM11.8872 0.211304H11.8815C5.65804 0.211304 0.596191 5.27468 0.596191 11.5C0.596191 13.9685 1.39205 16.2586 2.74557 18.1161L1.33899 22.3108L5.67725 20.9245C7.46199 22.1057 9.59216 22.7887 11.8872 22.7887C18.1106 22.7887 23.1736 17.7253 23.1736 11.5C23.1736 5.27468 18.1106 0.211304 11.8872 0.211304Z"
+                                    fill="#C8C8C8" />
                             </svg>
                         </a>
                     </div>
-                    <div class="desktop-nav_navs-group">
-                        <ul class="desktop-nav_navs-list">
-                            <li>
-                                <a href="#modeles" class="desktop-nav_nav nav-font">Модули</a>
-                            </li>
-                            <li>
-                                <a href="#advantages" class="desktop-nav_nav nav-font">Преимущества</a>
-                            </li>
-                            <li>
-                                <a href="#news" class="desktop-nav_nav nav-font">Новости</a>
-                            </li>
-                            <li>
-                                <a href="#demonstration" class="desktop-nav_nav nav-font">Демонстрация</a>
-                            </li>
-                            <li>
-                                <a href="#contacts" class="desktop-nav_nav nav-font">Контакты</a>
-                            </li>
-                        </ul>
-                        <div class="desktop-nav_navs-icon">
-                            <a href="https://t.me/Daniil_LYA" class="icon">
-                                <svg width="27" height="23" viewBox="0 0 27 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0263 4.0605C13.7205 5.01962 9.11186 7.00466 2.20061 10.0158C1.07831 10.4622 0.490409 10.8989 0.436901 11.3256C0.346456 12.0473 1.24998 12.3313 2.48031 12.7182C2.64769 12.7708 2.82108 12.8254 2.99884 12.883C4.20931 13.2765 5.83763 13.7369 6.68411 13.7552C7.45195 13.7718 8.30896 13.4553 9.25511 12.8054C15.7126 8.44656 19.0459 6.24341 19.255 6.19576C19.4027 6.16233 19.6073 6.12013 19.746 6.24341C19.8847 6.36669 19.8709 6.59997 19.8562 6.66256C19.7669 7.04425 16.2202 10.3415 14.3848 12.0478C13.8127 12.5798 13.4068 12.9569 13.3238 13.0432C13.138 13.2362 12.9485 13.4188 12.7665 13.5942C11.642 14.6784 10.7985 15.4913 12.8132 16.8189C13.7814 17.4569 14.5559 17.9844 15.3288 18.5107C16.1728 19.0856 17.0146 19.6589 18.104 20.3729C18.3814 20.5548 18.6464 20.7437 18.9046 20.9277C19.8868 21.628 20.7692 22.2572 21.8595 22.1567C22.493 22.0986 23.1473 21.5028 23.4797 19.7262C24.2652 15.5276 25.809 6.43022 26.1658 2.68159C26.1971 2.35317 26.1577 1.93283 26.1262 1.74832C26.0944 1.5638 26.0285 1.30088 25.7886 1.10626C25.5046 0.875779 25.0662 0.82718 24.8699 0.830475C23.9783 0.846359 22.6101 1.32205 16.0263 4.0605Z" fill="#C8C8C8"/>
-                                </svg>
-                            </a>
-                            <a href="https://wa.me/qr/6J3FDYUE7DTXO1" class="icon">
-                                <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.4561 16.1522C18.184 16.9223 17.1025 17.5594 16.2401 17.7457C15.6497 17.8711 14.8798 17.9702 12.2856 16.8952C9.37202 15.6881 5.32616 11.3882 5.32616 8.5268C5.32616 7.07012 6.16604 5.3739 7.6347 5.3739C8.34137 5.3739 8.49716 5.38768 8.7297 5.9455C9.00176 6.60271 9.66554 8.22191 9.74456 8.3879C10.0708 9.06881 9.41266 9.46742 8.93515 10.0603C8.78275 10.2387 8.61005 10.4316 8.80308 10.7636C8.99499 11.0888 9.65876 12.1706 10.6341 13.039C11.8939 14.1614 12.9156 14.5198 13.2813 14.6722C13.5534 14.7851 13.8785 14.7588 14.0772 14.5465C14.3289 14.2744 14.6416 13.8229 14.9599 13.378C15.1846 13.0595 15.4702 13.0198 15.7693 13.1327C15.9714 13.2027 18.5396 14.3954 18.648 14.5862C18.7281 14.7251 18.7281 15.3821 18.4561 16.1522ZM11.8872 0.211304H11.8815C5.65804 0.211304 0.596191 5.27468 0.596191 11.5C0.596191 13.9685 1.39205 16.2586 2.74557 18.1161L1.33899 22.3108L5.67725 20.9245C7.46199 22.1057 9.59216 22.7887 11.8872 22.7887C18.1106 22.7887 23.1736 17.7253 23.1736 11.5C23.1736 5.27468 18.1106 0.211304 11.8872 0.211304Z" fill="#C8C8C8"/>
-                                </svg>
-                            </a>
-                        </div>
-                        <button class="nav__burger" id="navBurger" aria-label="Открыть меню">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>       
-                    </div>
+                    <!-- Бургер -->
+                    <button class="nav_burger" id="navBurger" aria-label="Открыть меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
-            <div class="mobile-nav_header gutter"></div>
-        </header>
-        <div class="grid gutter">
-             <div class="cols-4">
-                
-             </div>
         </div>
-        <div aria-hidden="true" class="lines grid" style="z-index:-2">
-            <div class="cols-4 line"></div>
-            <div class="cols-4 line"></div>
-            <div class="cols-4 line"></div>
-            <div class="cols-4 line"></div>
-            <div class="cols-4 line"></div>
+    </header>
+    <!-- Полноэкранное мобильное меню -->
+    <div class="mobile-fullscreen-menu gutter" id="mobileMenu">
+        <ul class="mobile-fullscreen-menu__links">
+            <button class="desktop-nav_nav nav-font nav-btn w100" onclick="window.location.href='#modules'">Модули</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" style="scale: 0.8; stroke:rgba(200, 200, 200, 0.45)">
+                    <path d="M22.8999 2C12.7818 2 13.018 2 2.8999 2M22.8999 2V22M22.8999 2L2.8999 22" stroke-width="3" stroke-linecap="square"></path>
+                </svg>
+            </button>
+            <button class="desktop-nav_nav nav-font nav-btn w100" onclick="window.location.href='#advantages'">Преимущества</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" style="scale: 0.8; stroke:rgba(200, 200, 200, 0.45)">
+                    <path d="M22.8999 2C12.7818 2 13.018 2 2.8999 2M22.8999 2V22M22.8999 2L2.8999 22" stroke-width="3" stroke-linecap="square"></path>
+                </svg>
+            </button>
+            <button class="desktop-nav_nav nav-font nav-btn w100" onclick="window.location.href='#news'">Новости</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" style="scale: 0.8; stroke:rgba(200, 200, 200, 0.45)">
+                    <path d="M22.8999 2C12.7818 2 13.018 2 2.8999 2M22.8999 2V22M22.8999 2L2.8999 22" stroke-width="3" stroke-linecap="square"></path>
+                </svg>
+            </button>
+            <button class="desktop-nav_nav nav-font nav-btn w100" onclick="window.location.href='#demonstration'">Демонстрация</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" style="scale: 0.8; stroke:rgba(200, 200, 200, 0.45)">
+                    <path d="M22.8999 2C12.7818 2 13.018 2 2.8999 2M22.8999 2V22M22.8999 2L2.8999 22" stroke-width="3" stroke-linecap="square"></path>
+                </svg>
+            </button>
+            <button class="desktop-nav_nav nav-font nav-btn w100" onclick="window.location.href='#contacts'">Контакты</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" style="scale: 0.8; stroke:rgba(200, 200, 200, 0.45)">
+                    <path d="M22.8999 2C12.7818 2 13.018 2 2.8999 2M22.8999 2V22M22.8999 2L2.8999 22" stroke-width="3" stroke-linecap="square"></path>
+                </svg>
+            </button>
+        </ul>
+        <button type="button" class="button mobile-fullscreen-menu__button w100"
+            onclick="window.location.href='#contacts'">Заказать презентацию
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                <path d="M22.8999 2C12.7818 2 13.018 2 2.8999 2M22.8999 2V22M22.8999 2L2.8999 22" stroke="#4C0000"
+                    stroke-width="3" stroke-linecap="square" />
+            </svg>
+        </button>
+    </div>
+    <!-- Конец шапки -->
+    <div class="grid gutter">
+        <div class="cols-4">
         </div>
-    </body>
-    </html>
+    </div>
+    <div aria-hidden="true" class="lines grid" style="z-index:-2">
+        <div class="cols-4 line"></div>
+        <div class="cols-4 line"></div>
+        <div class="cols-4 line"></div>
+        <div class="cols-4 line"></div>
+        <div class="cols-4 line"></div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

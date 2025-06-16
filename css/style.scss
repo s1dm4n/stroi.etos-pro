@@ -14,44 +14,42 @@
 
 //Переменные:
 //Текст
-$font-family: 'Roboto', sans-serif;
-$font-weights: (
-  "regular": 400,
+$font-family: "Manrope",
+sans-serif;
+$font-weights: ("regular": 400,
   "medium": 500,
-  "bold": 700
-);
+  "bold": 700);
 
 // Цвета
-$color-bg: #272A2F;
-$color-white: #ffffff;
-$color-accent: #E45B5B;
-$color-gray: #C8C8C8; 
+$color-bg         : #272A2F;
+$color-gray       : #C8C8C8;
+$color-white      : #ffffff;
+$color-accent     : #E45B5B;
+$color-accent-text: #4C0000;
 
 // Брейкпоинты (для медиазапросов, если нужно)
 $bp-xxl: 1440px;
-$bp-xl: 1280px;
-$bp-lg: 1024px;
-$bp-md: 768px;
-$bp-sm: 480px;
+$bp-xl : 1280px;
+$bp-lg : 1024px;
+$bp-md : 768px;
+$bp-sm : 480px;
 
 //Типография
 @mixin text-style($size, $line-height, $weight, $color: $color-white) {
   font-family: $font-family;
-  font-size: $size;
+  font-size  : $size;
   line-height: $line-height;
   font-weight: $weight;
-  color: $color;
-  margin: 0;
+  color      : $color;
+  margin     : 0;
 }
-
 
 // font-large (главные заголовки)
 @mixin font-large {
-  @include text-style(
-    clamp(3.25rem, 5vw + 1rem, 7.5rem), // Размер: 3.25rem → 7.5rem
-    112%,                                // line-height
-    700,                                 // weight
-    $color-white                       // color
+  @include text-style(clamp(3.25rem, 5vw + 1rem, 7.5rem), // Размер: 3.25rem → 7.5rem
+    112%, // line-height
+    700, // weight
+    $color-white // color
   );
 
   @media (max-width: $bp-lg) {
@@ -61,22 +59,18 @@ $bp-sm: 480px;
 
 // font-medium (подзаголовки)
 @mixin font-medium {
-  @include text-style(
-    clamp(2rem, 3vw + 1rem, 4.5rem), // 2rem → 4.5rem
+  @include text-style(clamp(2rem, 3vw + 1rem, 4.5rem), // 2rem → 4.5rem
     112%,
     700,
-    $color-white
-  );
+    $color-white);
 }
 
 // font-title (заголовки секций)
 @mixin font-title {
-  @include text-style(
-    clamp(1.5rem, 2vw + 1rem, 2.625rem), // 1.5rem → 2.625rem
+  @include text-style(clamp(1.5rem, 2vw + 1rem, 2.625rem), // 1.5rem → 2.625rem
     124%,
     700,
-    $color-white
-  );
+    $color-white);
 
   @media (max-width: $bp-lg) {
     font-weight: 500; // На планшетах легче
@@ -85,11 +79,9 @@ $bp-sm: 480px;
 
 // font-main (основной текст)
 @mixin font-main {
-  @include text-style(
-    clamp(1rem, 1.25vw, 1.25rem), // 1rem → 1.25rem
+  @include text-style(clamp(1rem, 1.25vw, 1.25rem), // 1rem → 1.25rem
     160%,
-    400
-  );
+    400);
 
   @media (max-width: $bp-lg) {
     line-height: 136%; // На планшетах и мобилах
@@ -97,10 +89,21 @@ $bp-sm: 480px;
 }
 
 //Типография
-h1 { @include font-large; }
-h2 { @include font-medium; }
-h3 { @include font-title; }
-p { @include font-main; }
+h1 {
+  @include font-large;
+}
+
+h2 {
+  @include font-medium;
+}
+
+h3 {
+  @include font-title;
+}
+
+p {
+  @include font-main;
+}
 
 //Фон
 body {
@@ -109,89 +112,174 @@ body {
 
 // Стилизация шрифтов
 .nav-font {
-  @include text-style(
-    1.125rem, 
-    100%, 
-    500, 
-    $color-gray
-  );
-  text-transform: uppercase;
+  @include text-style(1.125rem,
+    100%,
+    500,
+    $color-gray);
+  text-transform : uppercase;
   text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+
+  .nav-font,
+  .button {
+    font-size: 1.25rem !important;
+  }
+  // .nav-font {
+  //   font-weight: 700;
+  // }
+}
+
+// Кнопка
+.button {
+  @include text-style(1.5rem, 100%, 700, $color-accent-text);
+  text-transform  : uppercase;
+  display         : flex;
+  align-items     : center;
+  padding         : 1.5rem;
+  gap             : 3rem;
+  background-color: transparent;
+  border          : none;
+  position: relative;
+  transition: color 0.28s ease-in-out, border 0.28s ease-in-out, background-color 0.28s ease-in-out;
+  cursor: pointer;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: $color-accent;
+  z-index: -2;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  background-color: $color-accent-text;
+  transition: height 0.28s ease-in-out;
+  z-index: -1;
+}
+
+.button:hover::after {
+  height: 100%;
+}
+
+.button:hover {
+  color: $color-accent;
+}
+
+.button svg path{
+  stroke: currentColor;
+}
+.button:active {
+  background-color: #00000025;
+}
+
+@media (max-width: 1024px) {
+  .button {
+    padding: 1rem;
+  }
+
+  .button svg {
+    scale: 0.8;
+  }
 }
 
 //Шапка
 .header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 40;
-  transition: color .3s ease;
-  max-width: 100vw;
+  position       : fixed;
+  top            : 0;
+  width          : 100%;
+  z-index        : 40;
+  transition     : color .3s ease;
+  max-width      : 100vw;
+  border-bottom  : 1px solid rgba(255, 255, 255, 0.10);
+  background     : rgba(35, 38, 42, 0.80);
+  backdrop-filter: blur(50px);
 }
 
-.desktop-nav{
+.desktop-nav {
 
   &_flex {
-    display: flex;
-    flex-direction: row;
-    padding: 1.75rem 0;
+    display        : flex;
+    flex-direction : row;
+    padding        : 1.75rem 0;
     justify-content: space-between;
   }
 
   &_logo {
-    display: flex;
-    height: 100%;
+    display    : flex;
+    height     : 100%;
     align-items: center;
   }
 
   &_header {
+
     /* Бургер‑иконка */
-.nav__burger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 23px;
-    cursor: pointer;
-    margin-left: 1rem;
-    background: none;
-    border-width: initial;
-    border-style: none;
-    border-color: initial;
-    border-image: initial;
-    width: 38px;
-    padding: 0;
-}
+    .nav_burger {
+      display        : none;
+      flex-direction : column;
+      justify-content: center;
+      cursor         : pointer;
+      margin-left    : 1rem;
+      background     : none;
+      border-width   : initial;
+      border-style   : none;
+      border-color   : initial;
+      border-image   : initial;
+      width          : 38px;
+      padding        : 0;
+    }
 
-  /* Анимация бургер-меню в крестик */
-  .nav__burger.open span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
 
-  .nav__burger.open span:nth-child(2) {
-    opacity: 0;
-  }
+    /* Анимация бургер-меню в крестик */
+    .nav_burger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(2px, 2px);
+    }
 
-  .nav__burger.open span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
+    .nav_burger.open span:nth-child(2) {
+      opacity: 0;
+    }
 
-.nav__burger span {
-    display: block;
-    height: 3px;
-    background-color: rgb(108, 117, 123);
-    transition: 0.3s ease-in-out;
-}
+    .nav_burger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(3px, -2px);
+    }
 
-  .mobile-menu {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
+    .nav_burger span:nth-child(3) {
+      margin: 0 !important;
+    }
+
+    .nav_burger.open span {
+      margin: 0;
+    }
+
+    .nav_burger span {
+      display         : block;
+      height          : 3px;
+      background-color: rgb(108, 117, 123);
+      transition      : 0.3s ease-in-out;
+      margin-bottom   : 7px;
+    }
+
+    .mobile-menu {
+      display    : flex;
+      align-items: center;
+      gap        : 24px;
+    }
 
   }
 
   &_navs-list {
-    display: flex;
+    display     : flex;
     margin-right: 128px;
 
     li {
@@ -205,21 +293,21 @@ body {
   }
 
   &_navs-group {
-    display: flex;
+    display    : flex;
     align-items: center;
   }
 
   &_navs-icon {
 
     display: flex;
-    
+
     .icon {
-      display: flex;
-      align-items: center;
+      display        : flex;
+      align-items    : center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      width          : 42px;
+      height         : 42px;
+      border         : 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .icon:first-of-type {
@@ -229,13 +317,121 @@ body {
   }
 }
 
-.w100 {
-  width: 100%;
+.mobile-fullscreen-menu {
+  position       : fixed;
+  right          : 0;
+  top            : 0;
+  z-index        : 30;
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: flex-start;
+  margin-top     : 85px;
+  padding-top    : 1.5rem;
+  align-items    : start;
+
+  /* Анимация открытия */
+  opacity                : 0;
+  transform              : translateY(-20px);
+  transition             : opacity 0.25s ease-out, transform 0.25s ease-out;
+  pointer-events         : none;
+  visibility             : hidden;
+  border-bottom          : 1.5px solid rgba(0, 0, 0, 0.05);
+  border-left            : 1.5px solid rgba(0, 0, 0, 0.05);
+  background             : rgba(35, 38, 42, 0.5);
+  -webkit-backdrop-filter: blur(22.5px);
+  backdrop-filter        : blur(22.5px);
+  overflow               : hidden auto;
+  height                 : 100vh;
+  width                  : 100%;
 }
 
-// Адаптивность
-@media (max-width: 1366px) {}
+.mobile-fullscreen-menu .button {
+  justify-content: space-between!important;
+}
 
-@media (max-width: 1024px) {}
+.mobile-fullscreen-menu.active {
+  opacity       : 1;
+  transform     : translateY(0);
+  pointer-events: auto;
+  visibility    : visible;
+}
+
+.mobile-fullscreen-menu.no-transition {
+  transition: none !important;
+}
+
+.mobile-fullscreen-menu__links {
+  list-style: none;
+  margin    : 0;
+  text-align: left;
+  width     : 100%;
+}
+
+.mobile-fullscreen-menu__links .nav-btn {
+  padding      : 16px;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.05);
+  display:       flex;
+  justify-content: space-between;
+  border: 1px solid #ffffff15;
+  margin-bottom: 14px;
+  align-items: center;
+  transition: background-color 0.28s ease-in-out;
+  background: transparent;
+}
+
+.mobile-fullscreen-menu__links .nav-btn:hover {
+  background-color: #ffffff15;
+}
+.mobile-fullscreen-menu__links .nav-btn:active {
+  background-color: #ffffff35;
+}
+
+.mobile-fullscreen-menu__links .nav-btn:last-of-type {
+  margin: 0;
+}
+
+.mobile-fullscreen-menu__links a {
+  font-size      : 20px;
+  text-decoration: none;
+}
+
+.mobile-fullscreen-menu__button {
+  margin-top: 40px;
+}
+
+
+// Адаптивность
+@media (max-width: 1444px) {
+  .desktop-nav_navs-list {
+    margin-right: 52px;
+  }
+  .desktop-nav_navs-list li {
+    padding-right: 32px;
+  }
+}
+
+@media (max-width: 1132px) {
+    .desktop-nav_navs-list li:last-of-type {
+    display: none;
+  }
+  .desktop-nav_navs-list li:nth-last-of-type(2) {
+    padding: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .desktop-nav_navs-list {
+    display: none;
+  }
+
+  .desktop-nav_navs-icon {
+    display: none;
+  }
+
+  .nav_burger{
+    display: flex!important;
+  }
+}
 
 @media (max-width: 480px) {}
