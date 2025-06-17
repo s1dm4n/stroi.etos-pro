@@ -70,9 +70,13 @@ body {
 }
 
 @media (max-width: 1024px) {
+  .nav-font,
   .button {
     font-size: 1rem !important;
-    font-weight: 700;
+    font-weight: 600;
+  }
+  .button {
+    font-weight: 700 !important;
   }
 }
 .button {
@@ -138,7 +142,7 @@ body {
     padding: 1rem;
   }
   .button svg {
-    scale: 0.8;
+    scale: 0.64;
   }
 }
 .header {

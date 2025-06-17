@@ -122,14 +122,14 @@ body {
 
 @media (max-width: 1024px) {
 
-  // .nav-font,
+  .nav-font,
   .button {
     font-size: 1rem !important;
-    font-weight: 700;
+    font-weight: 600;
   }
-  // .nav-font {
-  //   font-weight: 700;
-  // }
+  .button {
+    font-weight: 700 !important;
+  }
 }
 
 // Кнопка
@@ -191,7 +191,7 @@ body {
   }
 
   .button svg {
-    scale: 0.8;
+    scale: 0.64;
   }
 }
 
