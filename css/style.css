@@ -67,6 +67,15 @@ body {
   margin: 0;
   text-transform: uppercase;
   text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav-font:hover {
+  opacity: 0.8;
+}
+
+.nav-font:active {
+  opacity: 0.6;
 }
 
 @media (max-width: 1024px) {
@@ -197,6 +206,7 @@ body {
      border-image: initial;
   width: 32px;
   padding: 0;
+  z-index: 50;
 }
 .desktop-nav_header .nav_burger.open span:nth-child(1) {
   transform: rotate(45deg) translate(2px, 2px);
@@ -241,6 +251,13 @@ body {
 }
 .desktop-nav_navs-icon {
   display: flex;
+  transition: opacity 0.4s ease-in-out;
+}
+.desktop-nav_navs-icon :hover {
+  opacity: 0.8;
+}
+.desktop-nav_navs-icon :active {
+  opacity: 0.6;
 }
 .desktop-nav_navs-icon .icon {
   display: flex;
@@ -248,7 +265,6 @@ body {
   justify-content: center;
   width: 42px;
   height: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 .desktop-nav_navs-icon .icon:first-of-type {
   margin-right: 12px;
@@ -345,11 +361,13 @@ body {
   }
 }
 @media (max-width: 1132px) {
+  .desktop-nav_navs-list li {
+    padding-right: 24px;
+  }
+}
+@media (max-width: 1132px) {
   .desktop-nav_navs-list li:last-of-type {
     display: none;
-  }
-  .desktop-nav_navs-list li:nth-last-of-type(2) {
-    padding: 0;
   }
 }
 @media (max-width: 1024px) {

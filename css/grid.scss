@@ -1,7 +1,7 @@
 //Переменные с исходника
 
 :root {
-    --gutter-h: calc(50vw - 40rem);
+    --gutter-h: calc(50vw - 60rem);
     --block-spacing: 7rem;
     --new-block-spacing: 8rem;
     --default-border-width: 2px;
@@ -9,9 +9,9 @@
     --column: calc((100vw - (var(--gutter-h) * 2)) / 16)
 }
 
-@media(max-width: 1920px) {
+@media(max-width: 2168px) {
     :root {
-        --gutter-h: 8rem
+        --gutter-h: 10rem;
     }
 }
 
