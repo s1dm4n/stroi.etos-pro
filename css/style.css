@@ -226,7 +226,7 @@ body {
 .desktop-nav_header .nav_burger span {
   display: block;
   height: 3px;
-  background-color: rgb(108, 117, 123);
+  background-color: rgb(255, 255, 255);
   transition: 0.3s ease-in-out;
   margin-bottom: 7px;
 }
@@ -378,6 +378,6 @@ body {
     display: none;
   }
   .nav_burger {
-    display: flex !important;
+    display: block !important;
   }
 }/*# sourceMappingURL=style.css.map */

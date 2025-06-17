@@ -118,7 +118,7 @@ body {
     $color-gray);
   text-transform : uppercase;
   text-decoration: none;
-  transition: opacity .2s ease;
+  transition     : opacity .2s ease;
 }
 
 .nav-font:hover {
@@ -133,9 +133,10 @@ body {
 
   .nav-font,
   .button {
-    font-size: 1rem !important;
+    font-size  : 1rem !important;
     font-weight: 600;
   }
+
   .button {
     font-weight: 700 !important;
   }
@@ -151,32 +152,32 @@ body {
   gap             : 3rem;
   background-color: transparent;
   border          : none;
-  position: relative;
-  transition: color 0.4s ease, border 0.4s ease, background-color 0.4s ease;
-  cursor: pointer;
+  position        : relative;
+  transition      : color 0.4s ease, border 0.4s ease, background-color 0.4s ease;
+  cursor          : pointer;
 }
 
 .button::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  content         : "";
+  position        : absolute;
+  width           : 100%;
+  height          : 100%;
+  top             : 0;
+  left            : 0;
   background-color: $color-accent;
-  z-index: -2;
+  z-index         : -2;
 }
 
 .button::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 0;
-  top: 0;
-  left: 0;
+  content         : "";
+  position        : absolute;
+  width           : 100%;
+  height          : 0;
+  top             : 0;
+  left            : 0;
   background-color: $color-accent-text;
-  transition: height 0.4s ease;
-  z-index: -1;
+  transition      : height 0.4s ease;
+  z-index         : -1;
 }
 
 .button:hover::after {
@@ -187,9 +188,10 @@ body {
   color: $color-accent;
 }
 
-.button svg path{
+.button svg path {
   stroke: currentColor;
 }
+
 .button:active {
   background-color: #00000025;
 }
@@ -228,7 +230,7 @@ body {
 
   @media (max-width:1024px) {
     &_flex {
-      padding        : 1.125rem 0;
+      padding: 1.125rem 0;
     }
   }
 
@@ -260,7 +262,7 @@ body {
       border-image   : initial;
       width          : 32px;
       padding        : 0;
-      z-index: 50;
+      z-index        : 50;
     }
 
 
@@ -288,7 +290,7 @@ body {
     .nav_burger span {
       display         : block;
       height          : 3px;
-      background-color: rgb(108, 117, 123);
+      background-color: rgb(255, 255, 255);
       transition      : 0.3s ease-in-out;
       margin-bottom   : 7px;
     }
@@ -322,7 +324,7 @@ body {
 
   &_navs-icon {
 
-    display: flex;
+    display   : flex;
     transition: opacity .4s ease-in-out;
 
     :hover {
@@ -334,11 +336,11 @@ body {
     }
 
     .icon {
-      display        : flex;
-      align-items    : center;
-      justify-content: center;
-      width          : 42px;
-      height         : 42px;
+      display           : flex;
+      align-items       : center;
+      justify-content   : center;
+      width             : 42px;
+      height            : 42px;
       // border         : 1px solid rgba(255, 255, 255, 0.15);
     }
 
@@ -375,7 +377,7 @@ body {
 }
 
 .mobile-fullscreen-menu .button {
-  justify-content: space-between!important;
+  justify-content: space-between !important;
 }
 
 .mobile-fullscreen-menu.active {
@@ -390,7 +392,7 @@ body {
 }
 
 .mobile-fullscreen-menu_group-links {
-  margin     : 84px 0 84px 0;
+  margin: 84px 0 84px 0;
 }
 
 .mobile-fullscreen-menu_links {
@@ -401,19 +403,20 @@ body {
 }
 
 .mobile-fullscreen-menu_links .nav-btn {
-  padding      : 20px;
-  border: none;
-  border-bottom: 1px solid #ffffff15;
-  display:       flex;
+  padding        : 20px;
+  border         : none;
+  border-bottom  : 1px solid #ffffff15;
+  display        : flex;
   justify-content: space-between;
-  align-items: center;
-  transition: background-color 0.4s ease;
-  background: transparent;
+  align-items    : center;
+  transition     : background-color 0.4s ease;
+  background     : transparent;
 }
 
 .mobile-fullscreen-menu_links .nav-btn:hover {
   background-color: #ffffff10;
 }
+
 .mobile-fullscreen-menu_links .nav-btn:active {
   background-color: #ffffff25;
 }
@@ -437,6 +440,7 @@ body {
   .desktop-nav_navs-list {
     margin-right: 52px;
   }
+
   .desktop-nav_navs-list li {
     padding-right: 32px;
   }
@@ -444,8 +448,8 @@ body {
 
 @media (max-width: 1132px) {
   .desktop-nav_navs-list li {
-        padding-right: 24px;
-    }
+    padding-right: 24px;
+  }
 }
 
 @media (max-width: 1132px) {
@@ -463,8 +467,8 @@ body {
     display: none;
   }
 
-  .nav_burger{
-    display: flex!important;
+  .nav_burger {
+    display: block !important;
   }
 }
 

@@ -1,5 +1,4 @@
 document.getElementById('navBurger').style.border = '2px solid red';
-
 document.addEventListener('DOMContentLoaded', () => {
     const burger = document.getElementById('navBurger');
     const menu = document.getElementById('mobileMenu');
@@ -32,12 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Обработка клика по бургеру
-    burger.addEventListener('touchstart', () => {
-        burger.classList.toggle('open');
-        menu.classList.toggle('active');
-        updateScrollLock();
-    }, { passive: true });
-
     burger.addEventListener('click', () => {
         burger.classList.toggle('open');
         menu.classList.toggle('active');
