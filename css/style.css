@@ -228,7 +228,7 @@ body {
 .desktop-nav_header .nav_burger span {
   display: block;
   height: 3px;
-  background: rgb(255, 255, 255);
+  border: 5px solid white;
   transition: 0.24s ease;
   margin-bottom: 7px !important;
 }
