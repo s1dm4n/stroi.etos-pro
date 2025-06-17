@@ -1,4 +1,3 @@
-document.getElementById('navBurger').style.border = '2px solid red';
 document.addEventListener('DOMContentLoaded', () => {
     const burger = document.getElementById('navBurger');
     const menu = document.getElementById('mobileMenu');
