@@ -4,7 +4,7 @@
   --new-block-spacing: 8rem;
   --default-border-width: 2px;
   --trans-default: 150ms;
-  --column: calc((100vw - (var(--gutter-h) * 2)) / 16) ;
+  --column: calc((100vw - (var(--gutter-h) * 2)) / 16);
 }
 
 @media (max-width: 2168px) {
@@ -18,12 +18,12 @@
     --gutter-h: 4rem;
     --block-spacing: 5rem;
     --new-block-spacing: 6rem;
-    --header-height: 76px ;
+    --header-height: 76px;
   }
 }
 @media (max-width: 1170px) {
   :root {
-    --header-height: 66px ;
+    --header-height: 66px;
   }
 }
 @media (max-width: 1024px) {
@@ -31,13 +31,13 @@
     --gutter-h: 2rem;
     --block-spacing: 3.5rem;
     --new-block-spacing: 4rem;
-    --page-padding-top: var(--header-height) ;
+    --page-padding-top: var(--header-height);
   }
 }
 @media (max-width: 768px) {
   :root {
     --block-spacing: 2rem;
-    --gutter-h: 1rem ;
+    --gutter-h: 1rem;
   }
 }
 .w100 {
@@ -131,6 +131,10 @@
 
 .cols-4 {
   grid-column-end: span 4;
+}
+
+.cols-8 {
+  grid-column: span 8;
 }
 
 .line {

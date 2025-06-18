@@ -1,468 +1,485 @@
+//Импорты
 //Сброс CSS
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
-
 //Подключение mixin
 @import url("mixin.css");
-
 //Подключение grid
 @import url("grid.css");
-
 // Подключаем шрифт
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 
 //Переменные:
 
-//Переменные:
-//Текст
-$font-family: "Manrope",
-sans-serif;
-$font-weights: ("regular": 400,
+$font-family: "Manrope", sans-serif;
+$font-weights: (
+  "regular": 400,
   "medium": 500,
-  "bold": 700);
+  "bold": 700
+);
 
-// Цвета
-$color-bg         : #272A2F;
-$color-gray       : #C8C8C8;
-$color-white      : #ffffff;
-$color-accent     : #E45B5B;
-$color-accent-text: #4C0000;
+$color-bg: #272a2f;
+$color-gray: #c8c8c8;
+$color-white: #ffffff;
+$color-accent: #e45b5b;
+$color-accent-text: #4c0000;
+$color-cert-badge: #969696;
 
-// Брейкпоинты (для медиазапросов, если нужно)
 $bp-xxl: 1440px;
-$bp-xl : 1280px;
-$bp-lg : 1024px;
-$bp-md : 768px;
-$bp-sm : 480px;
+$bp-xl: 1280px;
+$bp-lg: 1024px;
+$bp-md: 768px;
+$bp-sm: 480px;
 
-//Типография
+// Миксины
 @mixin text-style($size, $line-height, $weight, $color: $color-white) {
   font-family: $font-family;
-  font-size  : $size;
+  font-size: $size;
   line-height: $line-height;
   font-weight: $weight;
-  color      : $color;
-  margin     : 0;
+  color: $color;
+  margin: 0;
 }
 
-// font-large (главные заголовки)
-@mixin font-large {
-  @include text-style(clamp(3.25rem, 5vw + 1rem, 7.5rem), // Размер: 3.25rem → 7.5rem
-    112%, // line-height
-    700, // weight
-    $color-white // color
-  );
-
-  @media (max-width: $bp-lg) {
-    line-height: 100%; // На планшетах и мобилах
+@mixin transition($props: all, $duration: 0.3s, $easing: ease) {
+  $transition: ();
+  
+  @each $prop in $props {
+    $transition: append($transition, $prop $duration $easing, comma);
   }
+
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
 }
 
-// font-medium (подзаголовки)
-@mixin font-medium {
-  @include text-style(clamp(2rem, 3vw + 1rem, 4.5rem), // 2rem → 4.5rem
-    112%,
-    700,
-    $color-white);
+// Базовые стили
+
+body {
+  background: $color-bg;
+  font-family: $font-family;
 }
 
-// font-title (заголовки секций)
-@mixin font-title {
-  @include text-style(clamp(1.5rem, 2vw + 1rem, 2.625rem), // 1.5rem → 2.625rem
-    124%,
-    700,
-    $color-white);
-
-  @media (max-width: $bp-lg) {
-    font-weight: 500; // На планшетах легче
-  }
-}
-
-// font-main (основной текст)
-@mixin font-main {
-  @include text-style(clamp(1rem, 1.25vw, 1.25rem), // 1rem → 1.25rem
-    160%,
-    400);
-
-  @media (max-width: $bp-lg) {
-    line-height: 136%; // На планшетах и мобилах
-  }
-}
-
-//Типография
+// Типография
 h1 {
-  @include font-large;
+  @include text-style(clamp(3.25rem, 5vw + 1rem, 7.5rem), 112%, 700);
+  
+  @media (max-width: $bp-lg) {
+    line-height: 100%;
+  }
 }
 
 h2 {
-  @include font-medium;
+  @include text-style(clamp(2rem, 3vw + 1rem, 4.5rem), 112%, 700);
 }
 
 h3 {
-  @include font-title;
+  @include text-style(clamp(1.5rem, 2vw + 1rem, 2.625rem), 124%, 700);
+  
+  @media (max-width: $bp-lg) {
+    font-weight: 500;
+  }
 }
 
 p {
-  @include font-main;
+  @include text-style(clamp(1rem, 1.25vw, 1.25rem), 160%, 400);
+  
+  @media (max-width: $bp-lg) {
+    line-height: 136%;
+  }
 }
 
-//Фон
-body {
-  background: $color-bg;
-}
+// Компоненты
 
-// Стилизация шрифтов
-.nav-font {
-  @include text-style(1.125rem,
-    100%,
-    500,
-    $color-gray);
-  text-transform : uppercase;
-  text-decoration: none;
-  transition     : opacity .2s ease;
-}
+//Кнопки навигации
+.nav {
+  &-font {
+    @include text-style(1.125rem, 100%, 500, $color-gray);
+    text-transform: uppercase;
+    text-decoration: none;
+    @include transition(opacity);
 
-@media (max-width: 1024px) {
-
-  .nav-font,
-  .button {
-    font-size  : 1rem !important;
+    @media (max-width: $bp-lg) {
+    font-size: 1rem !important;
     font-weight: 600;
   }
-
-  .button {
-    font-weight: 700 !important;
+  }
+    
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  &:active {
+    opacity: 0.6;
   }
 }
 
 // Кнопка
 .button {
   @include text-style(1.5rem, 100%, 700, $color-accent-text);
-  text-transform  : uppercase;
-  display         : flex;
-  align-items     : center;
-  padding         : 1.5rem;
-  gap             : 3rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 3rem;
   background-color: transparent;
-  border          : none;
-  position        : relative;
-  transition      : color 0.4s ease, border 0.4s ease, background-color 0.4s ease;
-  cursor          : pointer;
-}
-
-.button::before {
-  content         : "";
-  position        : absolute;
-  width           : 100%;
-  height          : 100%;
-  top             : 0;
-  left            : 0;
-  background-color: $color-accent;
-  z-index         : -2;
-}
-
-.button::after {
-  content         : "";
-  position        : absolute;
-  width           : 100%;
-  height          : 0;
-  top             : 0;
-  left            : 0;
-  background-color: $color-accent-text;
-  transition      : height 0.4s ease;
-  z-index         : -1;
-}
-
-.button:hover::after {
-  height: 100%;
-}
-
-.button:hover {
-  color: $color-accent;
-}
-
-.button svg path {
-  stroke: currentColor;
-}
-
-.button:active {
-  background-color: #00000025;
-}
-
-@media (max-width: 1024px) {
-  .button {
+  border: none;
+  position: relative;
+  cursor: pointer;
+  @include transition(color);
+  
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  &::before {
+    background-color: $color-accent;
+    z-index: -2;
+  }
+  
+  &::after {
+    height: 0;
+    background-color: $color-accent-text;
+    @include transition(height);
+  }
+  
+  &:hover {
+    color: $color-accent;
+    @include transition(background-color);
+    
+    &::after {
+      height: 100%;
+    }
+  }
+  
+  &:active {
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+  
+  svg path {
+    stroke: currentColor;
+  }
+  
+  @media (max-width: $bp-lg) {
     padding: 1rem;
-  }
+    font-size: 1rem !important;
+    font-weight: 700 !important;
 
-  .button svg {
-    scale: 0.68;
+    svg {
+      transform: scale(0.68);
+    }
   }
 }
 
-//Шапка
+// Шапка
 .header {
-  position       : fixed;
-  top            : 0;
-  width          : 100%;
-  z-index        : 40;
-  transition     : color .3s ease;
-  max-width      : 100vw;
-  border-bottom  : 1px solid rgba(255, 255, 255, 0.10);
-  background     : rgba(35, 38, 42, 0.80);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 40;
+  max-width: 100vw;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(35, 38, 42, 0.8);
   backdrop-filter: blur(50px);
-}
-
-.desktop-nav {
-
-  &_flex {
-    display        : flex;
-    flex-direction : row;
-    padding        : 1.75rem 0;
+  @include transition(color);
+  
+  &__container {
+    display: flex;
     justify-content: space-between;
-  }
-
-  @media (max-width:1024px) {
-    &_flex {
-      padding: 1.125rem 0;
-    }
-  }
-
-  &_logo {
-    display    : flex;
-    height     : 100%;
     align-items: center;
-  }
-
-  @media (max-width:1024px) {
-    &_logo {
-      scale: 0.92;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+    
+    @media (max-width: $bp-lg) {
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
     }
   }
-
-  &_header {
-
-    /* Бургер‑иконка */
-    .nav_burger {
-      display        : none;
-      flex-direction : column;
-      cursor         : pointer;
-      background     : none;
-      border-width   : initial;
-      border-style   : none;
-      border-color   : initial;
-      border-image   : initial;
-      width          : 32px;
-      gap: 7px;
-      padding        : 0;
-      z-index        : 50;
-    }
-
-
-    /* Анимация бургер-меню в крестик */
-    .nav_burger.open span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
-    }
-
-    .nav_burger.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .nav_burger.open span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -7px);
-    }
-
-    .nav_burger span {
-      display         : block;
-      height          : 2px;
-      background-color: rgb(108, 117, 123);
-      transition      : 0.3s ease;
-    }
-
-    .mobile-menu {
-      display    : flex;
-      align-items: center;
-      gap        : 24px;
-    }
-
-  }
-
-  &_navs-list {
-    display     : flex;
-    margin-right: 128px;
-
-    li {
-      padding-right: 3.25rem;
-    }
-
-    li:last-of-type {
-      padding: 0;
-    }
-
-    .nav-font:hover {
-      opacity: 0.8;
-    }
-
-    .nav-font:active {
-      opacity: 0.6;
-    }
-
-  }
-
-  &_navs-group {
-    display    : flex;
+  
+  &__logo {
+    display: flex;
     align-items: center;
+    z-index: 50;
+    
+    @media (max-width: $bp-lg) {
+      transform: scale(0.92);
+    }
   }
-
-  &_navs-icon {
-
-    display   : flex;
-
-    a {
-      transition: opacity .2s ease;
+  
+  &__nav {
+    display: flex;
+    align-items: center;
+    
+    &-list {
+      display: flex;
+      margin-right: 128px;
+      
+      li {
+        padding-right: 3.25rem;
+        
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+      
+      @media (max-width: 1444px) {
+        margin-right: 52px;
+        
+        li {
+          padding-right: 32px;
+        }
+      }
+      
+      @media (max-width: 1132px) {
+        li {
+          padding-right: 24px;
+          
+          &:last-child {
+            display: none;
+          }
+        }
+      }
+      
+      @media (max-width: $bp-lg) {
+        display: none;
+      }
     }
     
-    a:hover {
-      opacity: 0.8;
+    &-icons {
+      display: flex;
+      
+      a {
+        @include transition(opacity);
+        
+        &:hover {
+          opacity: 0.8;
+        }
+        
+        &:active {
+          opacity: 0.6;
+        }
+        
+        &.icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 42px;
+          height: 42px;
+          
+          &:first-child {
+            margin-right: 12px;
+          }
+        }
+      }
+      
+      @media (max-width: $bp-lg) {
+        display: none;
+      }
     }
-
-    a:active {
-      opacity: 0.6;
-    }
-
-    .icon {
-      display           : flex;
-      align-items       : center;
-      justify-content   : center;
-      width             : 42px;
-      height            : 42px;
-      // border         : 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .icon:first-of-type {
-      margin-right: 12px;
-    }
-
   }
-}
-
-.mobile-fullscreen-menu {
-  position       : fixed;
-  right          : 0;
-  top            : 0;
-  z-index        : 30;
-  display        : flex;
-  flex-direction : column;
-  align-items    : center;
-  justify-content: flex-start;
-  align-items    : start;
-
-  /* Анимация открытия */
-  opacity                : 0;
-  transform              : translateY(-20px);
-  transition             : opacity 0.25s ease-out, transform 0.25s ease-out;
-  pointer-events         : none;
-  visibility             : hidden;
-  background             : rgba(35, 38, 42, 0.5);
-  -webkit-backdrop-filter: blur(22.5px);
-  backdrop-filter        : blur(22.5px);
-  overflow               : hidden auto;
-  height                 : 100vh;
-  width                  : 100%;
-}
-
-.mobile-fullscreen-menu .button {
-  justify-content: space-between !important;
-}
-
-.mobile-fullscreen-menu.active {
-  opacity       : 1;
-  transform     : translateY(0);
-  pointer-events: auto;
-  visibility    : visible;
-}
-
-.mobile-fullscreen-menu.no-transition {
-  transition: none !important;
-}
-
-.mobile-fullscreen-menu_group-links {
-  margin: 84px 0 84px 0;
-}
-
-.mobile-fullscreen-menu_links {
-  list-style: none;
-  margin    : 0;
-  text-align: left;
-  width     : 100%;
-}
-
-.mobile-fullscreen-menu_links .nav-btn {
-  padding        : 20px;
-  border         : none;
-  border-bottom  : 1px solid #ffffff15;
-  display        : flex;
-  justify-content: space-between;
-  align-items    : center;
-  transition     : background-color 0.4s ease;
-  background     : transparent;
-}
-
-.mobile-fullscreen-menu_links .nav-btn:hover {
-  background-color: #ffffff05;
-}
-
-.mobile-fullscreen-menu_links .nav-btn:active {
-  background-color: #ffffff15;
-}
-
-.mobile-fullscreen-menu_links .nav-btn:last-of-type {
-  border: none;
-}
-
-.mobile-fullscreen-menu_links a {
-  font-size      : 20px;
-  text-decoration: none;
-}
-
-.mobile-fullscreen-menu__button {
-  margin-top: 40px;
-}
-
-
-// Адаптивность
-@media (max-width: 1444px) {
-  .desktop-nav_navs-list {
-    margin-right: 52px;
-  }
-
-  .desktop-nav_navs-list li {
-    padding-right: 32px;
-  }
-}
-
-@media (max-width: 1132px) {
-  .desktop-nav_navs-list li {
-    padding-right: 24px;
-  }
-}
-
-@media (max-width: 1132px) {
-  .desktop-nav_navs-list li:last-of-type {
+  
+  &__burger {
     display: none;
+    flex-direction: column;
+    gap: 7px;
+    width: 32px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 50;
+    
+    span {
+      display: block;
+      height: 2px;
+      background-color: rgb(108, 117, 123);
+      @include transition;
+    }
+    
+    &.open {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+      
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+    }
+    
+    @media (max-width: $bp-lg) {
+      display: flex;
+    }
   }
 }
 
-@media (max-width: 1024px) {
-  .desktop-nav_navs-list {
-    display: none;
+// Мобильное меню
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 30;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  background: rgba(35, 38, 42, 0.5);
+  backdrop-filter: blur(22.5px);
+  @include transition((opacity, visibility, transform), 0.2s, ease-out);
+  
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
+  
+  &__content {
+    margin: 84px 0;
+    width: 100%;
 
-  .desktop-nav_navs-icon {
-    display: none;
+    .button {
+      justify-content: space-between;
+    }
   }
+  
+  &__list {
+    list-style: none;
+    margin: 0 0 32px 0;
+    padding: 0;
+    
+    &-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      @include transition(background-color);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      
+      &:active {
+        background-color: rgba(255, 255, 255, 0.15);
+      }
 
-  .nav_burger {
-    display: flex !important;
+      a {
+        display: block;
+        padding: 1.25rem;
+      }
+    }
+  }
+  
+  &__button {
+    margin-top: 40px;
   }
 }
 
-@media (max-width: 480px) {}
+// Блок hero
+.hero {
+  position: relative;
+  
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* Локальная сетка */
+    gap: 2rem;
+    align-items: center;
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &__content {
+  }
+  
+  &__image {
+    
+    img {
+      height: 100%;
+    }
+    
+    @media (max-width: 1024px) {
+      grid-column: 1;
+      padding-bottom: 75%; /* 4:3 на мобильных */
+    }
+  }
+}
+
+// Шильдики
+.hero__badges {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.cert-badge {
+  border-radius: 8px;
+  padding: 24px 0;
+  flex: 1;
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: $color-cert-badge;
+  }
+  
+  &__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    
+    path {
+      fill: currentColor;
+    }
+  }
+  
+  &__number {
+    @include text-style(.75rem, 100%, 500, $color-cert-badge);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__badges {
+    flex-wrap: wrap;
+  }
+  
+  .cert-badge {
+    min-width: 140px;
+  }
+}
+
+//Заголовок
+
+.hero__title {
+  display: block;
+  
+  &-line {
+    display: block;
+    line-height: 1.1;
+    
+    &:nth-child(2) {
+      margin-left: 1.5rem; /* Сдвиг второй строки */
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0 0 0 0);
+}

@@ -6,52 +6,50 @@
     --new-block-spacing: 8rem;
     --default-border-width: 2px;
     --trans-default: 150ms;
-    --column: calc((100vw - (var(--gutter-h) * 2)) / 16)
+    --column: calc((100vw - (var(--gutter-h) * 2)) / 16);
 }
 
-@media(max-width: 2168px) {
+@media (max-width: 2168px) {
     :root {
         --gutter-h: 10rem;
     }
 }
 
-@media(max-width: 1600px) {
+@media (max-width: 1600px) {
     :root {
         --base: 16px;
         --gutter-h: 4rem;
         --block-spacing: 5rem;
         --new-block-spacing: 6rem;
-        --header-height: 76px
+        --header-height: 76px;
     }
 }
 
-@media(max-width: 1170px) {
+@media (max-width: 1170px) {
     :root {
-        --header-height: 66px
+        --header-height: 66px;
     }
 }
 
-@media(max-width: 1024px) {
+@media (max-width: 1024px) {
     :root {
         --gutter-h: 2rem;
         --block-spacing: 3.5rem;
         --new-block-spacing: 4rem;
-        --page-padding-top: var(--header-height)
+        --page-padding-top: var(--header-height);
     }
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     :root {
         --block-spacing: 2rem;
-        --gutter-h: 1rem
+        --gutter-h: 1rem;
     }
 }
 
-
 .w100 {
-  width: 100%;
+    width: 100%;
 }
-
 
 // Сетка
 
@@ -59,7 +57,7 @@
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-row-gap: 0;
-    grid-column-gap: 0
+    grid-column-gap: 0;
 }
 
 .gutter {
@@ -67,83 +65,81 @@
     padding-left: var(--gutter-h);
 }
 
-
 .line:first-of-type {
-    grid-area: 1/1/1/1
+    grid-area: 1/1/1/1;
 }
 
 .line:nth-of-type(2) {
-    grid-area: 1/5/1/9
+    grid-area: 1/5/1/9;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     .line:nth-of-type(3) {
-        display: none
+        display: none;
     }
 }
 
 .line:nth-of-type(3) {
-    grid-area: 1/9/1/13
+    grid-area: 1/9/1/13;
 }
 
-@media(max-width: 1024px) {
+@media (max-width: 1024px) {
     .line:nth-of-type(2) {
-        display: none
+        display: none;
     }
 }
 
 .line:nth-of-type(4) {
-    grid-area: 1/13/1/17
+    grid-area: 1/13/1/17;
 }
 
-@media(max-width: 1024px) {
+@media (max-width: 1024px) {
     .line:nth-of-type(4) {
-        display: none
+        display: none;
     }
 }
 
 .line:nth-of-type(5) {
-    grid-area: 1/17/1/17
+    grid-area: 1/17/1/17;
 }
 
-
-@media(max-width: 1600px) {
+@media (max-width: 1600px) {
     .grid {
         grid-template-columns: repeat(16, 1fr);
     }
 }
 
-@media(max-width: 1024px) {
+@media (max-width: 1024px) {
     .grid {
         grid-template-columns: repeat(8, 1fr);
     }
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     .grid {
         grid-template-columns: repeat(8, 1fr);
     }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
     .grid {
         grid-template-columns: repeat(8, 1fr);
     }
 }
 
-@media(max-width: 1920px) {
+@media (max-width: 1920px) {
     $gutter-h: 8rem;
 }
 
-@media(max-width: 1600px) {
+@media (max-width: 1600px) {
     $gutter-h: 4rem;
 }
 
-@media(max-width: 1024px) {
+@media (max-width: 1024px) {
     $gutter-h: 2rem;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     $gutter-h: 1rem;
 }
 
@@ -167,6 +163,9 @@
 
 .cols-4 {
     grid-column-end: span 4;
+}
+.cols-8 {
+    grid-column: span 8;
 }
 
 .line {
