@@ -22,6 +22,7 @@ $color-gray: #c8c8c8;
 $color-white: #ffffff;
 $color-accent: #e45b5b;
 $color-accent-text: #4c0000;
+$color-accent-bg: #753536;
 $color-cert-badge: #969696;
 
 $bp-xxl: 1440px;
@@ -60,20 +61,20 @@ body {
   font-family: $font-family;
 }
 
-// Типография
-h1 {
-  @include text-style(clamp(3.25rem, 5vw + 1rem, 7.5rem), 112%, 700);
-  
-  @media (max-width: $bp-lg) {
-    line-height: 100%;
-  }
+img {
+    display: block !important;
 }
 
-h2 {
+// Типография
+.font-large {
+  @include text-style(clamp(3.25rem, 5vw + 1rem, 7.5rem), 112%, 700);
+}
+
+.font-medium {
   @include text-style(clamp(2rem, 3vw + 1rem, 4.5rem), 112%, 700);
 }
 
-h3 {
+.font-title {
   @include text-style(clamp(1.5rem, 2vw + 1rem, 2.625rem), 124%, 700);
   
   @media (max-width: $bp-lg) {
@@ -81,7 +82,7 @@ h3 {
   }
 }
 
-p {
+.font-main, p {
   @include text-style(clamp(1rem, 1.25vw, 1.25rem), 160%, 400);
   
   @media (max-width: $bp-lg) {
@@ -101,7 +102,7 @@ p {
 
     @media (max-width: $bp-lg) {
     font-size: 1rem !important;
-    font-weight: 600;
+    font-weight: 700;
   }
   }
     
@@ -289,18 +290,19 @@ p {
     display: none;
     flex-direction: column;
     gap: 7px;
-    width: 32px;
     padding: 0;
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 50;
+    z-index: 9999;
     
     span {
       display: block;
+      width: 32px;
       height: 2px;
       background-color: rgb(108, 117, 123);
       @include transition;
+      z-index: 9999;
     }
     
     &.open {
@@ -326,16 +328,19 @@ p {
 // Мобильное меню
 .mobile-menu {
   position: fixed;
-  top: 0;
   left: 0;
+  right: 0;
+  top: env(safe-area-inset-top);
+  bottom: env(safe-area-inset-bottom);
   width: 100%;
-  height: 100vh;
+  max-height: calc(100vh - env(safe-area-inset-bottom));
   z-index: 30;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-20px);
-  background: rgba(35, 38, 42, 0.5);
+  background: rgba(35, 38, 42, 0.68);
   backdrop-filter: blur(22.5px);
+  overflow: hidden auto;
   @include transition((opacity, visibility, transform), 0.2s, ease-out);
   
   &.active {
@@ -345,8 +350,9 @@ p {
   }
   
   &__content {
-    margin: 84px 0;
+    margin-top: 84px;
     width: 100%;
+    padding-bottom: 32px; 
 
     .button {
       justify-content: space-between;
@@ -384,6 +390,15 @@ p {
   &__button {
     margin-top: 40px;
   }
+
+  .lines {
+    min-height: 498px;
+    height: 100vh;
+
+    .line:nth-of-type(3) {
+      display: none;
+    }
+  }
 }
 
 // Блок hero
@@ -392,94 +407,85 @@ p {
   
   &__container {
     display: grid;
-    grid-template-columns: repeat(12, 1fr); /* Локальная сетка */
+    grid-template-columns: repeat(12, 1fr);
     gap: 2rem;
     align-items: center;
-    
-    @media (max-width: 1024px) {
+
+    @media (max-width: $bp-lg) {
       grid-template-columns: 1fr;
     }
   }
-  
+
   &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 48px;
+
+    @media(max-width: $bp-lg) {
+      margin-bottom: 12px;
+    }
   }
-  
-  &__image {
+
+  &__badges {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  .cert-badge {
+    border-radius: 8px;
+    padding-top: 24px;
+    flex: 1;
+
+    &__icon {
+      svg {
+        color: $color-cert-badge;
+        width: clamp(86px, 10vw + 50px, 114px); // Ширина от 86px до 114px
+        height: clamp(24px, 2.5vw + 18px, 34px); // Высота от 24px до 34px
+      }
+    }
     
+    &__number {
+      @include text-style(.75rem, 124%, 500, $color-cert-badge);
+    }
+  }
+
+  &__title {
+    display: block;
+    
+    &-line {
+      display: block;
+
+      &:nth-child(2) {
+        @include text-style(clamp(1.5rem, 1.8vw + 1rem, 3rem), 112%, 500, $color-gray);
+        margin-top: 16px;
+      }
+    }
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0 0 0 0);
+  }
+
+  &__audiences {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .audience-chip {
+      padding: clamp(.5rem, 1vw, .75rem) clamp(.75rem, 1vw, 1.125rem);
+      @include text-style(clamp(1rem, 2vw, 1.5rem), 112%, 400, $color-white);
+      background: $color-accent-bg;
+    }
+  }
+  &__image {
     img {
+      object-fit: cover;
       height: 100%;
     }
-    
-    @media (max-width: 1024px) {
-      grid-column: 1;
-      padding-bottom: 75%; /* 4:3 на мобильных */
-    }
   }
-}
-
-// Шильдики
-.hero__badges {
-  display: flex;
-  margin-bottom: 24px;
-}
-
-.cert-badge {
-  border-radius: 8px;
-  padding: 24px 0;
-  flex: 1;
-  
-  &__header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    color: $color-cert-badge;
-  }
-  
-  &__icon {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    
-    path {
-      fill: currentColor;
-    }
-  }
-  
-  &__number {
-    @include text-style(.75rem, 100%, 500, $color-cert-badge);
-  }
-}
-
-@media (max-width: 768px) {
-  .hero__badges {
-    flex-wrap: wrap;
-  }
-  
-  .cert-badge {
-    min-width: 140px;
-  }
-}
-
-//Заголовок
-
-.hero__title {
-  display: block;
-  
-  &-line {
-    display: block;
-    line-height: 1.1;
-    
-    &:nth-child(2) {
-      margin-left: 1.5rem; /* Сдвиг второй строки */
-    }
-  }
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  clip: rect(0 0 0 0);
 }

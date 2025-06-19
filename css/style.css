@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 @import url("mixin.css");
 @import url("grid.css");
@@ -8,7 +7,11 @@ body {
   font-family: "Manrope", sans-serif;
 }
 
-h1 {
+img {
+  display: block !important;
+}
+
+.font-large {
   font-family: "Manrope", sans-serif;
   font-size: clamp(3.25rem, 5vw + 1rem, 7.5rem);
   line-height: 112%;
@@ -16,13 +19,8 @@ h1 {
   color: #ffffff;
   margin: 0;
 }
-@media (max-width: 1024px) {
-  h1 {
-    line-height: 100%;
-  }
-}
 
-h2 {
+.font-medium {
   font-family: "Manrope", sans-serif;
   font-size: clamp(2rem, 3vw + 1rem, 4.5rem);
   line-height: 112%;
@@ -31,7 +29,7 @@ h2 {
   margin: 0;
 }
 
-h3 {
+.font-title {
   font-family: "Manrope", sans-serif;
   font-size: clamp(1.5rem, 2vw + 1rem, 2.625rem);
   line-height: 124%;
@@ -40,12 +38,12 @@ h3 {
   margin: 0;
 }
 @media (max-width: 1024px) {
-  h3 {
+  .font-title {
     font-weight: 500;
   }
 }
 
-p {
+.font-main, p {
   font-family: "Manrope", sans-serif;
   font-size: clamp(1rem, 1.25vw, 1.25rem);
   line-height: 160%;
@@ -54,7 +52,7 @@ p {
   margin: 0;
 }
 @media (max-width: 1024px) {
-  p {
+  .font-main, p {
     line-height: 136%;
   }
 }
@@ -73,7 +71,7 @@ p {
 @media (max-width: 1024px) {
   .nav-font {
     font-size: 1rem !important;
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 .nav:hover {
@@ -244,18 +242,19 @@ p {
   display: none;
   flex-direction: column;
   gap: 7px;
-  width: 32px;
   padding: 0;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 50;
+  z-index: 9999;
 }
 .header__burger span {
   display: block;
+  width: 32px;
   height: 2px;
   background-color: rgb(108, 117, 123);
   transition: all 0.3s ease;
+  z-index: 9999;
 }
 .header__burger.open span:nth-child(1) {
   transform: rotate(45deg) translate(6px, 6px);
@@ -274,17 +273,20 @@ p {
 
 .mobile-menu {
   position: fixed;
-  top: 0;
   left: 0;
+  right: 0;
+  top: env(safe-area-inset-top);
+  bottom: env(safe-area-inset-bottom);
   width: 100%;
-  height: 100vh;
+  max-height: calc(100vh - env(safe-area-inset-bottom));
   z-index: 30;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-20px);
-  background: rgba(35, 38, 42, 0.5);
+  background: rgba(35, 38, 42, 0.68);
   -webkit-backdrop-filter: blur(22.5px);
           backdrop-filter: blur(22.5px);
+  overflow: hidden auto;
   transition: opacity 0.2s ease-out, visibility 0.2s ease-out, transform 0.2s ease-out;
 }
 .mobile-menu.active {
@@ -293,8 +295,9 @@ p {
   transform: translateY(0);
 }
 .mobile-menu__content {
-  margin: 84px 0;
+  margin-top: 84px;
   width: 100%;
+  padding-bottom: 32px;
 }
 .mobile-menu__content .button {
   justify-content: space-between;
@@ -324,13 +327,20 @@ p {
 .mobile-menu__button {
   margin-top: 40px;
 }
+.mobile-menu .lines {
+  min-height: 498px;
+  height: 100vh;
+}
+.mobile-menu .lines .line:nth-of-type(3) {
+  display: none;
+}
 
 .hero {
   position: relative;
 }
 .hero__container {
   display: grid;
-  grid-template-columns: repeat(12, 1fr); /* Локальная сетка */
+  grid-template-columns: repeat(12, 1fr);
   gap: 2rem;
   align-items: center;
 }
@@ -339,73 +349,78 @@ p {
     grid-template-columns: 1fr;
   }
 }
-.hero__image img {
-  height: 100%;
+.hero__content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 48px;
 }
 @media (max-width: 1024px) {
-  .hero__image {
-    grid-column: 1;
-    padding-bottom: 75%; /* 4:3 на мобильных */
+  .hero__content {
+    margin-bottom: 12px;
   }
 }
-
 .hero__badges {
   display: flex;
   margin-bottom: 24px;
 }
-
-.cert-badge {
+.hero .cert-badge {
   border-radius: 8px;
-  padding: 24px 0;
+  padding-top: 24px;
   flex: 1;
 }
-.cert-badge__header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+.hero .cert-badge__icon svg {
   color: #969696;
+  width: clamp(86px, 10vw + 50px, 114px);
+  height: clamp(24px, 2.5vw + 18px, 34px);
 }
-.cert-badge__icon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-.cert-badge__icon path {
-  fill: currentColor;
-}
-.cert-badge__number {
+.hero .cert-badge__number {
   font-family: "Manrope", sans-serif;
   font-size: 0.75rem;
-  line-height: 100%;
+  line-height: 124%;
   font-weight: 500;
   color: #969696;
   margin: 0;
-}
-
-@media (max-width: 768px) {
-  .hero__badges {
-    flex-wrap: wrap;
-  }
-  .cert-badge {
-    min-width: 140px;
-  }
 }
 .hero__title {
   display: block;
 }
 .hero__title-line {
   display: block;
-  line-height: 1.1;
 }
 .hero__title-line:nth-child(2) {
-  margin-left: 1.5rem; /* Сдвиг второй строки */
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(1.5rem, 1.8vw + 1rem, 3rem);
+  line-height: 112%;
+  font-weight: 500;
+  color: #c8c8c8;
+  margin: 0;
+  margin-top: 16px;
 }
-
-.visually-hidden {
+.hero .visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
   margin: -1px;
   clip: rect(0 0 0 0);
+}
+.hero__audiences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hero__audiences .audience-chip {
+  padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1vw, 1.125rem);
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 112%;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0;
+  background: #753536;
+}
+.hero__image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
 }/*# sourceMappingURL=style.css.map */
