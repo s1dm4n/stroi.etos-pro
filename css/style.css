@@ -362,7 +362,6 @@ img {
 }
 .hero__badges {
   display: flex;
-  margin-bottom: 24px;
 }
 .hero .cert-badge {
   border-radius: 8px;
