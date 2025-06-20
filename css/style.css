@@ -9,11 +9,12 @@ body {
 
 img {
   display: block !important;
+  width: 100%;
 }
 
 .font-large {
   font-family: "Manrope", sans-serif;
-  font-size: clamp(3.25rem, 5vw + 1rem, 7.5rem);
+  font-size: clamp(2.75rem, 5vw + 1rem, 7.5rem);
   line-height: 112%;
   font-weight: 700;
   color: #ffffff;
@@ -37,10 +38,9 @@ img {
   color: #ffffff;
   margin: 0;
 }
-@media (max-width: 1024px) {
-  .font-title {
-    font-weight: 500;
-  }
+
+.font-large, .font-medium, .font-title {
+  text-transform: uppercase;
 }
 
 .font-main, p {
@@ -53,7 +53,7 @@ img {
 }
 @media (max-width: 1024px) {
   .font-main, p {
-    line-height: 136%;
+    line-height: 148%;
   }
 }
 
@@ -83,7 +83,7 @@ img {
 
 .button {
   font-family: "Manrope", sans-serif;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, -0.1179rem + 1.7467vw, 1.5rem);
   line-height: 100%;
   font-weight: 700;
   color: #4c0000;
@@ -91,13 +91,22 @@ img {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  padding: 1.5rem;
+  padding: clamp(1rem, 0.25rem + 0.7813vw, 1.5rem) clamp(0.75rem, 0.25rem + 0.7813vw, 1.5rem);
   gap: 3rem;
   background-color: transparent;
   border: none;
   position: relative;
   cursor: pointer;
+  transition: opacity 0.3s ease;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.button__text {
   transition: color 0.3s ease;
+}
+.button__text, .button svg {
+  position: relative;
+  z-index: 3;
 }
 .button::before, .button::after {
   content: "";
@@ -106,11 +115,11 @@ img {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 2;
 }
 .button::before {
   background-color: #e45b5b;
-  z-index: -2;
+  z-index: 1;
 }
 .button::after {
   height: 0;
@@ -125,19 +134,24 @@ img {
   height: 100%;
 }
 .button:active {
-  background-color: rgba(0, 0, 0, 0.15);
+  opacity: 0.8;
+}
+.button svg {
+  height: clamp(1rem, -0.1179rem + 1.7467vw, 1.5rem);
 }
 .button svg path {
   stroke: currentColor;
 }
 @media (max-width: 1024px) {
   .button {
-    padding: 1rem;
-    font-size: 1rem !important;
     font-weight: 700 !important;
   }
-  .button svg {
-    transform: scale(0.68);
+}
+@media (max-width: 582px) {
+  .button {
+    justify-content: space-between;
+    gap: 1.5rem;
+    width: 100%;
   }
 }
 
@@ -180,6 +194,12 @@ img {
   display: flex;
   align-items: center;
 }
+.header__nav .nav-font:hover, .header__nav .icon:hover {
+  opacity: 0.6;
+}
+.header__nav .nav-font:active, .header__nav .icon:active {
+  opacity: 0.4;
+}
 .header__nav-list {
   display: flex;
   margin-right: 128px;
@@ -216,12 +236,6 @@ img {
 }
 .header__nav-icons a {
   transition: opacity 0.3s ease;
-}
-.header__nav-icons a:hover {
-  opacity: 0.8;
-}
-.header__nav-icons a:active {
-  opacity: 0.6;
 }
 .header__nav-icons a.icon {
   display: flex;
@@ -299,9 +313,6 @@ img {
   width: 100%;
   padding-bottom: 32px;
 }
-.mobile-menu__content .button {
-  justify-content: space-between;
-}
 .mobile-menu__list {
   list-style: none;
   margin: 0 0 32px 0;
@@ -324,20 +335,13 @@ img {
   display: block;
   padding: 1.25rem;
 }
-.mobile-menu__button {
-  margin-top: 40px;
-}
-.mobile-menu .lines {
-  min-height: 498px;
-  height: 100vh;
+.mobile-menu .button {
+  justify-content: space-between !important;
 }
 .mobile-menu .lines .line:nth-of-type(3) {
   display: none;
 }
 
-.hero {
-  position: relative;
-}
 .hero__container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -363,6 +367,11 @@ img {
 .hero__badges {
   display: flex;
 }
+@media (max-width: 500px) {
+  .hero__badges {
+    gap: 24px;
+  }
+}
 .hero .cert-badge {
   border-radius: 8px;
   padding-top: 24px;
@@ -370,12 +379,11 @@ img {
 }
 .hero .cert-badge__icon svg {
   color: #969696;
-  width: clamp(86px, 10vw + 50px, 114px);
   height: clamp(24px, 2.5vw + 18px, 34px);
 }
 .hero .cert-badge__number {
   font-family: "Manrope", sans-serif;
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   line-height: 124%;
   font-weight: 500;
   color: #969696;
@@ -383,6 +391,11 @@ img {
 }
 .hero__title {
   display: block;
+}
+@media (max-width: 1024px) {
+  .hero__title {
+    font-weight: 500;
+  }
 }
 .hero__title-line {
   display: block;
@@ -409,17 +422,52 @@ img {
   gap: 12px;
 }
 .hero__audiences .audience-chip {
-  padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1vw, 1.125rem);
+  padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.5rem, 1vw, 1.125rem);
   font-family: "Manrope", sans-serif;
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(0.75rem, 0.4091rem + 1.0909vw, 1.5rem);
   line-height: 112%;
   font-weight: 400;
   color: #ffffff;
   margin: 0;
   background: #753536;
 }
+@media (max-width: 350px) {
+  .hero__audiences .audience-chip {
+    padding: 6px 4px;
+  }
+}
+@media (max-width: 350px) {
+  .hero__audiences {
+    gap: 4px;
+  }
+}
 .hero__image img {
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
+}
+
+.intro__content {
+  padding: clamp(1.5rem, 0.85rem + 2.7735vw, 2.625rem);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border: 1px solid var(--line-style);
+  background: #272a2f;
+}
+@media (max-width: 1024px) {
+  .intro__content {
+    border-top: none;
+  }
+}
+.intro__image img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+@media (max-width: 1024px) {
+  .intro__image {
+    max-height: clamp(15.75rem, 12rem + 10vw, 28.875rem);
+  }
 }/*# sourceMappingURL=style.css.map */
