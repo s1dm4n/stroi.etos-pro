@@ -87,7 +87,7 @@
                     <li class="mobile-menu__list-item"><a href="#demonstration" class="nav-font"><span>Демонстрация</span></a></li>
                     <li class="mobile-menu__list-item"><a href="#contacts" class="nav-font"><span>Контакты</span></a></li>
                 </ul>
-                <a type="button" class="button mobile-fullscreen-menu__button w100">
+                <a type="button" class="button mobile-fullscreen-menu__button w100 adapt-btn">
                     <span class="button__text">Заказать презентацию</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
                         <path d="M22.8999 2C12.7818 2 13.018 2 2.8999 2M22.8999 2V22M22.8999 2L2.8999 22" stroke="#4C0000"
@@ -219,7 +219,7 @@
                 <div class="cols-4 line"></div>
             </div>
         </section>
-        <section class="intro grid gutter">
+        <section class="intro grid gutter gb">
             <div class="intro__image cols-8">
                 <picture>
                     <source 
@@ -256,13 +256,343 @@
                 <p class="intro__description">
                     «ЭТОС» – цифровая экосистема для комплексного управления строительными проектами. Она состоит из функциональных модулей - готовых программ для решения конкретных задач на разных этапах строительства.
                 </p>
-                <button class="intro__button button" onclick="window.location.href='#contacts'">
+                <button class="intro__button button adapt-btn" onclick="window.location.href='#contacts'">
                     <span class="button__text">Заказать презентацию</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
                         <path d="M22.8999 2C12.7818 2 13.018 2 2.8999 2M22.8999 2V22M22.8999 2L2.8999 22" stroke="#4C0000"
                             stroke-width="3" stroke-linecap="square" />
                     </svg>
                 </button>
+            </div>
+        </section>
+        <section class="modules gutter">
+            <h2 class="font-medium">
+                <span>Модули</span>
+                <span class="red-text">«ЭТОС»</span>
+            </h2>
+            <div class="modules__container grid">
+                <div class="modules__content cols-8">
+                    <span class="modules__title font-title">
+                        Среда общих данных
+                    </span>
+                    <div class="modules__tags">
+                        <div class="modules__tag font-main">
+                            Общий доступ
+                        </div>
+                        <div class="modules__tag font-main">
+                            ПД
+                        </div>
+                        <div class="modules__tag font-main">
+                            Приказы
+                        </div>
+                        <div class="modules__tag font-main">
+                            IFC
+                        </div>
+                        <div class="modules__tag font-main">
+                            Спецификации
+                        </div>
+                        <div class="modules__tag font-main">
+                            Ролевая модель
+                        </div>
+                        <div class="modules__tag font-main">
+                            ТЭП
+                        </div>
+                        <div class="modules__tag font-main">
+                            Сметы
+                        </div>
+                        <div class="modules__tag font-main">
+                            ВК РД
+                        </div>
+                        <div class="modules__tag font-main">
+                            ИРД
+                        </div>
+                        <div class="modules__tag font-main">
+                            Экспорт в XLS
+                        </div>
+                        <div class="modules__tag font-main">
+                            Сети
+                        </div>
+                        <div class="modules__tag font-main">
+                            ВОР
+                        </div>
+                        <div class="modules__tag font-main">
+                            Конструкции
+                        </div>
+                        <div class="modules__tag font-main">
+                            РД
+                        </div>
+                        <div class="modules__tag font-main">
+                            Замечания
+                        </div>
+                    </div>
+                    <button class="modules__button button" onclick="window.location.href='#contacts'">
+                        <span class="button__text">Подбронее</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                            <path d="M22.8999 2C12.7818 2 13.018 2 2.8999 2M22.8999 2V22M22.8999 2L2.8999 22" stroke="#4C0000"
+                                stroke-width="3" stroke-linecap="square" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="modules__image cols-8" style="background: #7f7f7f;">
+                    <!-- <picture>
+                        <source 
+                            srcset="
+                            img/module.avif 1x,
+                            img/module@2x.avif 2x
+                            "
+                            type="image/avif"
+                        >
+                        <source 
+                            srcset="
+                            img/module.webp 1x,
+                            img/module@2x.webp 2x
+                            "
+                            type="image/webp"
+                        >
+                        <img
+                            src="img/module.jpg"
+                            srcset="
+                            img/module.jpg 1x,
+                            img/module@2x.jpg 2x
+                            "
+                            alt="Современная крупная стройка с техникой и зданиями на разных этапах возведения"
+                            loading="lazy"
+                        >
+                    </picture> -->
+                </div>
+            </div>
+            <div class="modules__container grid">
+                <div class="modules__content cols-8">
+                    <span class="modules__title font-title">
+                        Исполнительная документация
+                    </span>
+                    <div class="modules__tags">
+                        <div class="modules__tag font-main">
+                            ИД
+                        </div>
+                        <div class="modules__tag font-main">
+                            Поставки МТР
+                        </div>
+                        <div class="modules__tag font-main">
+                            Сертификаты
+                        </div>
+                        <div class="modules__tag font-main">
+                            Протоколы
+                        </div>
+                        <div class="modules__tag font-main">
+                            ЭП
+                        </div>
+                        <div class="modules__tag font-main">
+                            АООК
+                        </div>
+                        <div class="modules__tag font-main">
+                            Прогресс СМР
+                        </div>
+                        <div class="modules__tag font-main">
+                            Накладные
+                        </div>
+                        <div class="modules__tag font-main">
+                            Спецжурналы
+                        </div>
+                        <div class="modules__tag font-main">
+                            АОСР
+                        </div>
+                        <div class="modules__tag font-main">
+                            СК
+                        </div>
+                        <div class="modules__tag font-main">
+                            Исполнительные схемы
+                        </div>
+                        <div class="modules__tag font-main">
+                            XML-схемы
+                        </div>
+                        <div class="modules__tag font-main">
+                            ОЖР
+                        </div>
+                    </div>
+                    <button class="modules__button button" onclick="window.location.href='#contacts'">
+                        <span class="button__text">Подбронее</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                            <path d="M22.8999 2C12.7818 2 13.018 2 2.8999 2M22.8999 2V22M22.8999 2L2.8999 22" stroke="#4C0000"
+                                stroke-width="3" stroke-linecap="square" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="modules__image cols-8" style="background: #7f7f7f;">
+                    <!-- <picture>
+                        <source 
+                            srcset="
+                            img/module.avif 1x,
+                            img/module@2x.avif 2x
+                            "
+                            type="image/avif"
+                        >
+                        <source 
+                            srcset="
+                            img/module.webp 1x,
+                            img/module@2x.webp 2x
+                            "
+                            type="image/webp"
+                        >
+                        <img
+                            src="img/module.jpg"
+                            srcset="
+                            img/module.jpg 1x,
+                            img/module@2x.jpg 2x
+                            "
+                            alt="Современная крупная стройка с техникой и зданиями на разных этапах возведения"
+                            loading="lazy"
+                        >
+                    </picture> -->
+                </div>
+            </div>
+        </section>
+        <section class="advantages gutter grid gt gb">
+            <h2 class="font-medium">Преимущества</h2>
+            <div class="advantages__containers">
+                <div class="advantages__container grid">
+                    <div class="advantages__image cols-8">
+                        <picture>
+                            <source 
+                                srcset="
+                                img/advantages-bulder.avif 1x,
+                                img/advantages-bulder@2x.avif 2x
+                                "
+                                type="image/avif"
+                            >
+                            <source 
+                                srcset="
+                                img/advantages-bulder.webp 1x,
+                                img/advantages-bulder@2x.webp 2x
+                                "
+                                type="image/webp"
+                            >
+                            <img
+                                src="img/advantages-bulder.jpg"
+                                srcset="
+                                img/advantages-bulder.jpg 1x,
+                                img/advantages-bulder@2x.jpg 2x
+                                "
+                                alt="Основатель «Этос» — строитель с 20-летним стажем в Росэнергоатоме и Ростехнадзоре"
+                                loading="lazy"
+                            >
+                        </picture>
+                    </div>
+                    <div class="advantages__content cols-8">
+                        <div class="advantages__element">
+                            <span class="advantages__title font-title">
+                                Сделано строителями для строителей
+                            </span>
+                            <p class="advantages__description">
+                                Создатели «Этос» – профессиональные строители с опытом работы в АО «Концерн Росэнергоатом», Ростехнадзоре, Мособлгосэкспертизе и других крупнейших организациях отрасли.
+                            </p>
+                        </div>
+                            <div class="advantages__icon">
+                                <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M42.0014 27.969H24.665L24.6621 17.7393H51.2192L59.3377 27.969H42.0014ZM42.0014 27.969V66.2605" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+                                </svg>
+                            </div>
+                    </div>
+                </div>
+                <div class="advantages__container grid">
+                    <div class="advantages__content cols-8">
+                        <div class="advantages__element">
+                            <span class="advantages__title font-title">
+                                Импорто&shy;независимость
+                            </span>
+                            <p class="advantages__description">
+                                Программа для ЭВМ «Этос» внесена в реестр российского ПО (№ 6719), ее безопасность подтверждена сертификатом ФСТЭК по 4-му уровню доверия. Разработчик системы ООО «Стройформ» – аккредитованная IT-компания, имеет лицензии ФСТЭК России и ФСБ.
+                            </p>
+                        </div>
+                        <div class="advantages__icon">
+                            <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M59 54.8839V23.0809L46.1351 23.0972L42 20.5L37.4054 23.0809L25 23.0972V54.9002L42 63.5L59 54.8839Z" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+                            </svg>
+                        </div>
+                          <div class="advantages__bg">
+                            <picture>
+                            <source srcset="img/advantages-bg-1.avif" type="image/avif">
+                            <source srcset="img/advantages-bg-1.webp" type="image/webp">
+                            <img 
+                                src="img/advantages-bg-1.jpg"     
+                                aria-hidden="true"
+                                loading="lazy"
+                            >
+                            </picture>
+                        </div>
+                    </div>
+                    <div class="advantages__content cols-8">
+                        <div class="advantages__element">
+                            <span class="advantages__title font-title">
+                                Кросс&shy;платформенность
+                            </span>
+                            <p class="advantages__description">
+                                Все модули «Этос» – это веб-приложения, для работы которых на стороне клиента нужен только браузер и выход в интернет, а на стороне сервера – Windows или любой из современный Linux-дистрибутивов (Debian, Ubuntu, Astra Linux и пр.).
+                            </p>
+                        </div>
+                        <div class="advantages__icon">
+                            <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M56.319 44.742V61.4982H22.1973V27.9858H39.2581" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+                            <path d="M37.8047 46.5017L61.8037 22.5017M61.8037 22.5017H45.5M61.8037 22.5017V39.0017" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="advantages__bg">
+                            <picture>
+                            <source srcset="img/advantages-bg-2.avif" type="image/avif">
+                            <source srcset="img/advantages-bg-2.webp" type="image/webp">
+                            <img 
+                                src="img/advantages-bg-2.jpg"     
+                                aria-hidden="true"
+                                loading="lazy"
+                            >
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+                <div class="advantages__container grid">
+                    <div class="advantages__image cols-8">
+                        <picture>
+                            <source 
+                                srcset="
+                                img/advantages-team.avif 1x,
+                                img/advantages-team@2x.avif 2x
+                                "
+                                type="image/avif"
+                            >
+                            <source 
+                                srcset="
+                                img/advantages-team.webp 1x,
+                                img/advantages-team@2x.webp 2x
+                                "
+                                type="image/webp"
+                            >
+                            <img
+                                src="img/advantages-team.jpg"
+                                srcset="
+                                img/advantages-team.jpg 1x,
+                                img/advantages-team@2x.jpg 2x
+                                "
+                                alt="Основатель «Этос» — строитель с 20-летним стажем в Росэнергоатоме и Ростехнадзоре"
+                                loading="lazy"
+                            >
+                        </picture>
+                    </div>
+                    <div class="advantages__content cols-8">
+                        <div class="advantages__element">
+                            <span class="advantages__title font-title">
+                                Постоянное развитие
+                            </span>
+                            <p class="advantages__description">
+                                Благодаря уникальной архитектуре и использованию low-code технологий «Этос» быстро адаптируется под любые изменения законодательства, с каждой новой версией предоставляя пользователям всё новые и новые возможности по управлению проектами.
+                            </p>
+                        </div>
+                            <div class="advantages__icon">
+                                <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19.5 54.8988L35.8726 38.529L45.8037 47.7971L64.4998 29.1011M64.4998 29.1011H50.8344M64.4998 29.1011V42.7664" stroke="#9D9D9D" stroke-width="2"/>
+                                </svg>
+                            </div>
+                    </div>
+                </div>
             </div>
             <div aria-hidden="true" class="lines grid" style="z-index:-2">
                 <div class="cols-4 line"></div>

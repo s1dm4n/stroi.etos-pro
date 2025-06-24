@@ -45,3 +45,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Находим все элементы с классом .adaptive-text
+const elements = document.querySelectorAll('.adapt-btn');
+
+function updateTexts() {
+  elements.forEach(el => {
+    const span = el.querySelector('span');
+    if (!span) return;
+    
+    span.textContent = window.innerWidth <= 375 
+      ? el.dataset.mobile || 'Узнать больше' 
+      : el.dataset.desktop || 'Заказать презентацию';
+  });
+}
+
+// Инициализация
+window.addEventListener('load', updateTexts);
+window.addEventListener('resize', updateTexts);

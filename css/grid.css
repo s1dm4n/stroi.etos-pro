@@ -49,6 +49,10 @@
   padding-bottom: clamp(7rem, 6.292rem + 3.0206vw, 11.125rem);
 }
 
+.gt {
+  padding-top: clamp(7rem, 6.292rem + 3.0206vw, 11.125rem);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
@@ -118,7 +122,7 @@
   }
 }
 .lines {
-  min-height: 498px;
+  min-width: none;
   height: 100%;
   position: absolute;
   top: 0;

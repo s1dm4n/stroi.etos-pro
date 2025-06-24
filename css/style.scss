@@ -24,6 +24,7 @@ $color-accent: #e45b5b;
 $color-accent-text: #4c0000;
 $color-accent-bg: #753536;
 $color-cert-badge: #969696;
+$color-gray-bg: #3D3F44;
 
 $bp-xxl: 1440px;
 $bp-xl: 1280px;
@@ -66,9 +67,13 @@ img {
     width: 100%;
 }
 
+.red-text {
+  color: $color-accent;
+}
+
 // Типография
 .font-large {
-  @include text-style(clamp(2.75rem, 5vw + 1rem, 7.5rem), 112%, 700);
+  @include text-style(clamp(2.25rem, 5vw + 1rem, 7.5rem), 112%, 700);
 }
 
 .font-medium {
@@ -405,6 +410,7 @@ img {
   }
 
   .lines {
+    min-height: 498px;
     .line:nth-of-type(3) {
       display: none;
     }
@@ -511,7 +517,7 @@ img {
   }
 }
 
-.intro {
+.intro, .modules, .advantages {
   &__content {
     padding: clamp(1.5rem, 0.85rem + 2.7735vw, 2.625rem);
     display: flex;
@@ -529,9 +535,102 @@ img {
       width: 100%;
       object-fit: cover;
       height: 100%;
+      object-position: bottom;
     }
     @media (max-width: $bp-lg){
-      max-height: clamp(15.75rem, 12rem + 10vw, 28.875rem);
+      max-height: clamp(15.75rem, 11.1275rem + 19.7227vw, 23.75rem);;
+    }
+  }
+}
+
+.modules, .advantages {
+  display: flex;
+  flex-direction: column;
+  gap: calc(12rem - clamp(4rem, 10.6667rem + -4.1667vw, 8rem));
+
+  &__content {
+    gap: 48px;
+
+    @media (max-width: $bp-lg) {
+      order: 2;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &__tag {
+    padding: 4px 8px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+}
+
+.modules {
+    &__image {
+    height: 600px;
+  }
+}
+
+.advantages {
+
+  &__content {
+    justify-content: space-between;
+    gap: 24px;
+    position: relative;
+  }
+
+  &__element {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    z-index: 1;
+  }
+
+  &__image img {
+    object-position: top;
+    @media (max-width: 482px) {
+      height: 132%;
+    }
+  }
+
+  &__container:nth-child(2) &__content:first-of-type {
+      background-color: $color-accent-bg;
+      min-height: 462px;
+  }
+
+  &__container:nth-child(2) &__content:last-of-type {
+      background-color: $color-gray-bg;
+      min-height: 462px;
+  }
+
+  &__icon {
+    text-align: end;
+    color: $color-gray;
+    opacity: 0.4;
+
+    @media (max-width: $bp-lg) {
+      svg {
+        width: 64px;
+        height: 64px;
+      }
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.2;
+    overflow: hidden;
+    bottom: 0;
+    max-height: 70%;
+    
+    img {
+      object-fit: cover;
     }
   }
 }
