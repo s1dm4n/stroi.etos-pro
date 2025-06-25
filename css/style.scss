@@ -25,6 +25,7 @@ $color-accent-text: #4c0000;
 $color-accent-bg: #753536;
 $color-cert-badge: #969696;
 $color-gray-bg: #3D3F44;
+$color-dark-gray-bg: #4E5054;
 
 $bp-xxl: 1440px;
 $bp-xl: 1280px;
@@ -81,7 +82,7 @@ img {
 }
 
 .font-title {
-  @include text-style(clamp(1.5rem, 2vw + 1rem, 2.625rem), 124%, 700);
+  @include text-style(clamp(1.5rem, 2vw + 1rem, 2.5rem), 124%, 700);
 }
 
 .font-large, .font-medium, .font-title {
@@ -107,9 +108,9 @@ img {
     @include transition(opacity);
 
     @media (max-width: $bp-lg) {
-    font-size: 1rem !important;
-    font-weight: 700;
-  }
+      font-size: 1rem !important;
+      font-weight: 700;
+    }
   }
     
   &:hover {
@@ -197,8 +198,25 @@ img {
     gap: 1.5rem;
     width: 100%;
   }
-}
 
+  &-2 {
+
+    color: $color-white;
+
+    &::before {
+      background: transparent;
+      border: 1px solid $color-white;
+    }
+
+    &::after {
+      background-color: $color-white;
+    }
+
+    &:hover {
+      color: $color-bg;
+    }
+  }
+}
 // Шапка
 .header {
   position: sticky;
@@ -407,6 +425,7 @@ img {
   
   .button {
     justify-content: space-between !important;
+    padding: 1.25rem;
   }
 
   .lines {
@@ -517,7 +536,7 @@ img {
   }
 }
 
-.intro, .modules, .advantages {
+.intro, .modules, .advantages, .demo, .distributors {
   &__content {
     padding: clamp(1.5rem, 0.85rem + 2.7735vw, 2.625rem);
     display: flex;
@@ -543,7 +562,7 @@ img {
   }
 }
 
-.modules, .advantages {
+.modules, .advantages, .distributors {
   display: flex;
   flex-direction: column;
   gap: calc(12rem - clamp(4rem, 10.6667rem + -4.1667vw, 8rem));
@@ -581,6 +600,7 @@ img {
     justify-content: space-between;
     gap: 24px;
     position: relative;
+    
   }
 
   &__element {
@@ -600,11 +620,17 @@ img {
   &__container:nth-child(2) &__content:first-of-type {
       background-color: $color-accent-bg;
       min-height: 462px;
+      @media (max-width: $bp-lg) {
+        min-height: 332px;
+      }
   }
 
   &__container:nth-child(2) &__content:last-of-type {
       background-color: $color-gray-bg;
       min-height: 462px;
+      @media (max-width: $bp-lg) {
+        min-height: 332px;
+      }
   }
 
   &__icon {
@@ -632,5 +658,147 @@ img {
     img {
       object-fit: cover;
     }
+  }
+}
+
+.distributors {
+
+  &__content {
+    border: 1px solid var(--line-style);
+  }
+
+  &__contact {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    a {
+      text-decoration: none;
+      padding: 8px 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      
+      &:first-child {
+        color: $color-accent-text;
+        background-color: $color-accent;
+      }
+
+      &:last-child {
+        color: $color-white;
+        background-color: $color-dark-gray-bg;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__locations {
+    display: flex;
+    gap: 12px 24px;
+    flex-wrap: wrap;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__content {
+    gap: 32px;
+  }
+}
+
+.footer {
+  gap: 32px 0;
+  padding-bottom: 24px;
+
+  a {
+    display: flex;
+    gap: 8px;
+    text-decoration: none;
+    color: $color-white;
+    font-style: normal;
+    align-items: center;
+  }
+
+  &__fullwidth {
+    grid-column: 1 / -1;
+    opacity: 0.5;
+
+    p {
+      grid-column: span 4;
+
+      &:first-child {
+        grid-column-start: span 4;
+      }
+
+      &:last-child {
+        grid-column-end: 17;
+      }
+    }
+
+    @media(max-width: $bp-lg) {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      grid-column-end: span 4;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__list, &__address{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;  
+  }
+
+  &__heading {
+    font-size: clamp(1.5rem, 1.2111rem + 1.2327vw, 2rem);
+    opacity: 0.5;
+  }
+
+  &__copyright {
+    display: block;
+    font-size: 1.5rem;
+    opacity: 0.5;
+    line-height: 112%;
+    
+    @media (max-width: $bp-lg) {
+      & {
+        font-size: 1rem;
+      }
+
+      &:first-child {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 78px;
+  }  
+}
+
+.swiper {
+  &__date {
+    opacity: 0.5;
+  }
+
+  &__wrapper {
+    grid-column: 1 / -1;
+  }
+
+  &__navigation {
+    grid-column: 1 / -1;
   }
 }

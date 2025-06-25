@@ -173,8 +173,13 @@
 .cols-4 {
     grid-column-end: span 4;
 }
+
 .cols-8 {
     grid-column: span 8;
+}
+
+.cols-16 {
+    grid-column: span 16;
 }
 
 .line {

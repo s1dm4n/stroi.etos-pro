@@ -147,6 +147,10 @@
   grid-column: span 8;
 }
 
+.cols-16 {
+  grid-column: span 16;
+}
+
 .line {
   background: rgba(255, 255, 255, 0.1);
   grid-area: 1/1/1/1;

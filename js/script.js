@@ -63,3 +63,43 @@ function updateTexts() {
 // Инициализация
 window.addEventListener('load', updateTexts);
 window.addEventListener('resize', updateTexts);
+
+document.addEventListener('DOMContentLoaded', function() {
+  const title = document.getElementById('dynamic-title');
+  
+  if (!title) {
+    console.error('Элемент с id="dynamic-title" не найден!');
+    return;
+  }
+
+  const mediaQuery = window.matchMedia('(max-width: 352px)');
+
+  function updateTitle(e) {
+    title.textContent = e.matches 
+      ? "Дилеры" 
+      : "Дистрибьютеры";
+  }
+
+  mediaQuery.addListener(updateTitle);
+  updateTitle(mediaQuery); // Инициализация
+});
+
+const swiper = new Swiper('.swiper-container', {
+  slidesPerView: 1, // По умолчанию 1 слайд
+  spaceBetween: 20,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+    // При ширине экрана >= 1024px
+    1024: {
+      slidesPerView: 2, // Показываем 2 слайда
+      spaceBetween: 30
+    }
+  }
+});
