@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Система управления строительством</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="icon" href="img/favicon.svg">
     <meta
         content="Быстрое внедрение информационной системы управления строительством с тонкой настройкой под задачи заказчика: автоматизация бизнес-процессов на всех этапах проекта строительства"
@@ -603,45 +604,146 @@
             </div>
         </section>
         <!-- Добавить видео -->
-        <section class="swiper grid gutter">
-            <div class="swiper__navigation">
+        <section class="swiper-container gutter gb">
+            <div class="swiper-header">
                 <h2 class="font-medium">Новости</h2>
-                <!-- Навигация -->
-                <div class="swiper__pagination"></div>
-                <div class="swiper__button-prev"></div>
-                <div class="swiper__button-next"></div>
-                <div class="swiper__news-slider"></div>
-            </div>
-            <div class="swiper__wrapper">
-                <div class="swiper__slides grid">
-                    <!-- Слайд 1 -->
-                    <div class="swiper__slide cols-8">
-                        <!-- Картинку -->
-                        <div class="swiper__content">
-                            <time class="swiper__date font-main">11.02.2023</time>
-                            <h3 class="font-title">ВЫХОД НОВОЙ ВЕРСИИ ЭТОС СОД 2.24</h3>
-                            <p class="font-main">Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта.</p>
-                        </div>
+                <div class="swiper-nav">
+                    <div class="swiper-button-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="93" height="91" viewBox="0 0 93 91" fill="none">
+                        <path d="M69.4638 45.4282L24.2422 45.4282" stroke="white" stroke-width="4"/>
+                        <path d="M43.4639 64.9281L23.9998 45.464L43.4639 26" stroke="white" stroke-width="4"/>
+                        </svg>
                     </div>
-                    <!-- Слайд 2 -->
-                    <div class="swiper__slide cols-8">
-                        <!-- Картинку -->
-                        <div class="swiper__content">   
-                            <time class="swiper__date font-main">11.02.2023</time>
-                            <h3 class="font-title">ИЗМЕНЕНИЯ В НАСТРОЙКЕ РОЛЕЙ</h3>
-                            <p class="font-main">Есть над чем задуматься: стремившееся вытеснить традиционное производство, нанотехнологии лишь добавляют фракционных разногласий.</p>
-                        </div>
-                    </div>
-                    <!-- Слайд 2 -->
-                    <div class="swiper__slide cols-8">
-                        <!-- Картинку -->
-                        <div class="swiper__content">
-                            <time class="swiper__date font-main">11.02.2023</time>
-                            <h3 class="font-title">ИЗМЕНЕНИЯ В НАСТРОЙКЕ РОЛЕЙ</h3>
-                            <p class="font-main">Есть над чем задуматься: стремившееся вытеснить традиционное производство, нанотехнологии лишь добавляют фракционных разногласий.</p>
-                        </div>
+                    <div class="swiper-button-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="93" height="91" viewBox="0 0 93 91" fill="none">
+                        <path d="M24.0001 45.4282L69.2217 45.4282" stroke="white" stroke-width="4"/>
+                        <path d="M50 64.9281L69.464 45.464L50 26" stroke="white" stroke-width="4"/>
+                        </svg>
                     </div>
                 </div>
+            </div>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="card">
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <picture>
+                                    <source 
+                                        srcset="
+                                        img/news-1.avif 1x,
+                                        img/news-1@2x.avif 2x
+                                        "
+                                        type="image/avif"
+                                    >
+                                    <source 
+                                        srcset="
+                                        img/news-1.webp 1x,
+                                        img/news-1@2x.webp 2x
+                                        "
+                                        type="image/webp"
+                                    >
+                                    <img
+                                        src="img/advantages-bulder.jpg"
+                                        srcset="
+                                        img/news-1.jpg 1x,
+                                        img/news-1@2x.jpg 2x
+                                        "
+                                        alt="Текст к новости"
+                                        loading="lazy"
+                                    >
+                                </picture>
+                            </div>
+                            <div class="news-card__content">
+                                <time class="news-date font-main">11.02.2023</time>
+                                <span class="news-title font-title">ВЫХОД НОВОЙ ВЕРСИИ ЭТОС СОД 2.24</span>
+                                <p class="news-excerpt font-main">Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <picture>
+                                    <source 
+                                        srcset="
+                                        img/news-2.avif 1x,
+                                        img/news-2@2x.avif 2x
+                                        "
+                                        type="image/avif"
+                                    >
+                                    <source 
+                                        srcset="
+                                        img/news-2.webp 1x,
+                                        img/news-2@2x.webp 2x
+                                        "
+                                        type="image/webp"
+                                    >
+                                    <img
+                                        src="img/advantages-bulder.jpg"
+                                        srcset="
+                                        img/news-2.jpg 1x,
+                                        img/news-2@2x.jpg 2x
+                                        "
+                                        alt="Текст к новости"
+                                        loading="lazy"
+                                    >
+                                </picture>
+                            </div>
+                            <div class="news-card__content">
+                                <time class="news-date font-main">11.02.2023</time>
+                                <span class="news-title font-title">Изменения в настройке ролей</span>
+                                <p class="news-excerpt font-main">Есть над чем задуматься: стремящиеся вытеснить традиционное производство, нанотехнологии лишь добавляют фракционных разногласий и разоблачены.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card">
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <picture>
+                                    <source 
+                                        srcset="
+                                        img/news-3.avif 1x,
+                                        img/news-3@2x.avif 2x
+                                        "
+                                        type="image/avif"
+                                    >
+                                    <source 
+                                        srcset="
+                                        img/news-3.webp 1x,
+                                        img/news-3@2x.webp 2x
+                                        "
+                                        type="image/webp"
+                                    >
+                                    <img
+                                        src="img/advantages-bulder.jpg"
+                                        srcset="
+                                        img/news-3.jpg 1x,
+                                        img/news-3@2x.jpg 2x
+                                        "
+                                        alt="Текст к новости"
+                                        loading="lazy"
+                                    >
+                                </picture>
+                            </div>
+                            <div class="news-card__content">
+                                <time class="news-date font-main">11.02.2023</time>
+                                <span class="news-title font-title">Обновление документов системы</span>
+                                <p class="news-excerpt font-main">Но ключевые особенности структуры проекта набирают популярность среди определенных слоев населения, а значит, должны быть объединены в целые кластеры себе подобных. Вот вам яркий пример современных тенденций — современная.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div aria-hidden="true" class="lines grid" style="z-index:-2">
+                <div class="cols-4 line"></div>
+                <div class="cols-4 line"></div>
+                <div class="cols-4 line"></div>
+                <div class="cols-4 line"></div>
+                <div class="cols-4 line"></div>
             </div>
         </section>
         <section class="demo grid gutter gb">
@@ -731,7 +833,6 @@
                     <div class="cols-4 line"></div>
                     <div class="cols-4 line"></div>
                 </div>
-            </div>
         </section>
         <footer class="footer grid gutter">
             <!-- Блок "О программе" -->
@@ -814,6 +915,7 @@
         </footer>
     </main>
     <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
 </html>

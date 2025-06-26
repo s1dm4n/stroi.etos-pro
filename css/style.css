@@ -694,12 +694,94 @@ img {
   }
 }
 
-.swiper__date {
+.swiper-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.swiper-slide {
+  overflow: hidden;
+}
+.swiper-slide .card {
+  background: #272a2f;
+  border: 1px solid rgba(255, 255, 255, 0.1254901961);
+}
+.swiper-slide .news-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+}
+.swiper-slide .news-card__content time {
   opacity: 0.5;
 }
-.swiper__wrapper {
-  grid-column: 1/-1;
+.swiper-slide .news-card__content .news-title {
+  font-size: clamp(1.5rem, 1.3713rem + 0.5492vw, 2.25rem);
 }
-.swiper__navigation {
-  grid-column: 1/-1;
+.swiper-button-prev, .swiper-button-next {
+  color: #333;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.swiper-pagination {
+  position: relative;
+  margin-top: 20px;
+}
+.swiper-slide {
+  opacity: 0.3;
+  transition: opacity 0.3s !important;
+  -webkit-transition: opacity 0.3s !important;
+  -moz-transition: opacity 0.3s !important;
+  -ms-transition: opacity 0.3s !important;
+  -o-transition: opacity 0.3s !important;
+}
+.swiper-header, .swiper-nav {
+  display: flex;
+}
+.swiper-nav {
+  gap: clamp(0rem, -0.2574rem + 1.0984vw, 1.5rem);
+  height: clamp(3.25rem, 2.2321rem + 2.1205vw, 5.625rem);
+}
+@media (max-width: 342px) {
+  .swiper-nav {
+    display: none;
+  }
+}
+.swiper-header {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(1.5rem, 1.2426rem + 1.0984vw, 3rem);
+}
+.swiper-slide-active, .swiper-slide-next, .swiper-slide-prev {
+  opacity: 1;
+}
+.swiper-button-prev, .swiper-button-next {
+  position: unset !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none;
+}
+.swiper-button-prev::after, .swiper-button-next::after {
+  display: none;
+}
+
+.news-card__image {
+  padding: 24px 24px 0 24px;
+}
+@media (max-width: 1024px) {
+  .news-card__image {
+    padding: 0;
+  }
+}
+.news-card img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  height: clamp(10rem, 8.0478rem + 8.3295vw, 21.375rem);
 }/*# sourceMappingURL=style.css.map */

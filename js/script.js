@@ -84,22 +84,36 @@ document.addEventListener('DOMContentLoaded', function() {
   updateTitle(mediaQuery); // Инициализация
 });
 
-const swiper = new Swiper('.swiper-container', {
-  slidesPerView: 1, // По умолчанию 1 слайд
-  spaceBetween: 20,
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  breakpoints: {
-    // При ширине экрана >= 1024px
+document.addEventListener('DOMContentLoaded', function() {
+  const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1, // Автоподбор ширины слайдов
+    spaceBetween: 0,      // Отступ между слайдами
+    freeMode: false,       // Отключаем свободное перетаскивание
+    grabCursor: true,      // Курсор "рука" при наведении
+    resistance: false,     // Отключаем "упругость" при перетаскивании
+    watchSlidesProgress: true,
+    touchReleaseOnEdges: true, // Резкое завершение свайпа на границах
+    speed: 600,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
     1024: {
-      slidesPerView: 2, // Показываем 2 слайда
-      spaceBetween: 30
+      slidesPerView: 2,
     }
-  }
+    }, 
+    on: {
+    slideChange: function () {
+      // Принудительно обновляем прозрачность после переключения
+      document.querySelectorAll('.swiper-slide').forEach(slide => {
+        slide.style.opacity = '0.1';
+      });
+      this.slides[this.activeIndex].style.opacity = '1';
+      if (this.slides[this.activeIndex + 1]) {
+        this.slides[this.activeIndex + 1].style.opacity = '1';
+      }
+    },
+  },
+  });
 });
