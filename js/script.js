@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Сначала всем карточкам устанавливаем прозрачность
     document.querySelectorAll('.news-card').forEach(card => {
       card.classList.remove('active');
-      card.style.opacity = '0.4';
+      card.style.opacity = '0.2';
     });
 
     // Активная карточка
