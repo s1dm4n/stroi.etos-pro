@@ -541,7 +541,7 @@ img {
     padding: clamp(1.5rem, 0.85rem + 2.7735vw, 2.625rem);
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
     border: 1px solid var(--line-style);
     background: $color-bg;
   
@@ -658,6 +658,18 @@ img {
     img {
       object-fit: cover;
     }
+  }
+}
+
+.demo {
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  &__content {
+    order: 2;
   }
 }
 
@@ -790,6 +802,7 @@ img {
 }
 
 .swiper {
+
   &-container {
     width: 100%;
     overflow: hidden;
@@ -800,11 +813,18 @@ img {
     overflow: hidden;
 
     .card {
-      background: $color-bg;
-      border: 1px solid #ffffff20;
+      border: 1px solid var(--line-style);
+      background-color: $color-bg;
     }
 
     .news-card {
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+
+      &.active {
+        opacity: 1;
+      }
+
       &__content {
         display: flex;
         flex-direction: column;
@@ -837,15 +857,6 @@ img {
     margin-top: 20px;
   }
 
-  &-slide {
-    opacity: 0.3;
-    transition: opacity 0.3s !important;
-    -webkit-transition: opacity 0.3s !important;
-    -moz-transition: opacity 0.3s !important;
-    -ms-transition: opacity 0.3s !important;
-    -o-transition: opacity 0.3s !important;
-}
-
   &-header, &-nav{
     display: flex;
   }
@@ -866,8 +877,7 @@ img {
   }
 
   &-slide-active,
-  &-slide-next,
-  &-slide-prev {
+  &-slide-next {
     opacity: 1;
   }
 
@@ -902,7 +912,7 @@ img {
     height: clamp(10rem, 8.0478rem + 8.3295vw, 21.375rem);
 
     @media (max-width: $bp-lg) {
-      height: ;
+      height: clamp(15rem, 12.1109rem + 12.3267vw, 20rem);
     }
   }
 }
