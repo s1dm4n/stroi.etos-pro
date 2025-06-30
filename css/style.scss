@@ -569,10 +569,6 @@ img {
 
   &__content {
     gap: 48px;
-
-    @media (max-width: $bp-lg) {
-      order: 2;
-    }
   }
 
   &__tags {
@@ -590,8 +586,57 @@ img {
 
 .modules {
     &__image {
-    height: 600px;
+    background: linear-gradient(45deg, transparent calc(50% - var(--line-width) / 2), var(--line-color) calc(50% - var(--line-width) / 2), var(--line-color) calc(50% + var(--line-width) / 2), transparent calc(50% + var(--line-width) / 2));
+    background-size: var(--line-spacing) var(--line-spacing);
+    background-color: #272a2f;
+    --line-color: #ffffff20;
+    --line-width: 1px;
+    --line-spacing: 20px;
+    border: 1px solid #ffffff20;
+    border-left: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    video {
+      margin: 74px 0;
+      height: 100%;
+      filter:
+        grayscale(100%) 
+        brightness(0.5);
+        transition: filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: filter;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+
+      &.active {
+        filter:
+          grayscale(0%) 
+          brightness(1);
+      }
+
+      @media(max-width: $bp-lg) {
+        margin: 0;
+      }
+    }
   }
+
+    @media(max-width: 1440px) {
+      &__content, &__image {
+        grid-column: 1 / -1;
+      }
+      
+      &__image {
+        border-left: 1px solid #ffffff20;
+        border-bottom: none;
+      }
+
+      &__content {
+        order: 2;
+      }
+    }
 }
 
 .advantages {

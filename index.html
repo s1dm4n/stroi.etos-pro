@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Система управления строительством</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -334,32 +334,17 @@
                             </svg>
                     </button>
                 </div>
-                <div class="modules__image cols-8" style="background: #7f7f7f;">
-                    <!-- <picture>
-                        <source 
-                            srcset="
-                            img/module.avif 1x,
-                            img/module@2x.avif 2x
-                            "
-                            type="image/avif"
-                        >
-                        <source 
-                            srcset="
-                            img/module.webp 1x,
-                            img/module@2x.webp 2x
-                            "
-                            type="image/webp"
-                        >
-                        <img
-                            src="img/module.jpg"
-                            srcset="
-                            img/module.jpg 1x,
-                            img/module@2x.jpg 2x
-                            "
-                            alt="Современная крупная стройка с техникой и зданиями на разных этапах возведения"
-                            loading="lazy"
-                        >
-                    </picture> -->
+                <div class="modules__image cols-8">
+                    <video class="lazy-video" 
+                    loop
+                    muted
+                    playsinline
+                    webkit-playsinline
+                    disablePictureInPicture 
+                    width="800" poster="img/sod.jpg" preload="metadata">
+                    <source data-src="video/sod.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                    </video>
                 </div>
             </div>
             <div class="modules__container grid">
@@ -419,32 +404,18 @@
                         </svg>
                     </button>
                 </div>
-                <div class="modules__image cols-8" style="background: #7f7f7f;">
-                    <!-- <picture>
-                        <source 
-                            srcset="
-                            img/module.avif 1x,
-                            img/module@2x.avif 2x
-                            "
-                            type="image/avif"
-                        >
-                        <source 
-                            srcset="
-                            img/module.webp 1x,
-                            img/module@2x.webp 2x
-                            "
-                            type="image/webp"
-                        >
-                        <img
-                            src="img/module.jpg"
-                            srcset="
-                            img/module.jpg 1x,
-                            img/module@2x.jpg 2x
-                            "
-                            alt="Современная крупная стройка с техникой и зданиями на разных этапах возведения"
-                            loading="lazy"
-                        >
-                    </picture> -->
+                <div class="modules__image cols-8">
+                    <video class="lazy-video" 
+                    loop
+                    muted
+                    playsinline
+                    webkit-playsinline
+                    disablePictureInPicture 
+                    width="800" poster="img/id.jpg" preload="metadata">
+                    <!-- Fallback для Safari и старых браузеров -->
+                    <source data-src="video/id.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                    </video>
                 </div>
             </div>
         </section>
@@ -956,6 +927,7 @@
     </main>
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </body>
 
 </html>

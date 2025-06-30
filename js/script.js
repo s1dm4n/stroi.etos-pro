@@ -172,11 +172,96 @@ function normalizeCardsHeight() {
 window.addEventListener('load', normalizeCardsHeight);
 window.addEventListener('resize', normalizeCardsHeight);
 
-// Для Swiper
-const swiper = new Swiper('.swiper-container', {
-  on: {
-    init: normalizeCardsHeight,
-    slideChange: normalizeCardsHeight,
-    resize: normalizeCardsHeight
+document.addEventListener('DOMContentLoaded', function() {
+  const videos = document.querySelectorAll('.lazy-video');
+  let activeVideo = null;
+  const CENTER_THRESHOLD = 0.4; // 40% от высоты видео должно быть в центре экрана
+
+  // Ленивая загрузка видео
+  const lazyVideoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        const source = video.querySelector('source');
+        
+        if (source && !video.src) {
+          video.src = source.dataset.src;
+          video.load();
+        }
+        
+        lazyVideoObserver.unobserve(video);
+      }
+    });
+  }, { rootMargin: '200px' });
+
+  videos.forEach(video => lazyVideoObserver.observe(video));
+
+  // Функция для проверки, находится ли видео в центре экрана
+  function isInCenter(video) {
+    const rect = video.getBoundingClientRect();
+    const videoCenter = rect.top + rect.height / 2;
+    const screenCenter = window.innerHeight / 2;
+    
+    return Math.abs(videoCenter - screenCenter) < window.innerHeight * CENTER_THRESHOLD;
   }
+
+  // Основная функция проверки видео
+  function checkVideos() {
+    let centerVideo = null;
+    let minDistance = Infinity;
+
+    // Находим видео, ближайшее к центру экрана
+    videos.forEach(video => {
+      const rect = video.getBoundingClientRect();
+      const videoCenter = rect.top + rect.height / 2;
+      const screenCenter = window.innerHeight / 2;
+      const distance = Math.abs(videoCenter - screenCenter);
+
+      if (distance < minDistance && isInCenter(video)) {
+        minDistance = distance;
+        centerVideo = video;
+      }
+    });
+
+    // Если нашли новое видео в центре
+    if (centerVideo && centerVideo !== activeVideo) {
+      // Останавливаем текущее активное видео
+      if (activeVideo) {
+        activeVideo.pause();
+        activeVideo.classList.remove('active');
+      }
+
+      // Запускаем новое видео
+      centerVideo.play()
+        .then(() => {
+          centerVideo.classList.add('active');
+          activeVideo = centerVideo;
+        })
+        .catch(error => {
+          console.error('Ошибка воспроизведения видео:', error);
+        });
+    }
+
+    // Если активное видео вышло из центра, но не найдено новое
+    if (activeVideo && !isInCenter(activeVideo) && !centerVideo) {
+      activeVideo.pause();
+      activeVideo.classList.remove('active');
+      activeVideo = null;
+    }
+  }
+
+  // Оптимизированный обработчик скролла
+  let isScrolling = false;
+  window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+      window.requestAnimationFrame(() => {
+        checkVideos();
+        isScrolling = false;
+      });
+      isScrolling = true;
+    }
+  });
+
+  // Проверяем при загрузке страницы
+  checkVideos();
 });
