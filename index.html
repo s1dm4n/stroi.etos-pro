@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Система управления строительством</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -16,7 +16,7 @@
     <!-- Шапка -->
     <header class="header">
         <div class="header__container gutter w100">
-            <a href="/" class="header__logo">
+            <a href="/#hero" class="header__logo">
                 <svg width="124" height="29" viewBox="0 0 124 29" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_245_4260)">
@@ -45,11 +45,11 @@
             </a>
             <nav class="header__nav">
                 <ul class="header__nav-list">
-                    <li><a href="#modeles" class="nav-font">Модули</a></li>
-                    <li><a href="#advantages" class="nav-font">Преимущества</a></li>
-                    <li><a href="#news" class="nav-font">Новости</a></li>
-                    <li><a href="#demonstration" class="nav-font">Демонстрация</a></li>
-                    <li><a href="#contacts" class="nav-font">Контакты</a></li>
+                    <li><a href="/#modules" class="nav-font">Модули</a></li>
+                    <li><a href="/#advantages" class="nav-font">Преимущества</a></li>
+                    <li><a href="/#swiper" class="nav-font">Новости</a></li>
+                    <li><a href="/#demo" class="nav-font">Демонстрация</a></li>
+                    <li><a href="/#distributor" class="nav-font">Контакты</a></li>
                 </ul>
                 <div class="header__nav-icons">
                     <a href="https://t.me/Daniil_LYA" class="icon">
@@ -82,11 +82,11 @@
         <div class="mobile-menu gutter" id="mobileMenu">
             <div class="mobile-menu__content w100">
                 <ul class="mobile-menu__list">
-                    <li class="mobile-menu__list-item"><a href="#modeles" class="nav-font"><span>Модули</span></a></li>
-                    <li class="mobile-menu__list-item"><a href="#advantages" class="nav-font"><span>Преимущества</span></a></li>
-                    <li class="mobile-menu__list-item"><a href="#news" class="nav-font"><span>Новости</span></a></li>
-                    <li class="mobile-menu__list-item"><a href="#demonstration" class="nav-font"><span>Демонстрация</span></a></li>
-                    <li class="mobile-menu__list-item"><a href="#contacts" class="nav-font"><span>Контакты</span></a></li>
+                    <li class="mobile-menu__list-item"><a href="/#modules" class="nav-font"><span>Модули</span></a></li>
+                    <li class="mobile-menu__list-item"><a href="/#advantages" class="nav-font"><span>Преимущества</span></a></li>
+                    <li class="mobile-menu__list-item"><a href="/#swiper" class="nav-font"><span>Новости</span></a></li>
+                    <li class="mobile-menu__list-item"><a href="/#demo" class="nav-font"><span>Демонстрация</span></a></li>
+                    <li class="mobile-menu__list-item"><a href="/#distributor" class="nav-font"><span>Контакты</span></a></li>
                 </ul>
                 <a type="button" class="button mobile-fullscreen-menu__button w100 adapt-btn">
                     <span class="button__text">Заказать презентацию</span>
@@ -106,8 +106,8 @@
         </div>
     <!-- Начало контента -->
     <main class="main">
-        <section class="hero grid gutter gb">
-            <div class="hero__content cols-8">
+        <section class="hero grid gutter gb" id="hero" data-fade-group>
+            <div class="hero__content cols-8  fade-in">
                 <div class="hero__badges">
                     <div class="cert-badge">
                         <div class="cert-badge__icon">
@@ -164,7 +164,7 @@
                 <span class="audience-chip">Подрядчикам</span>
                 </div>
             </div>
-            <div class="hero__image cols-8">
+            <div class="hero__image cols-8  fade-in">
                 <picture>
                     <!-- Планшет (582px–1024px) -->
                     <source 
@@ -220,8 +220,8 @@
                 <div class="cols-4 line"></div>
             </div>
         </section>
-        <section class="intro grid gutter gb">
-            <div class="intro__image cols-8">
+        <section class="intro grid gutter" id="intro" data-fade-group>
+            <div class="intro__image cols-8 fade-in">
                 <picture>
                     <source 
                         srcset="
@@ -250,14 +250,14 @@
                     >
                 </picture>
             </div>
-            <div class="intro__content cols-8">
+            <div class="intro__content cols-8 fade-in">
                 <span class="intro__title font-title">
                     Что такое ЭТОС?
                 </span>
                 <p class="intro__description">
                     «ЭТОС» – цифровая экосистема для комплексного управления строительными проектами. Она состоит из функциональных модулей - готовых программ для решения конкретных задач на разных этапах строительства.
                 </p>
-                <button class="intro__button button adapt-btn" onclick="window.location.href='#contacts'">
+                <button class="intro__button button adapt-btn" onclick="window.location.href='#distributor'">
                     <span class="button__text">Заказать презентацию</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
                             <path d="M22 4L3 23" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
@@ -266,12 +266,12 @@
                 </button>
             </div>
         </section>
-        <section class="modules gutter">
-            <h2 class="font-medium">
+        <section class="modules gutter gt" id="modules" data-fade-group>
+            <h2 class="font-medium fade-in">
                 <span>Модули</span>
                 <span class="red-text">«ЭТОС»</span>
             </h2>
-            <div class="modules__container grid">
+            <div class="modules__container grid fade-in">
                 <div class="modules__content cols-8">
                     <span class="modules__title font-title">
                         Среда общих данных
@@ -326,7 +326,7 @@
                             Замечания
                         </div>
                     </div>
-                    <button class="modules__button button" onclick="window.location.href='#contacts'">
+                    <button class="modules__button button" onclick="window.location.href='#distributor'">
                         <span class="button__text">Подробнее</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
                             <path d="M22 4L3 23" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
@@ -347,7 +347,7 @@
                     </video>
                 </div>
             </div>
-            <div class="modules__container grid">
+            <div class="modules__container grid fade-in">
                 <div class="modules__content cols-8">
                     <span class="modules__title font-title">
                         Исполнительная документация
@@ -396,7 +396,7 @@
                             ОЖР
                         </div>
                     </div>
-                    <button class="modules__button button" onclick="window.location.href='#contacts'">
+                    <button class="modules__button button" onclick="window.location.href='#distributor'">
                         <span class="button__text">Подробнее</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
                             <path d="M22 4L3 23" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
@@ -419,11 +419,11 @@
                 </div>
             </div>
         </section>
-        <section class="advantages gutter grid gt gb">
-            <h2 class="font-medium">Преимущества</h2>
+        <section class="advantages gutter grid gt" id="advantages" data-fade-group>
+            <h2 class="font-medium fade-in">Преимущества</h2>
             <div class="advantages__containers">
                 <div class="advantages__container grid">
-                    <div class="advantages__image cols-8">
+                    <div class="advantages__image cols-8 fade-in">
                         <picture>
                             <source 
                                 srcset="
@@ -450,7 +450,7 @@
                             >
                         </picture>
                     </div>
-                    <div class="advantages__content cols-8">
+                    <div class="advantages__content cols-8 fade-in">
                         <div class="advantages__element">
                             <span class="advantages__title font-title">
                                 Сделано строителями для строителей
@@ -467,7 +467,7 @@
                     </div>
                 </div>
                 <div class="advantages__container grid">
-                    <div class="advantages__content cols-8">
+                    <div class="advantages__content cols-8 fade-in">
                         <div class="advantages__element">
                             <span class="advantages__title font-title">
                                 Импорто&shy;независимость
@@ -493,7 +493,7 @@
                             </picture>
                         </div>
                     </div>
-                    <div class="advantages__content cols-8">
+                    <div class="advantages__content cols-8 fade-in">
                         <div class="advantages__element">
                             <span class="advantages__title font-title">
                                 Кросс&shy;платформенность
@@ -522,7 +522,7 @@
                     </div>
                 </div>
                 <div class="advantages__container grid">
-                    <div class="advantages__image cols-8">
+                    <div class="advantages__image cols-8 fade-in">
                         <picture>
                             <source 
                                 srcset="
@@ -549,7 +549,7 @@
                             >
                         </picture>
                     </div>
-                    <div class="advantages__content cols-8">
+                    <div class="advantages__content cols-8 fade-in">
                         <div class="advantages__element">
                             <span class="advantages__title font-title">
                                 Постоянное развитие
@@ -575,7 +575,7 @@
             </div>
         </section>
         <!-- Добавить видео -->
-        <section class="swiper-container gutter gb">
+        <section class="swiper-container gutter gt fade-in" id="swiper">
             <div class="swiper-header">
                 <h2 class="font-medium">Новости</h2>
                 <div class="swiper-nav">
@@ -708,44 +708,6 @@
                         </article>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="card">
-                        <article class="news-card">
-                            <div class="news-card__image">
-                                <picture>
-                                    <source 
-                                        srcset="
-                                        img/news-3.avif 1x,
-                                        img/news-3@2x.avif 2x
-                                        "
-                                        type="image/avif"
-                                    >
-                                    <source 
-                                        srcset="
-                                        img/news-3.webp 1x,
-                                        img/news-3@2x.webp 2x
-                                        "
-                                        type="image/webp"
-                                    >
-                                    <img
-                                        src="img/advantages-bulder.jpg"
-                                        srcset="
-                                        img/news-3.jpg 1x,
-                                        img/news-3@2x.jpg 2x
-                                        "
-                                        alt="Текст к новости"
-                                        loading="lazy"
-                                    >
-                                </picture>
-                            </div>
-                            <div class="news-card__content">
-                                <time class="news-date font-main">11.02.2023</time>
-                                <span class="news-title font-title">Обновление документов системы</span>
-                                <p class="news-excerpt font-main">Но ключевые особенности структуры проекта набирают популярность среди определенных слоев населения.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
             </div>
             <div aria-hidden="true" class="lines grid" style="z-index:-2">
                 <div class="cols-4 line"></div>
@@ -755,8 +717,8 @@
                 <div class="cols-4 line"></div>
             </div>
         </section>
-        <section class="demo grid gutter gb">
-            <div class="demo__content cols-8">
+        <section class="demo grid gutter gt" id="demo" data-fade-group>
+            <div class="demo__content cols-8 fade-in">
                 <span class="demo__title font-title">
                     Узнать больше
                 </span>
@@ -764,14 +726,14 @@
                     Благодаря уникальной архитектуре и использованию low-code технологий «Этос» быстро адаптируется под любые изменения законодательства, с каждой новой версией предоставляя пользователям всё новые и новые возможности по управлению проектами.
                 </p>
                 <div class="demo__buttons">
-                    <button class="demo__button button adapt-btn" onclick="window.location.href='#contacts'">
+                    <button class="demo__button button adapt-btn" onclick="window.location.href='#distributor'">
                         <span class="button__text">Заказать презентацию</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
                             <path d="M22 4L3 23" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
                             <path d="M23 23V3H3" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
                         </svg>
                     </button>
-                    <button class="demo__button button button-2" onclick="window.location.href='#contacts'">
+                    <button class="demo__button button button-2" onclick="window.location.href='https://docs.etos-pro.ru/services/idoc/'">
                         <span class="button__text">База знаний</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
                             <path d="M22 4L3 23" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
@@ -780,7 +742,7 @@
                     </button>
                 </div>
             </div>
-            <div class="demo__image cols-8">
+            <div class="demo__image cols-8 fade-in">
                 <picture>
                     <source 
                         srcset="
@@ -817,9 +779,9 @@
                 <div class="cols-4 line"></div>
             </div>
         </section>
-        <section class="distributors grid gutter gb">
-            <h2 class="font-medium" id="dynamic-title">Дистрибьютеры</h2>
-                <div class="distributors__container grid">
+        <section class="distributors grid gutter gt" id="distributor" data-fade-group>
+            <h2 class="font-medium" id="dynamic-title" fade-in>Дистрибьютеры</h2>
+                <div class="distributors__container grid fade-in">
                     <div class="distributors__content cols-16">
                         <span class="distributors__name font-title">
                             ООО  «ЦСИ «ИНТЕРА»
@@ -830,14 +792,14 @@
                                 <a class="distributors__number font-main" href="tel:+78129822217">8 (812) 982-22-17</a>
                             </div>
                             <div class="distributors__locations">
-                                <a class="font-main" href="https://yandex.ru/maps/-/CHcLvYyV&z=17&mode=search">г. Санкт&#8209;Петербург: пр-кт&nbsp;Королева,&nbsp;7</a>
+                                <a class="font-main" href="https://yandex.ru/maps/-/CHcLvYyV&z=17&mode=search">г. Санкт&#8209;Петербург: пр&#8209;кт&nbsp;Королева,&nbsp;7</a>
                                 <a class="font-main" href="https://yandex.ru/maps/-/CHcLzSnZ&z=17&mode=search">г. Новосибирск: ул.&nbsp;Немировича&#8209;Данченко,&nbsp;165</a>
                                 <a class="font-main" href="https://yandex.ru/maps/-/CHcLzP0d&z=17&mode=search">г. Иркутск: ул.&nbsp;Свердлова,&nbsp;40</a>
                             </div>  
                         </div>
                     </div>
                 </div>
-                <div aria-hidden="true" class="lines grid" style="z-index:-2">
+                <div aria-hidden="true" class="lines grid fade-in" style="z-index:-2">
                     <div class="cols-4 line"></div>
                     <div class="cols-4 line"></div>
                     <div class="cols-4 line"></div>
@@ -845,42 +807,35 @@
                     <div class="cols-4 line"></div>
                 </div>
         </section>
-        <footer class="footer grid gutter">
-            <!-- Блок "О программе" -->
-            <section class="footer__section cols-4" aria-labelledby="about-heading">
+        <footer class="footer grid gutter gt" id="footer" data-fade-group>
+            <section class="footer__section cols-4 fade-in" aria-labelledby="about-heading">
                 <h2 id="about__heading" class="footer__heading font-title">Программа</h2>
                 <nav aria-label="О программе">
                 <ul class="footer__list">
-                    <li><a href="/program" class="font-main">О программе</a></li>
-                    <li><a href="/docs" class="font-main">Документация</a></li>
+                    <li><a href="/#hero" class="font-main">О программе</a></li>
+                    <li><a href="https://docs.etos-pro.ru/services/idoc/" class="font-main">Документация</a></li>
                 </ul>
                 </nav>
             </section>
-
-            <!-- Блок "Модули" -->
-            <section class="footer__section cols-4" aria-labelledby="modules-heading">
+            <section class="footer__section cols-4 fade-in" aria-labelledby="modules-heading">
                 <h2 id="modules__heading" class="footer__heading font-title">МОДУЛИ</h2>
                 <nav aria-label="Модули программы">
                 <ul class="footer__list">
-                    <li><a href="/cdm" class="font-main">Среда общих данных</a></li>
-                    <li><a href="/exec-docs" class="font-main">Исполнительная документация</a></li>
+                    <li><a href="/#modules" class="font-main">Среда общих данных</a></li>
+                    <li><a href="/#modules" class="font-main">Исполнительная документация</a></li>
                 </ul>
                 </nav>
             </section>
-
-            <!-- Блок "Ресурсы" -->
-            <section class="footer__section cols-4" aria-labelledby="resources-heading">
+            <section class="footer__section cols-4 fade-in" aria-labelledby="resources-heading">
                 <h2 id="resources__heading" class="footer__heading font-title">РЕСУРСЫ</h2>
                 <nav aria-label="Дополнительные ресурсы">
                 <ul class="footer__list">
-                    <li><a href="/news" class="font-main">Новости</a></li>
-                    <li><a href="/blog" class="font-main">Блог</a></li>
+                    <li><a href="/#distribuiter" class="font-main">Новости</a></li>
+                    <li><a href="https://dzen.ru/id/620b66fb5eec137b63d4e66b" class="font-main">Блог</a></li>
                 </ul>
                 </nav>
             </section>
-
-            <!-- Контакты -->
-            <section class="footer__section cols-4" aria-labelledby="contacts-heading">
+            <section class="footer__section cols-4 fade-in" aria-labelledby="contacts-heading">
                 <h2 id="contacts__heading" class="footer__heading font-title">ОФИС РАЗРАБОТКИ</h2>
                 <address class="footer__address">
                 <a href="tel:+74951987880" class="contact__link">
@@ -909,13 +864,7 @@
                 </a>
                 </address>
             </section>
-
-            <!-- Футер -->
-            <div class="footer__fullwidth grid">
-                <p>Строителями для строителей</p>
-                <p class="copyright">© 2025, ООО «Стройформ»</p>
-            </div>
-
+            <span class="footer__copyright cols-4 fade-in font-main">© 2025, ООО «Стройформ»</span>
             <div aria-hidden="true" class="lines grid" style="z-index:-2">
                 <div class="cols-4 line"></div>
                 <div class="cols-4 line"></div>

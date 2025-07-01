@@ -58,6 +58,13 @@ $bp-sm: 480px;
 
 // Базовые стили
 
+html {
+  scroll-behavior: smooth;
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background: $color-bg;
   font-family: $font-family;
@@ -228,6 +235,7 @@ img {
   background: rgba(35, 38, 42, 0.8);
   backdrop-filter: blur(50px);
   @include transition(color);
+  transition: opacity 0.8s;
   
   &__container {
     display: flex;
@@ -256,7 +264,7 @@ img {
     display: flex;
     align-items: center;
     
-    .nav-font, .icon {
+    .nav-font, .icon, .contact__link, .footer__list li a {
       &:hover {
         opacity: 0.6;
       }
@@ -437,7 +445,10 @@ img {
 }
 
 // Блок hero
-.hero {  
+.hero {
+
+  scroll-margin-top: 70px;
+
   &__container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -655,10 +666,14 @@ img {
     z-index: 1;
   }
 
-  &__image img {
-    object-position: top;
-    @media (max-width: 482px) {
-      height: 132%;
+  &__image {
+    overflow: hidden;
+    
+    img {
+      object-position: top;
+      @media (max-width: 482px) {
+        height: 132%;
+      }
     }
   }
 
@@ -780,29 +795,14 @@ img {
     color: $color-white;
     font-style: normal;
     align-items: center;
-  }
+    @include transition(opacity);
 
-  &__fullwidth {
-    grid-column: 1 / -1;
-    opacity: 0.5;
-
-    p {
-      grid-column: span 4;
-
-      &:first-child {
-        grid-column-start: span 4;
-      }
-
-      &:last-child {
-        grid-column-end: 17;
-      }
+    &:hover {
+      opacity: 0.6;
     }
-
-    @media(max-width: $bp-lg) {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      grid-column-end: span 4;
+    
+    &:active {
+      opacity: 0.4;
     }
   }
 
@@ -824,18 +824,12 @@ img {
   }
 
   &__copyright {
-    display: block;
-    font-size: 1.5rem;
     opacity: 0.5;
-    line-height: 112%;
+    filter: brightness(0.5);
     
     @media (max-width: $bp-lg) {
       & {
         font-size: 1rem;
-      }
-
-      &:first-child {
-        display: none;
       }
     }
   }
@@ -852,6 +846,14 @@ img {
     width: 100%;
     overflow: hidden;
     position: relative;
+  }
+
+  &-button {
+    &-prev, &-next {
+      transition: opacity 0.3s;
+      border-radius: none !important;
+      box-shadow: none !important;
+    }
   }
 
   &-slide {
@@ -959,4 +961,18 @@ img {
       height: clamp(15rem, 12.1109rem + 12.3267vw, 20rem);
     }
   }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 
+    opacity 0.4s,
+    transform 0.6s cubic-bezier(0.05, 0.5, 0.3, 1);
+}
+
+/* Класс, который добавляется при появлении в viewport */
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

@@ -1,16 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const burger = document.getElementById('navBurger');
     const menu = document.getElementById('mobileMenu');
+    const logoLinks = document.querySelectorAll('a[href*="/#hero"] .header__logo, .header__logo[href*="#"]'); // Селектор для логотипа
 
     function updateScrollLock() {
         if (menu.classList.contains('active')) {
             if (window.innerWidth <= 1024) {
-                document.body.style.overflow = 'hidden'; // Блокируем прокрутку на мобильном
+                document.body.style.overflow = 'hidden';
             } else {
-                document.body.style.overflow = ''; // Разрешаем прокрутку на планшете и выше
+                document.body.style.overflow = '';
             }
         } else {
-            document.body.style.overflow = ''; // Разрешаем в любом случае, если меню закрыто
+            document.body.style.overflow = '';
         }
     }
 
@@ -20,22 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     }
 
-    // Обработка изменения ширины окна
     window.addEventListener('resize', () => {
         if (window.innerWidth > 1024 && menu.classList.contains('active')) {
-            closeMenu(); // Закрываем меню при переходе на десктоп
+            closeMenu();
         } else {
-            updateScrollLock(); // Синхронизируем скролл
+            updateScrollLock();
         }
     });
 
-     menu.addEventListener('click', (e) => {
+    menu.addEventListener('click', (e) => {
         if (!e.target.closest('.mobile-menu__content')) {
             closeMenu();
         }
     });
 
-    // Обработка клика по бургеру
     burger.addEventListener('click', () => {
         burger.classList.toggle('open');
         menu.classList.toggle('active');
@@ -45,9 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Закрытие меню при клике по ссылке в мобильном меню
     document.querySelectorAll('#mobileMenu a').forEach(link => {
         link.addEventListener('click', () => {
-            menu.classList.remove('active');
-            burger.classList.remove('open');
-            document.body.style.overflow = ''; // или document.documentElement.classList.remove('lock-scroll');
+            closeMenu();
+        });
+    });
+
+    // Закрытие меню при клике по логотипу (добавлено)
+    logoLinks.forEach(logoLink => {
+        logoLink.addEventListener('click', () => {
+            if (menu.classList.contains('active')) {
+                closeMenu();
+            }
         });
     });
 });
@@ -264,4 +270,123 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Проверяем при загрузке страницы
   checkVideos();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Опционально: отключаем наблюдение после появления
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1, // Срабатывает когда 10% элемента видно
+    rootMargin: '0px 0px -50px 0px' // Нижний отступ (можно настроить)
+  });
+
+  fadeElements.forEach(el => observer.observe(el));
+});
+
+document.querySelectorAll('a[href^="http"]').forEach(link => {
+  if (!link.href.includes(window.location.hostname)) {
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Настройки анимации (можно менять)
+  const ANIMATION_SETTINGS = {
+    baseDelay: 0.1,    // Базовая задержка между элементами (в секундах)
+    stepDelay: 0.1,    // Шаг увеличения задержки
+    maxDelay: 1,     // Максимальная задержка
+    threshold: 0.1,    // Порог срабатывания IntersectionObserver (0-1)
+    rootMargin: '0px', // Отступы для срабатывания
+  };
+
+  // Инициализация Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: ANIMATION_SETTINGS.threshold,
+    rootMargin: ANIMATION_SETTINGS.rootMargin
+  });
+
+  // Функция для назначения задержек
+  function initFadeInAnimations() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    let currentDelay = ANIMATION_SETTINGS.baseDelay;
+    let rowTop = null;
+    let maxDelayInRow = ANIMATION_SETTINGS.baseDelay;
+
+    fadeElements.forEach((el, index) => {
+      // Определяем начало новой "строки" элементов
+      const rect = el.getBoundingClientRect();
+      if (rowTop !== rect.top) {
+        rowTop = rect.top;
+        currentDelay = ANIMATION_SETTINGS.baseDelay;
+        maxDelayInRow = ANIMATION_SETTINGS.baseDelay;
+      } else {
+        currentDelay += ANIMATION_SETTINGS.stepDelay;
+        maxDelayInRow = Math.max(maxDelayInRow, currentDelay);
+      }
+
+      // Ограничиваем максимальную задержку
+      const delay = Math.min(currentDelay, ANIMATION_SETTINGS.maxDelay);
+      
+      // Назначаем задержку через style, чтобы не нужны были дополнительные классы
+      el.style.transitionDelay = `${delay}s`;
+      
+      // Начинаем наблюдение
+      observer.observe(el);
+
+      // Сбрасываем задержку для следующей строки
+      if (index < fadeElements.length - 1) {
+        const nextRect = fadeElements[index + 1].getBoundingClientRect();
+        if (nextRect.top !== rowTop) {
+          currentDelay = maxDelayInRow + ANIMATION_SETTINGS.stepDelay;
+        }
+      }
+    });
+  }
+
+  function initGroupedAnimations() {
+    const groups = document.querySelectorAll('[data-fade-group]');
+    
+    groups.forEach(group => {
+      const items = group.querySelectorAll('.fade-in');
+      let delay = ANIMATION_SETTINGS.baseDelay;
+      
+      items.forEach(item => {
+        item.style.transitionDelay = `${delay}s`;
+        delay = Math.min(delay + ANIMATION_SETTINGS.stepDelay, ANIMATION_SETTINGS.maxDelay);
+        observer.observe(item);
+      });
+    });
+  }
+
+  // Запускаем инициализацию
+  initFadeInAnimations();
+
+  // Реинициализация при изменении размера окна (для адаптива)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        el.classList.remove('visible');
+        el.style.transitionDelay = '';
+      });
+      initFadeInAnimations();
+    }, 250);
+  });
 });
