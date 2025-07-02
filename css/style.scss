@@ -60,9 +60,6 @@ $bp-sm: 480px;
 
 html {
   scroll-behavior: smooth;
-  @media (prefers-reduced-motion: reduce) {
-    scroll-behavior: auto;
-  }
 }
 
 body {
@@ -446,8 +443,8 @@ img {
 
 // Блок hero
 .hero {
-
   scroll-margin-top: 70px;
+  transform: translateY(0) !important;
 
   &__container {
     display: grid;
@@ -965,7 +962,7 @@ img {
 
 .fade-in {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(20px);
   transition: 
     opacity 0.4s,
     transform 0.6s cubic-bezier(0.05, 0.5, 0.3, 1);
