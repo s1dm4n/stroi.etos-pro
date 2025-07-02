@@ -422,7 +422,9 @@ img {
       }
 
       a {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 12px;
         padding: 1.25rem;
       }
     }
@@ -434,7 +436,7 @@ img {
   }
 
   .lines {
-    min-height: 498px;
+    min-height: 652px;
     .line:nth-of-type(3) {
       display: none;
     }
@@ -778,7 +780,7 @@ img {
   &__locations {
     display: flex;
     gap: 12px 24px;
-    flex-wrap: wrap;
+    flex-direction: column;
 
     a {
       text-decoration: none;
@@ -793,6 +795,15 @@ img {
 
   &__content {
     gap: 32px;
+  }
+
+  &__map {
+    filter: grayscale(1) !important;
+    iframe {
+      @media(max-width: $bp-lg) {
+        height: 330px;
+      }
+    }
   }
 }
 
