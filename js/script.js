@@ -299,21 +299,20 @@ document.querySelectorAll('a[href^="http"]').forEach(link => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Настройки анимации (можно менять)
   const ANIMATION_SETTINGS = {
-    baseDelay: 0.1,    // Базовая задержка между элементами (в секундах)
-    stepDelay: 0.1,    // Шаг увеличения задержки
-    maxDelay: 1,     // Максимальная задержка
-    threshold: 0.1,    // Порог срабатывания IntersectionObserver (0-1)
-    rootMargin: '0px', // Отступы для срабатывания
+    baseDelay: 0.1,
+    stepDelay: 0.1,
+    maxDelay: 0.4,
+    threshold: 0.1,
+    rootMargin: '0px',
   };
 
   // Инициализация Intersection Observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        // Убрали unobserve, чтобы элемент оставался под наблюдением
       }
     });
   }, {
@@ -323,14 +322,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Функция для назначения задержек
   function initFadeInAnimations() {
-    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeElements = document.querySelectorAll('.fade-in:not(.visible)'); // Только невидимые элементы
     let currentDelay = ANIMATION_SETTINGS.baseDelay;
     let rowTop = null;
     let maxDelayInRow = ANIMATION_SETTINGS.baseDelay;
 
     fadeElements.forEach((el, index) => {
-      // Определяем начало новой "строки" элементов
       const rect = el.getBoundingClientRect();
+      
       if (rowTop !== rect.top) {
         rowTop = rect.top;
         currentDelay = ANIMATION_SETTINGS.baseDelay;
@@ -340,16 +339,10 @@ document.addEventListener('DOMContentLoaded', () => {
         maxDelayInRow = Math.max(maxDelayInRow, currentDelay);
       }
 
-      // Ограничиваем максимальную задержку
       const delay = Math.min(currentDelay, ANIMATION_SETTINGS.maxDelay);
-      
-      // Назначаем задержку через style, чтобы не нужны были дополнительные классы
       el.style.transitionDelay = `${delay}s`;
-      
-      // Начинаем наблюдение
       observer.observe(el);
 
-      // Сбрасываем задержку для следующей строки
       if (index < fadeElements.length - 1) {
         const nextRect = fadeElements[index + 1].getBoundingClientRect();
         if (nextRect.top !== rowTop) {
@@ -359,36 +352,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function initGroupedAnimations() {
-    const groups = document.querySelectorAll('[data-fade-group]');
-    
-    groups.forEach(group => {
-      const items = group.querySelectorAll('.fade-in');
-      let delay = ANIMATION_SETTINGS.baseDelay;
-      
-      items.forEach(item => {
-        item.style.transitionDelay = `${delay}s`;
-        delay = Math.min(delay + ANIMATION_SETTINGS.stepDelay, ANIMATION_SETTINGS.maxDelay);
-        observer.observe(item);
-      });
-    });
-  }
-
   // Запускаем инициализацию
   initFadeInAnimations();
 
-  // Реинициализация при изменении размера окна (для адаптива)
+  // Реинициализация при изменении размера (но только для новых элементов)
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      document.querySelectorAll('.fade-in').forEach(el => {
-        el.classList.remove('visible');
+      // Убираем transitionDelay только у еще не появившихся элементов
+      document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
         el.style.transitionDelay = '';
       });
       initFadeInAnimations();
     }, 250);
   });
+});
+
+// Отключаем smooth-scroll при загрузке, чтобы не было прыжка
+document.documentElement.style.scrollBehavior = 'auto';
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+  }, 1000);
 });
 
 document.documentElement.style.scrollBehavior = 'auto';
