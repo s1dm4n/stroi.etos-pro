@@ -370,7 +370,7 @@ img {
 }
 
 .hero {
-  scroll-margin-top: 70px;
+  scroll-margin-top: 128px;
   transform: translateY(0) !important;
 }
 .hero__container {
@@ -503,6 +503,10 @@ img {
   .intro__image, .modules__image, .advantages__image, .demo__image, .distributors__image {
     max-height: clamp(15.75rem, 11.1275rem + 19.7227vw, 23.75rem);
   }
+}
+
+.intro__image img {
+  max-height: 400px;
 }
 
 .modules, .advantages, .distributors {

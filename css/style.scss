@@ -443,7 +443,7 @@ img {
 
 // Блок hero
 .hero {
-  scroll-margin-top: 70px;
+  scroll-margin-top: 128px;
   transform: translateY(0) !important;
 
   &__container {
@@ -566,6 +566,14 @@ img {
     }
     @media (max-width: $bp-lg){
       max-height: clamp(15.75rem, 11.1275rem + 19.7227vw, 23.75rem);
+    }
+  }
+}
+
+.intro {
+  &__image {
+    img {
+        max-height: 400px;
     }
   }
 }
