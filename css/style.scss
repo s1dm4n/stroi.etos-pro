@@ -549,7 +549,7 @@ img {
     padding: clamp(1.5rem, 0.85rem + 2.7735vw, 2.625rem);
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 56px;
     border: 1px solid var(--line-style);
     background: $color-bg;
   
@@ -557,6 +557,13 @@ img {
       border-top: none;
     }
   }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
   &__image {
     img {
       width: 100%;

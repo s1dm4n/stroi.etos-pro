@@ -482,7 +482,7 @@ img {
   padding: clamp(1.5rem, 0.85rem + 2.7735vw, 2.625rem);
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 56px;
   border: 1px solid var(--line-style);
   background: #272a2f;
 }
@@ -490,6 +490,11 @@ img {
   .intro__content, .modules__content, .advantages__content, .demo__content, .distributors__content {
     border-top: none;
   }
+}
+.intro__text-block, .modules__text-block, .advantages__text-block, .demo__text-block, .distributors__text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 .intro__image img, .modules__image img, .advantages__image img, .demo__image img, .distributors__image img {
   width: 100%;
