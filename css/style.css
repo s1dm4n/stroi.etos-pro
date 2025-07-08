@@ -415,6 +415,7 @@ img {
   height: clamp(24px, 2.5vw + 18px, 34px);
 }
 .hero .cert-badge__number {
+  text-transform: uppercase;
   font-family: "Manrope", sans-serif;
   font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   line-height: 124%;
@@ -512,8 +513,41 @@ img {
   }
 }
 
+.intro__image {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
 .intro__image img {
-  max-height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.intro__image .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  -o-object-position: left;
+     object-position: left;
+}
+.intro__image .slides {
+  flex-grow: 1;
+  position: relative;
+  height: 450px; /* Настройте высоту */
+  border: 1px solid var(--line-style);
+  border-right: none;
+}
+.intro__image .slide.active {
+  opacity: 1;
+}
+.intro__image .timer-line {
+  width: 4px;
+  background: #e45b5b;
+  position: absolute;
+  height: 0;
+  transition: none;
+  z-index: 10;
 }
 
 .modules, .advantages, .distributors {

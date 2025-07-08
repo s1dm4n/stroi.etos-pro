@@ -383,3 +383,56 @@ window.addEventListener('load', () => {
     document.documentElement.style.scrollBehavior = 'smooth';
   }, 1000);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('.slide');
+  const timerLine = document.querySelector('.timer-line');
+  const totalTime = 8000; // 8 секунд на каждое изображение
+  let currentIndex = 0;
+  
+  function startSlider() {
+    setTimeout(() => {
+      timerLine.style.transition = `height ${totalTime/1000}s linear`;
+      timerLine.style.height = '100%';
+    }, 10);
+    
+    setTimeout(() => {
+      nextSlide();
+    }, totalTime);
+  }
+  
+  function nextSlide() {
+    // Сбрасываем анимацию таймера
+    timerLine.style.transition = 'none';  
+    timerLine.style.height = '0';
+    
+    // Меняем слайд
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add('active');
+    
+   console.log('Текущий слайд до переключения:', currentIndex);
+
+    // Перезапускаем таймер
+    setTimeout(() => {
+      timerLine.style.transition = `height ${totalTime/1000}s linear`;
+      timerLine.style.height = '100%';
+    }, 10);
+    
+    setTimeout(() => {
+      nextSlide();
+    }, totalTime);
+  }
+  
+  // Начальный запуск
+  startSlider();
+});
+
+document.querySelectorAll('picture').forEach(pic => {
+  const img = pic.querySelector('img');
+  const firstSource = pic.querySelector('source');
+  
+  firstSource.addEventListener('error', () => {
+    img.style.display = 'block'; // Принудительно показываем <img>
+  });
+});
