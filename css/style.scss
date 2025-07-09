@@ -96,7 +96,7 @@ img {
 .font-main, p {
   @include text-style(clamp(1rem, 1.25vw, 1.25rem), 160%, 400);
   
-  @media (max-width: $bp-lg) {
+  @media(max-width: $bp-lg) {
     line-height: 148%;
   }
 }
@@ -111,7 +111,7 @@ img {
     text-decoration: none;
     @include transition(opacity);
 
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       font-size: 1rem !important;
       font-weight: 700;
     }
@@ -193,7 +193,7 @@ img {
       stroke: currentColor;
     }
   }
-  @media (max-width: $bp-lg) {
+  @media(max-width: $bp-lg) {
     font-weight: 700 !important;
   }
   
@@ -241,7 +241,7 @@ img {
     padding-top: 1.75rem;
     padding-bottom: 1.75rem;
     
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       padding-top: 1.25rem;
       padding-bottom: 1.25rem;
     }
@@ -252,7 +252,7 @@ img {
     align-items: center;
     z-index: 50;
     
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       transform: scale(0.92);
     }
   }
@@ -283,7 +283,7 @@ img {
         }
       }
       
-      @media (max-width: 1444px) {
+      @media(max-width: 1444px) {
         margin-right: 52px;
         
         li {
@@ -291,7 +291,7 @@ img {
         }
       }
       
-      @media (max-width: 1132px) {
+      @media(max-width: 1132px) {
         li {
           padding-right: 24px;
           
@@ -301,7 +301,7 @@ img {
         }
       }
       
-      @media (max-width: $bp-lg) {
+      @media(max-width: $bp-lg) {
         display: none;
       }
     }
@@ -325,7 +325,7 @@ img {
         }
       }
 
-      @media (max-width: $bp-lg) {
+      @media(max-width: $bp-lg) {
         display: none;
       }
     }
@@ -364,7 +364,7 @@ img {
       }
     }
     
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       display: flex;
     }
   }
@@ -454,7 +454,7 @@ img {
     gap: 2rem;
     align-items: center;
 
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       grid-template-columns: 1fr;
     }
   }
@@ -472,7 +472,7 @@ img {
 
   &__badges {
     display: flex;
-    @media (max-width: 500px) {
+    @media(max-width: 500px) {
       gap: 24px;
     }
   }
@@ -498,7 +498,7 @@ img {
   &__title {
     display: block;
     
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       font-weight: 500;
     }
     
@@ -530,12 +530,12 @@ img {
       @include text-style(clamp(0.75rem, 0.4091rem + 1.0909vw, 1.5rem), 112%, 400, $color-white);
       background: $color-accent-bg;
       
-      @media (max-width: 350px) {
+      @media(max-width: 350px) {
         padding: 6px 4px;
       }
     }
 
-    @media (max-width: 350px) {
+    @media(max-width: 350px) {
       gap: 4px;
     }
   }
@@ -556,7 +556,7 @@ img {
     border: 1px solid var(--line-style);
     background: $color-bg;
   
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       border-top: none;
     }
   }
@@ -574,38 +574,64 @@ img {
       height: 100%;
       object-position: bottom;
     }
-    @media (max-width: $bp-lg){
+    @media(max-width: $bp-lg){
       max-height: clamp(15.75rem, 11.1275rem + 19.7227vw, 23.75rem);
     }
   }
 }
 
 .intro {
+
+  &__content, &__image {
+    @media(max-width: 1207px) {
+      grid-column: 1 / -1 
+    }
+  }
+
+  &__content {
+    margin-left: -0.325px;
+    
+    @media(max-width: $bp-lg) {
+      margin: none;
+    }
+  }
+
   &__image {
     position: relative;
     display: flex;
     width: 100%;
-    
-    img {
-      object-fit: cover;
-    }
+    min-height: 360px;
+    height: 100%;
 
     .slide {
       position: absolute;
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: opacity 0.5s ease;
+      top: 0;
+      left: 0;
+      transition: opacity 0.4s ease-out;
       object-position: left;
     }
 
 
     .slides {
-      flex-grow: 1;
       position: relative;
-      height: 450px; /* Настройте высоту */
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
       border: 1px solid var(--line-style);
       border-right: none;
+
+      picture {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+
+      @media(max-width: 1207px) {
+        border-right: 1px solid var(--line-style);
+      }
     }
 
     .slide.active {
@@ -613,14 +639,13 @@ img {
     }
 
     .timer-line {
-      width: 4px;
       background: $color-accent;
       position: absolute;
+      width: 4px;
       height: 0;
       transition: none;
       z-index: 10;
     }
-
   }
 }
 
@@ -722,7 +747,7 @@ img {
     
     img {
       object-position: top;
-      @media (max-width: 482px) {
+      @media(max-width: 482px) {
         height: 132%;
       }
     }
@@ -731,7 +756,7 @@ img {
   &__container:nth-child(2) &__content:first-of-type {
       background-color: $color-accent-bg;
       min-height: 462px;
-      @media (max-width: $bp-lg) {
+      @media(max-width: $bp-lg) {
         min-height: 332px;
       }
   }
@@ -739,7 +764,7 @@ img {
   &__container:nth-child(2) &__content:last-of-type {
       background-color: $color-gray-bg;
       min-height: 462px;
-      @media (max-width: $bp-lg) {
+      @media(max-width: $bp-lg) {
         min-height: 332px;
       }
   }
@@ -749,7 +774,7 @@ img {
     color: $color-gray;
     opacity: 0.4;
 
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       svg {
         width: 64px;
         height: 64px;
@@ -887,14 +912,14 @@ img {
     opacity: 0.5;
     filter: brightness(0.5);
     
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       & {
         font-size: 1rem;
       }
     }
   }
 
-  @media (max-width: $bp-lg) {
+  @media(max-width: $bp-lg) {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 78px;
   }  
@@ -1006,7 +1031,7 @@ img {
   &__image {
     padding: 24px 24px 0 24px;
 
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       padding: 0;
     }
   }
@@ -1017,7 +1042,7 @@ img {
     height: 100%;
     height: clamp(10rem, 8.0478rem + 8.3295vw, 21.375rem);
 
-    @media (max-width: $bp-lg) {
+    @media(max-width: $bp-lg) {
       height: clamp(15rem, 12.1109rem + 12.3267vw, 20rem);
     }
   }
