@@ -179,97 +179,111 @@ window.addEventListener('load', normalizeCardsHeight);
 window.addEventListener('resize', normalizeCardsHeight);
 
 document.addEventListener('DOMContentLoaded', function() {
-  const videos = document.querySelectorAll('.lazy-video');
-  let activeVideo = null;
-  const CENTER_THRESHOLD = 0.4; // 40% от высоты видео должно быть в центре экрана
+  const slides = document.querySelectorAll('.intro .slide');
+  const sliderContainer = document.querySelector('.intro__image');
+  const timerLine = document.querySelector('.timer-line');
+  let currentIndex = 0;
+  const slideDuration = 8000;
+  let slideInterval;
+  let isSliderActive = false;
 
-  // Ленивая загрузка видео
-  const lazyVideoObserver = new IntersectionObserver((entries) => {
+  // Стили для разных состояний
+  const inactiveStyles = {
+    filter: 'grayscale(1) contrast(0.8)',
+    opacity: '0.3',
+    transition: 'all 0.5s ease'
+  };
+
+  const activeStyles = {
+    filter: 'none',
+    opacity: '1',
+    transition: 'all 0.5s ease'
+  };
+
+  // Наблюдатель за видимостью с порогом 50%
+  const visibilityObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const video = entry.target;
-        const source = video.querySelector('source');
-        
-        if (source && !video.src) {
-          video.src = source.dataset.src;
-          video.load();
-        }
-        
-        lazyVideoObserver.unobserve(video);
+      const isHalfVisible = entry.intersectionRatio >= 0.5;
+
+      if (isHalfVisible && !isSliderActive) {
+        // Активируем слайдер
+        isSliderActive = true;
+        Object.assign(sliderContainer.style, activeStyles);
+        startSlider();
+      } else if (!isHalfVisible && isSliderActive) {
+        // Деактивируем слайдер
+        isSliderActive = false;
+        Object.assign(sliderContainer.style, inactiveStyles);
+        pauseSlider();
       }
     });
-  }, { rootMargin: '200px' });
-
-  videos.forEach(video => lazyVideoObserver.observe(video));
-
-  // Функция для проверки, находится ли видео в центре экрана
-  function isInCenter(video) {
-    const rect = video.getBoundingClientRect();
-    const videoCenter = rect.top + rect.height / 2;
-    const screenCenter = window.innerHeight / 2;
-    
-    return Math.abs(videoCenter - screenCenter) < window.innerHeight * CENTER_THRESHOLD;
-  }
-
-  // Основная функция проверки видео
-  function checkVideos() {
-    let centerVideo = null;
-    let minDistance = Infinity;
-
-    // Находим видео, ближайшее к центру экрана
-    videos.forEach(video => {
-      const rect = video.getBoundingClientRect();
-      const videoCenter = rect.top + rect.height / 2;
-      const screenCenter = window.innerHeight / 2;
-      const distance = Math.abs(videoCenter - screenCenter);
-
-      if (distance < minDistance && isInCenter(video)) {
-        minDistance = distance;
-        centerVideo = video;
-      }
-    });
-
-    // Если нашли новое видео в центре
-    if (centerVideo && centerVideo !== activeVideo) {
-      // Останавливаем текущее активное видео
-      if (activeVideo) {
-        activeVideo.pause();
-        activeVideo.classList.remove('active');
-      }
-
-      // Запускаем новое видео
-      centerVideo.play()
-        .then(() => {
-          centerVideo.classList.add('active');
-          activeVideo = centerVideo;
-        })
-        .catch(error => {
-          console.error('Ошибка воспроизведения видео:', error);
-        });
-    }
-
-    // Если активное видео вышло из центра, но не найдено новое
-    if (activeVideo && !isInCenter(activeVideo) && !centerVideo) {
-      activeVideo.pause();
-      activeVideo.classList.remove('active');
-      activeVideo = null;
-    }
-  }
-
-  // Оптимизированный обработчик скролла
-  let isScrolling = false;
-  window.addEventListener('scroll', () => {
-    if (!isScrolling) {
-      window.requestAnimationFrame(() => {
-        checkVideos();
-        isScrolling = false;
-      });
-      isScrolling = true;
-    }
+  }, { 
+    threshold: [0, 0.5, 1] // Триггеры для 0%, 50% и 100% видимости
   });
 
-  // Проверяем при загрузке страницы
-  checkVideos();
+  visibilityObserver.observe(sliderContainer);
+
+  function showNextSlide() {
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add('active');
+    restartTimer();
+  }
+
+  function restartTimer() {
+    if (!timerLine) return;
+    
+    const timerAfter = timerLine.querySelector('::after');
+    if (timerAfter) {
+      timerAfter.style.animation = 'none';
+      setTimeout(() => {
+        timerAfter.style.animation = `timerProgress ${slideDuration/1000}s linear forwards`;
+      }, 10);
+    }
+  }
+
+  function startSlider() {
+    if (!isSliderActive || slideInterval) return;
+    slideInterval = setInterval(showNextSlide, slideDuration);
+    restartTimer();
+  }
+
+  function pauseSlider() {
+    clearInterval(slideInterval);
+    slideInterval = null;
+  }
+
+  // Инициализация
+  function initSlider() {
+    // Применяем начальные стили
+    Object.assign(sliderContainer.style, inactiveStyles);
+    
+    // Показываем первый слайд
+    slides[currentIndex].classList.add('active');
+    
+    // Добавляем CSS для анимации
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes timerProgress {
+        from { transform: scaleY(0); }
+        to { transform: scaleY(1); }
+      }
+      .timer-line::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        transform: scaleY(0);
+        transform-origin: top center;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  initSlider();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
