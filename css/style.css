@@ -521,75 +521,64 @@ img {
 .intro__content {
   margin-left: -0.325px;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1302px) {
   .intro__content {
-    margin: none;
+    margin: 0;
+    border-top: none;
   }
 }
 .intro__image {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--line-style);
+  border-right: 1px solid transparent;
+}
+@media (max-width: 1302px) {
+  .intro__image {
+    border-right: 1px solid var(--line-style);
+  }
+}
+.intro__slider {
   position: relative;
   display: flex;
   width: 100%;
   height: 100%;
   min-height: clamp(12.5rem, 7.612rem + 24.4399vw, 27.5rem);
-  transition: all 0.5s ease;
+  transition: filter 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.intro__image.inactive {
-  filter: grayscale(1) contrast(0.8);
-  opacity: 0.3;
+.intro__slides {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
-.intro__image .slide {
+.intro__slides picture {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.intro__slide {
   position: absolute;
   width: 100%;
   height: 100%;
   opacity: 0;
   top: 0;
   left: 0;
-  transition: opacity 0.4s ease-out;
-  -o-object-position: center;
-     object-position: center;
+  -o-object-position: center !important;
+     object-position: center !important;
+  transition: opacity 0.4s;
 }
-.intro__image .slides {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid var(--line-style);
-  border-right: none;
-}
-.intro__image .slides picture {
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-@media (max-width: 1302px) {
-  .intro__image .slides {
-    border-right: 1px solid var(--line-style);
-  }
-}
-.intro__image .slide.active {
+.intro__slide.active {
   opacity: 1;
 }
-.intro__image .timer-line {
+.intro__timer-line {
   position: absolute;
   left: 0;
   top: 0;
   width: 4px;
-  height: 100%;
+  height: 0%;
   background: #e45b5b;
   z-index: 10;
-  overflow: hidden;
-}
-.intro__image .timer-line::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #d02222;
-  transform: scaleY(0);
-  transform-origin: top center;
 }
 
 .modules, .advantages, .distributors {
