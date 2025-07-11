@@ -179,14 +179,16 @@ window.addEventListener('load', normalizeCardsHeight);
 window.addEventListener('resize', normalizeCardsHeight);
 
 document.addEventListener('DOMContentLoaded', function() {
+  const sliderImage = document.querySelector('.intro__image');
   const slider = document.querySelector('.intro__slider');
   const slides = document.querySelectorAll('.intro__slide');
   const timerLine = document.querySelector('.intro__timer-line');
-  const CENTER_THRESHOLD = 0.4; // 40% от высоты должно быть в центре
-  let activeSlide = null;
-  let timerAnimation = null;
+  const CENTER_THRESHOLD = 0.4;
   let currentIndex = 0;
-  const slideDuration = 8000; // 8 секунд на слайд
+  let timerAnimation = null;
+  const slideDuration = 8000;
+  let isSliderActive = false;
+  let lastActiveTime = Date.now();
 
   // Проверка видимости слайдера
   function isSliderInView() {
@@ -196,38 +198,50 @@ document.addEventListener('DOMContentLoaded', function() {
     return Math.abs(sliderCenter - screenCenter) < window.innerHeight * CENTER_THRESHOLD;
   }
 
-  // Функция для запуска/остановки таймера
-  function toggleSliderActivity(active) {
+   // Управление состоянием слайдера
+  function setSliderState(active) {
+    if (active === isSliderActive) return;
+    
+    isSliderActive = active;
+    const overlay = sliderImage.querySelector('::after') || 
+                   document.createElement('div'); // Fallback
+    
     if (active) {
-      // Активируем слайдер
+      // Активация - убираем затемнение
       slider.style.filter = 'none';
       slider.style.opacity = '1';
-      startTimer();
+      sliderImage.style.setProperty('--overlay-color', 'transparent');
+      const elapsed = Date.now() - lastActiveTime;
+      const remainingTime = Math.max(0, slideDuration - elapsed);
+      startTimer(remainingTime);
     } else {
-      // Деактивируем слайдер
+      // Деактивация - добавляем голубой оттенок
       slider.style.filter = 'grayscale(1)';
-      slider.style.opacity = '0.3';
+      slider.style.opacity = '0.7';
+      sliderImage.style.setProperty('--overlay-color', 'rgba(38, 41, 49, 0.6)');
       pauseTimer();
+      lastActiveTime = Date.now();
     }
   }
 
-  // Запуск таймера
-  function startTimer() {
-    if (timerAnimation) return;
-
-    // Восстанавливаем прозрачность и обнуляем высоту на случай, если были изменения
+  // Запуск таймера с учетом оставшегося времени
+  function startTimer(duration = slideDuration) {
+    if (timerAnimation) {
+      clearTimeout(timerAnimation);
+      timerAnimation = null;
+    }
+    
     timerLine.style.transition = 'none';
-    timerLine.style.height = '0';
     timerLine.style.opacity = '1';
-
-    // После рендера кадра запускаем плавный переход
+    timerLine.style.height = '0';
+    
     requestAnimationFrame(() => {
-      timerLine.style.transition = `height ${slideDuration / 1000}s linear`;
+      timerLine.style.transition = `height ${duration/1000}s linear`;
       timerLine.style.height = '100%';
-
+      
       timerAnimation = setTimeout(() => {
         nextSlide();
-      }, slideDuration);
+      }, duration);
     });
   }
 
@@ -251,25 +265,41 @@ document.addEventListener('DOMContentLoaded', function() {
     slides[currentIndex].classList.remove('active');
     currentIndex = (currentIndex + 1) % slides.length;
     slides[currentIndex].classList.add('active');
+    resetTimer();
+  }
+
+  // Сброс таймера
+  function resetTimer() {
+    if (timerAnimation) {
+      clearTimeout(timerAnimation);
+      timerAnimation = null;
+    }
     
-    // Сброс и перезапуск таймера
     timerLine.style.transition = 'none';
     timerLine.style.height = '0';
+    
     setTimeout(() => {
-      timerLine.style.transition = `height ${slideDuration/1000}s linear`;
-      timerLine.style.height = '100%';
-      timerAnimation = setTimeout(nextSlide, slideDuration);
+      if (isSliderActive) {
+        startTimer();
+      }
     }, 10);
   }
 
-  // Проверка состояния слайдера
-  function checkSliderState() {
-    const shouldBeActive = isSliderInView();
-    const isCurrentlyActive = !slider.style.filter || slider.style.filter === 'none';
-    
-    if (shouldBeActive !== isCurrentlyActive) {
-      toggleSliderActivity(shouldBeActive);
+  // Обработчик видимости вкладки
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      pauseTimer();
+      lastActiveTime = Date.now();
+    } else if (isSliderActive) {
+      const elapsed = Date.now() - lastActiveTime;
+      const remainingTime = Math.max(0, slideDuration - elapsed);
+      startTimer(remainingTime);
     }
+  });
+
+  // Проверка состояния
+  function checkSliderState() {
+    setSliderState(isSliderInView());
   }
 
   // Оптимизированный обработчик скролла
@@ -284,12 +314,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // Наблюдатель за видимостью
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        checkSliderState();
+      }
+    });
+  }, { threshold: 0.4 });
+
   // Инициализация
   slides[0].classList.add('active');
+  observer.observe(slider);
   checkSliderState();
-  if (isSliderInView()) startTimer();
 });
-
 document.addEventListener('DOMContentLoaded', function() {
   const videos = document.querySelectorAll('.lazy-video');
   let activeVideo = null;
