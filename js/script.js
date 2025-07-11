@@ -214,13 +214,21 @@ document.addEventListener('DOMContentLoaded', function() {
   // Запуск таймера
   function startTimer() {
     if (timerAnimation) return;
-    
-    timerLine.style.transition = `height ${slideDuration/1000}s linear`;
-    timerLine.style.height = '100%';
-    
-    timerAnimation = setTimeout(() => {
-      nextSlide();
-    }, slideDuration);
+
+    // Восстанавливаем прозрачность и обнуляем высоту на случай, если были изменения
+    timerLine.style.transition = 'none';
+    timerLine.style.height = '0';
+    timerLine.style.opacity = '1';
+
+    // После рендера кадра запускаем плавный переход
+    requestAnimationFrame(() => {
+      timerLine.style.transition = `height ${slideDuration / 1000}s linear`;
+      timerLine.style.height = '100%';
+
+      timerAnimation = setTimeout(() => {
+        nextSlide();
+      }, slideDuration);
+    });
   }
 
   // Пауза таймера
@@ -232,11 +240,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Сохраняем текущий прогресс
     const computedStyle = getComputedStyle(timerLine);
-    const currentHeight = parseFloat(computedStyle.height);
-    const progress = currentHeight / parseFloat(computedStyle.maxHeight);
-    
-    timerLine.style.transition = 'none';
+    const currentHeight = parseFloat(computedStyle.height);    
+    timerLine.style.transition = 'opacity 0.4s';
     timerLine.style.height = `${currentHeight}px`;
+    timerLine.style.opacity = '0';
   }
 
   // Переключение слайдов
