@@ -937,11 +937,12 @@ img {
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
-  height: clamp(10rem, 8.0478rem + 8.3295vw, 21.375rem);
+  height: clamp(15rem, 13.0692rem + 8.238vw, 26.25rem);
+  filter: grayscale(1);
 }
 @media (max-width: 1024px) {
   .news-card img {
-    height: clamp(15rem, 12.1109rem + 12.3267vw, 20rem);
+    height: clamp(15rem, 8.4996rem + 27.735vw, 26.25rem);
   }
 }
 
