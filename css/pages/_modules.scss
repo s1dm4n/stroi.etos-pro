@@ -1,0 +1,36 @@
+@use "../utils/grid" as grid;
+@use "../utils/mixin" as mixin;
+@use "../utils/variables" as var;
+
+.modules-style {
+    .hero {
+        &__content {
+            justify-content: center;
+            gap: 78px;
+            padding: clamp(1.5rem, 0.85rem + 2.7735vw, 2.625rem);
+
+            @media(max-width:var.$bp-lg) {
+                order: 2;
+            }
+        }
+        
+        &__text, &__modules-info {
+            display: flex;
+            gap: 32px;
+            flex-direction: column;
+        }
+
+        &__modules-info {
+            gap: 48px;
+
+        }
+
+        .font-main {
+            @include mixin.text-style(clamp(1rem, 1.25vw, 1.5rem), 160%, 400);
+        }
+
+        .font-large {
+             @include mixin.text-style(clamp(2rem, 1.6319rem + 2.6374vw, 6rem), 112%, 700);
+        }
+    }
+}

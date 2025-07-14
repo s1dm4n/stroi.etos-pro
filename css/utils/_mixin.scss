@@ -1,0 +1,24 @@
+@use "variables" as vars;
+
+// Миксины
+@mixin text-style($size, $line-height, $weight, $color: vars.$color-white) {
+  font-family: vars.$font-family;
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+  color: $color;
+  margin: 0;
+}
+
+@mixin transition($props: all, $duration: 0.3s, $easing: ease) {
+  $transition: ();
+  
+  @each $prop in $props {
+    $transition: append($transition, $prop $duration $easing, comma);
+  }
+
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
