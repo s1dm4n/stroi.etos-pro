@@ -9,8 +9,14 @@
             gap: 78px;
             padding: clamp(1.5rem, 0.85rem + 2.7735vw, 2.625rem);
 
-            @media(max-width:var.$bp-lg) {
+            @media(max-width: 1104px) {
                 order: 2;
+            }
+        }
+
+        &__content, &__image {
+            @media(max-width: 1104px) {
+                grid-column: 1/-1;
             }
         }
         
@@ -25,12 +31,66 @@
 
         }
 
+        &__image {
+            img {
+                height: auto;
+            }
+        }
+
         .font-main {
             @include mixin.text-style(clamp(1rem, 1.25vw, 1.5rem), 160%, 400);
         }
 
         .font-large {
              @include mixin.text-style(clamp(2rem, 1.6319rem + 2.6374vw, 6rem), 112%, 700);
+        }
+    }
+    .accordion {
+        &__image {
+
+        }
+
+        &__content, &__collaps-box, &__collaps-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 64px;
+        }
+
+        &__collaps-box {
+            gap: 48px;
+        }
+
+        &__collaps-wrapper {
+            gap: 24px;
+            opacity: 0.5;
+            @include mixin.transition(opacity);
+            
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &__collaps-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            span {
+                text-align: left;
+                width: fit-content;
+            }
+        }
+
+        &__collaps-content {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: opacity 0.6s ease-in-out, height 1s ease-in-out;
+            
+            &.open {
+                height: 100%;
+                opacity: 1;
+            }
         }
     }
 }

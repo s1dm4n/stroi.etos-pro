@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, shrink-to-fit=no, viewport-fit=cover">
     <title>Среда общих данных</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="icon" href="/img/favicon.svg">
-    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A4432c58f527e78f1879787d090c926a51d192243a30f2fbf426e4fb4f3ba15d4&amp;width=100%25&amp;height=440&amp;lang=ru_RU&amp;theme=dark&amp;color=gray&amp;id=map&amp;scroll=true"></script>
     <meta
         content="Добавить описание"
         name="description">
@@ -182,7 +180,7 @@
                 <picture>
                     <!-- Планшет (582px–1024px) -->
                     <source 
-                        media="(min-width: 582px) and (max-width: 1024px)"
+                        media="(min-width: 582px) and (max-width: 1104px)"
                         srcset="
                         /img/hero-table-modules-sod.avif 1x,
                         /img/hero-table-modules-sod@2x.avif 2x
@@ -190,7 +188,7 @@
                         type="image/avif"
                     >
                     <source 
-                        media="(min-width: 582px) and (max-width: 1024px)"
+                        media="(min-width: 582px) and (max-width: 1104px)"
                         srcset="
                         /img/hero-table-modules-sod.webp 1x,
                         /img/hero-table-modules-sod@2x.webp 2x
@@ -234,691 +232,54 @@
                 <div class="cols-4 line"></div>
             </div>
         </section>
-        <section class="intro grid gutter fade-in" id="intro">
-            <div class="intro__image cols-8">
-                <div class="intro__slider">
-                    <div class="intro__timer-line"></div>
-                    <div class="intro__slides">
-                        <picture>
-                            <source 
-                                srcset="
-                                /img/intro-01.avif 1x,
-                                /img/intro-01@2x.avif 2x
-                                "
-                                type="image/avif"
-                            >
-                            <source 
-                                srcset="
-                                /img/intro-01.webp 1x,
-                                /img/intro-01@2x.webp 2x
-                                "
-                                type="image/webp"
-                            >
-                            
-                            <!-- Фолбэк -->
-                            <img
-                                src="/img/intro-01.jpg"
-                                srcset="
-                                /img/intro-01.jpg 1x,
-                                /img/intro-01@2x.jpg 2x
-                                "
-                                alt="Современная крупная стройка с техникой и зданиями на разных этапах возведения"
-                                loading="lazy"
-                                class="intro__slide active"
-                            >
-                        </picture>
-                        <picture>
-                            <source 
-                                srcset="
-                                /img/intro-02.avif 1x,
-                                /img/intro-02@2x.avif 2x
-                                "
-                                type="image/avif"
-                            >
-                            <source 
-                                srcset="
-                                /img/intro-02.webp 1x,
-                                /img/intro-02@2x.webp 2x
-                                "
-                                type="image/webp"
-                            >
-                            
-                            <!-- Фолбэк -->
-                            <img
-                                src="/img/intro-02.jpg"
-                                srcset="
-                                /img/intro-02.jpg 1x,
-                                /img/intro-02@2x.jpg 2x
-                                "
-                                alt="Современная крупная стройка с техникой и зданиями на разных этапах возведения"
-                                loading="lazy"
-                                class="intro__slide"
-                            >
-                        </picture>
-                        <picture>
-                            <source 
-                                srcset="
-                                /img/intro-03.avif 1x,
-                                /img/intro-03@2x.avif 2x
-                                "
-                                type="image/avif"
-                            >
-                            <source 
-                                srcset="
-                                /img/intro-03.webp 1x,
-                                /img/intro-03@2x.webp 2x
-                                "
-                                type="image/webp"
-                            >
-                            
-                            <!-- Фолбэк -->
-                            <img
-                                src="/img/intro-03.jpg"
-                                srcset="
-                                /img/intro-03.jpg 1x,
-                                /img/intro-03@2x.jpg 2x
-                                "
-                                alt="Современная крупная стройка с техникой и зданиями на разных этапах возведения"
-                                loading="lazy"
-                                class="intro__slide"
-                            >
-                        </picture>
-                        <picture>
-                            <source 
-                                srcset="
-                                /img/intro-04.avif 1x,
-                                /img/intro-04@2x.avif 2x
-                                "
-                                type="image/avif"
-                            >
-                            <source 
-                                srcset="
-                                /img/intro-04.webp 1x,
-                                /img/intro-04@2x.webp 2x
-                                "
-                                type="image/webp"
-                            >
-                            
-                            <!-- Фолбэк -->
-                            <img
-                                src="/img/intro-04.jpg"
-                                srcset="
-                                /img/intro-04.jpg 1x,
-                                /img/intro-04@2x.jpg 2x
-                                "
-                                alt="Современная крупная стройка с техникой и зданиями на разных этапах возведения"
-                                loading="lazy"
-                                class="intro__slide"
-                            >
-                        </picture>
-                    </div>
-                </div>
-            </div>
-            <div class="intro__content cols-8">
-                <div class="intro__text-block">
-                    <span class="intro__title font-title">
-                        Что такое ЭТОС?
-                    </span>
-                    <p class="intro__description">
-                        «ЭТОС» – цифровая экосистема для комплексного управления строительными проектами. Она состоит из функциональных модулей - готовых программ для решения конкретных задач на разных этапах строительства.
-                    </p>
-                </div>
-                <button class="intro__button button adapt-btn" onclick="window.location.href='#distributor'">
-                    <span class="button__text">Заказать презентацию</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
-                            <path d="M22 4L3 23" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
-                            <path d="M23 23V3H3" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
-                        </svg>
-                </button>
-            </div>
-        </section>
-        <section class="modules gutter gt" id="modules" data-fade-group>
-            <h2 class="font-medium fade-in">
-                <span>Модули</span>
-                <span class="red-text">«ЭТОС»</span>
-            </h2>
-            <div class="modules__container grid fade-in">
-                <div class="modules__content cols-8">
-                    <div class="modules__text-block">
-                        <span class="modules__title font-title">
-                            Среда общих данных
-                        </span>
-                        <div class="modules__tags">
-                            <div class="modules__tag font-main">
-                                Общий доступ
-                            </div>
-                            <div class="modules__tag font-main">
-                                ПД
-                            </div>
-                            <div class="modules__tag font-main">
-                                Приказы
-                            </div>
-                            <div class="modules__tag font-main">
-                                IFC
-                            </div>
-                            <div class="modules__tag font-main">
-                                Спецификации
-                            </div>
-                            <div class="modules__tag font-main">
-                                Ролевая модель
-                            </div>
-                            <div class="modules__tag font-main">
-                                ТЭП
-                            </div>
-                            <div class="modules__tag font-main">
-                                Сметы
-                            </div>
-                            <div class="modules__tag font-main">
-                                ВК РД
-                            </div>
-                            <div class="modules__tag font-main">
-                                ИРД
-                            </div>
-                            <div class="modules__tag font-main">
-                                Экспорт в XLS
-                            </div>
-                            <div class="modules__tag font-main">
-                                Сети
-                            </div>
-                            <div class="modules__tag font-main">
-                                ВОР
-                            </div>
-                            <div class="modules__tag font-main">
-                                Конструкции
-                            </div>
-                            <div class="modules__tag font-main">
-                                РД
-                            </div>
-                            <div class="modules__tag font-main">
-                                Замечания
-                            </div>
-                        </div>
-                    </div>
-                    <button class="modules__button button" onclick="window.location.href='#distributor'">
-                        <span class="button__text">Подробнее</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
-                            <path d="M22 4L3 23" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
-                            <path d="M23 23V3H3" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
+        <section class="accordion grid gutter gb fade-in">
+            <div class="accordion__image cols-8"></div>
+            <div class="accordion__content cols-8">
+                <h2 class="font-title">
+                    Организация хранения и доступа к данным
+                </h2>
+                <div class="accordion__collaps-box">
+                    <div class="accordion__collaps-wrapper">
+                        <button class="accordion__collaps-header" id="collaps-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M13 0L13 24M24 12L0 12" stroke="white" stroke-width="2"/>
                             </svg>
-                    </button>
-                </div>
-                <div class="modules__image cols-8">
-                    <video class="lazy-video" 
-                    loop
-                    muted
-                    playsinline
-                    webkit-playsinline
-                    disablePictureInPicture 
-                    width="800" poster="/img/sod.jpg" preload="metadata">
-                    <source data-src="/vid/sod.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                    </video>
-                </div>
-            </div>
-            <div class="modules__container grid fade-in">
-                <div class="modules__content cols-8">
-                    <div class="modules__text-block">
-                        <span class="modules__title font-title">
-                            Исполнительная документация
-                        </span>
-                        <div class="modules__tags">
-                            <div class="modules__tag font-main">
-                                ИД
-                            </div>
-                            <div class="modules__tag font-main">
-                                Поставки МТР
-                            </div>
-                            <div class="modules__tag font-main">
-                                Сертификаты
-                            </div>
-                            <div class="modules__tag font-main">
-                                Протоколы
-                            </div>
-                            <div class="modules__tag font-main">
-                                ЭП
-                            </div>
-                            <div class="modules__tag font-main">
-                                АООК
-                            </div>
-                            <div class="modules__tag font-main">
-                                Прогресс СМР
-                            </div>
-                            <div class="modules__tag font-main">
-                                Накладные
-                            </div>
-                            <div class="modules__tag font-main">
-                                Спецжурналы
-                            </div>
-                            <div class="modules__tag font-main">
-                                АОСР
-                            </div>
-                            <div class="modules__tag font-main">
-                                СК
-                            </div>
-                            <div class="modules__tag font-main">
-                                Исполнительные схемы
-                            </div>
-                            <div class="modules__tag font-main">
-                                XML-схемы
-                            </div>
-                            <div class="modules__tag font-main">
-                                ОЖР
-                            </div>
-                        </div>
-                    </div>
-                    <button class="modules__button button" onclick="window.location.href='#distributor'">
-                        <span class="button__text">Подробнее</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
-                            <path d="M22 4L3 23" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
-                            <path d="M23 23V3H3" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="modules__image cols-8">
-                    <video class="lazy-video" 
-                    loop
-                    muted
-                    playsinline
-                    webkit-playsinline
-                    disablePictureInPicture 
-                    width="800" poster="/img/id.jpg" preload="metadata">
-                    <!-- Fallback для Safari и старых браузеров -->
-                    <source data-src="/vid/id.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео.
-                    </video>
-                </div>
-            </div>
-        </section>
-        <section class="advantages gutter grid gt" id="advantages" data-fade-group>
-            <h2 class="font-medium fade-in">Преимущества</h2>
-            <div class="advantages__containers">
-                <div class="advantages__container grid">
-                    <div class="advantages__image cols-8 fade-in">
-                        <picture>
-                            <source 
-                                srcset="
-                                /img/advantages-bulder.avif 1x,
-                                /img/advantages-bulder@2x.avif 2x
-                                "
-                                type="image/avif"
-                            >
-                            <source 
-                                srcset="
-                                /img/advantages-bulder.webp 1x,
-                                /img/advantages-bulder@2x.webp 2x
-                                "
-                                type="image/webp"
-                            >
-                            <img
-                                src="/img/advantages-bulder.jpg"
-                                srcset="
-                                /img/advantages-bulder.jpg 1x,
-                                /img/advantages-bulder@2x.jpg 2x
-                                "
-                                alt="Основатель «Этос» — строитель с 20-летним стажем в Росэнергоатоме и Ростехнадзоре"
-                                loading="lazy"
-                            >
-                        </picture>
-                    </div>
-                    <div class="advantages__content cols-8 fade-in">
-                        <div class="advantages__element">
-                            <span class="advantages__title font-title">
-                                Сделано строителями для строителей
+                            <span class="font-header">
+                                Cтруктурированное хранение информации об объектах, их структурных элементах (конструкциях, сетях) и характеристиках
                             </span>
-                            <p class="advantages__description">
-                                Создатели «Этос» – профессиональные строители с опытом работы в АО «Концерн Росэнергоатом», Ростехнадзоре, Мособлгосэкспертизе и других крупнейших организациях отрасли.
-                            </p>
-                        </div>
-                            <div class="advantages__icon">
-                                <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M42.0014 27.969H24.665L24.6621 17.7393H51.2192L59.3377 27.969H42.0014ZM42.0014 27.969V66.2605" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
-                                </svg>
-                            </div>
+                        </button>
+                        <p class="accordion__collaps-content" id="collaps-content">
+                            По каждому строящемуся объекту в системе доступна полная информация, включая «дерево» элементов, повторяющее структуру IFC-модели, и исчерпывающий перечень технико-экономических показателей.
+                        </p>
                     </div>
-                </div>
-                <div class="advantages__container grid">
-                    <div class="advantages__content cols-8 fade-in">
-                        <div class="advantages__element">
-                            <span class="advantages__title font-title">
-                                Импорто&shy;независимость
-                            </span>
-                            <p class="advantages__description">
-                                Программа для ЭВМ «Этос» внесена в реестр российского ПО (№ 6719), ее безопасность подтверждена сертификатом ФСТЭК по 4-му уровню доверия. Разработчик системы ООО «Стройформ» – аккредитованная IT-компания, имеет лицензии ФСТЭК России и ФСБ.
-                            </p>
-                        </div>
-                        <div class="advantages__icon">
-                            <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M59 54.8839V23.0809L46.1351 23.0972L42 20.5L37.4054 23.0809L25 23.0972V54.9002L42 63.5L59 54.8839Z" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+                    <div class="accordion__collaps-wrapper">
+                        <button class="accordion__collaps-header" id="collaps-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M13 0L13 24M24 12L0 12" stroke="white" stroke-width="2"/>
                             </svg>
-                        </div>
-                          <div class="advantages__bg">
-                            <picture>
-                            <source srcset="/img/advantages-bg-1.avif" type="image/avif">
-                            <source srcset="/img/advantages-bg-1.webp" type="image/webp">
-                            <img 
-                                src="/img/advantages-bg-1.jpg"     
-                                aria-hidden="true"
-                                loading="lazy"
-                            >
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="advantages__content cols-8 fade-in">
-                        <div class="advantages__element">
-                            <span class="advantages__title font-title">
-                                Кросс&shy;платформенность
+                            <span class="font-header">
+                                Cтруктурированное хранение информации об участниках строительства
                             </span>
-                            <p class="advantages__description">
-                                Все модули «Этос» – это веб-приложения, для работы которых на стороне клиента нужен только браузер и выход в интернет, а на стороне сервера – Windows или любой из современный Linux-дистрибутивов (Debian, Ubuntu, Astra Linux и пр.).
-                            </p>
-                        </div>
-                        <div class="advantages__icon">
-                            <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M56.319 44.742V61.4982H22.1973V27.9858H39.2581" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
-                            <path d="M37.8047 46.5017L61.8037 22.5017M61.8037 22.5017H45.5M61.8037 22.5017V39.0017" stroke="white" stroke-opacity="0.5" stroke-width="2"/>
+                        </button>
+                        <p class="accordion__collaps-content" id="collaps-content">
+                            В системе ведется учет сведений обо всех организациях, занятых на объекте, и их сотрудниках.
+                        </p>
+                    </div>
+                    <div class="accordion__collaps-wrapper">
+                        <button class="accordion__collaps-header" id="collaps-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M13 0L13 24M24 12L0 12" stroke="white" stroke-width="2"/>
                             </svg>
-                        </div>
-                        <div class="advantages__bg">
-                            <picture>
-                            <source srcset="/img/advantages-bg-2.avif" type="image/avif">
-                            <source srcset="/img/advantages-bg-2.webp" type="image/webp">
-                            <img 
-                                src="/img/advantages-bg-2.jpg"     
-                                aria-hidden="true"
-                                loading="lazy"
-                            >
-                            </picture>
-                        </div>
-                    </div>
-                </div>
-                <div class="advantages__container grid">
-                    <div class="advantages__image cols-8 fade-in">
-                        <picture>
-                            <source 
-                                srcset="
-                                /img/advantages-team.avif 1x,
-                                /img/advantages-team@2x.avif 2x
-                                "
-                                type="image/avif"
-                            >
-                            <source 
-                                srcset="
-                                /img/advantages-team.webp 1x,
-                                /img/advantages-team@2x.webp 2x
-                                "
-                                type="image/webp"
-                            >
-                            <img
-                                src="/img/advantages-team.jpg"
-                                srcset="
-                                /img/advantages-team.jpg 1x,
-                                /img/advantages-team@2x.jpg 2x
-                                "
-                                alt="Основатель «Этос» — строитель с 20-летним стажем в Росэнергоатоме и Ростехнадзоре"
-                                loading="lazy"
-                            >
-                        </picture>
-                    </div>
-                    <div class="advantages__content cols-8 fade-in">
-                        <div class="advantages__element">
-                            <span class="advantages__title font-title">
-                                Постоянное развитие
+                            <span class="font-header">
+                                Гибкая настройка прав доступа для всех пользователей системы
                             </span>
-                            <p class="advantages__description">
-                                Благодаря уникальной архитектуре и использованию low-code технологий «Этос» быстро адаптируется под любые изменения законодательства, с каждой новой версией предоставляя пользователям всё новые и новые возможности по управлению проектами.
-                            </p>
-                        </div>
-                            <div class="advantages__icon">
-                                <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M19.5 54.8988L35.8726 38.529L45.8037 47.7971L64.4998 29.1011M64.4998 29.1011H50.8344M64.4998 29.1011V42.7664" stroke="#9D9D9D" stroke-width="2"/>
-                                </svg>
-                            </div>
+                        </button>
+                        <p class="accordion__collaps-content" id="collaps-content">
+                            Настройки программы позволяют ограничить доступ к любым данным системы как для организаций в зависимости от их функции, типа выполняемых работ и пр., так и для отдельных сотрудников.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div aria-hidden="true" class="lines grid" style="z-index:-2">
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-            </div>
-        </section>
-        <!-- Добавить видео -->
-        <section class="swiper-container gutter gt fade-in" id="swiper">
-            <div class="swiper-header">
-                <h2 class="font-medium">Новости</h2>
-                <div class="swiper-nav">
-                    <div class="swiper-button-prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="93" height="91" viewBox="0 0 93 91" fill="none">
-                        <path d="M69.4638 45.4282L24.2422 45.4282" stroke="white" stroke-width="4"/>
-                        <path d="M43.4639 64.9281L23.9998 45.464L43.4639 26" stroke="white" stroke-width="4"/>
-                        </svg>
-                    </div>
-                    <div class="swiper-button-next">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="93" height="91" viewBox="0 0 93 91" fill="none">
-                        <path d="M24.0001 45.4282L69.2217 45.4282" stroke="white" stroke-width="4"/>
-                        <path d="M50 64.9281L69.464 45.464L50 26" stroke="white" stroke-width="4"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="card">
-                        <article class="news-card">
-                            <div class="news-card__image">
-                                <picture>
-                                    <source 
-                                        srcset="
-                                        /img/news-1.avif 1x,
-                                        /img/news-1@2x.avif 2x
-                                        "
-                                        type="image/avif"
-                                    >
-                                    <source 
-                                        srcset="
-                                        /img/news-1.webp 1x,
-                                        /img/news-1@2x.webp 2x
-                                        "
-                                        type="image/webp"
-                                    >
-                                    <img
-                                        src="/img/advantages-bulder.jpg"
-                                        srcset="
-                                        /img/news-1.jpg 1x,
-                                        /img/news-1@2x.jpg 2x
-                                        "
-                                        alt="Текст к новости"
-                                        loading="lazy"
-                                    >
-                                </picture>
-                            </div>
-                            <div class="news-card__content">
-                                <time class="news-date font-main">11.02.2023</time>
-                                <span class="news-title font-title">ВЫХОД НОВОЙ ВЕРСИИ ЭТОС СОД 2.24</span>
-                                <p class="news-excerpt font-main">Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card">
-                        <article class="news-card">
-                            <div class="news-card__image">
-                                <picture>
-                                    <source 
-                                        srcset="
-                                        /img/news-2.avif 1x,
-                                        /img/news-2@2x.avif 2x
-                                        "
-                                        type="image/avif"
-                                    >
-                                    <source 
-                                        srcset="
-                                        /img/news-2.webp 1x,
-                                        /img/news-2@2x.webp 2x
-                                        "
-                                        type="image/webp"
-                                    >
-                                    <img
-                                        src="/img/advantages-bulder.jpg"
-                                        srcset="
-                                        /img/news-2.jpg 1x,
-                                        /img/news-2@2x.jpg 2x
-                                        "
-                                        alt="Текст к новости"
-                                        loading="lazy"
-                                    >
-                                </picture>
-                            </div>
-                            <div class="news-card__content">
-                                <time class="news-date font-main">11.02.2023</time>
-                                <span class="news-title font-title">Изменения в настройке ролей</span>
-                                <p class="news-excerpt font-main">Есть над чем задуматься: стремящиеся вытеснить традиционное производство, нанотехнологии.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card">
-                        <article class="news-card">
-                            <div class="news-card__image">
-                                <picture>
-                                    <source 
-                                        srcset="
-                                        /img/news-3.avif 1x,
-                                        /img/news-3@2x.avif 2x
-                                        "
-                                        type="image/avif"
-                                    >
-                                    <source 
-                                        srcset="
-                                        /img/news-3.webp 1x,
-                                        /img/news-3@2x.webp 2x
-                                        "
-                                        type="image/webp"
-                                    >
-                                    <img
-                                        src="/img/advantages-bulder.jpg"
-                                        srcset="
-                                        /img/news-3.jpg 1x,
-                                        /img/news-3@2x.jpg 2x
-                                        "
-                                        alt="Текст к новости"
-                                        loading="lazy"
-                                    >
-                                </picture>
-                            </div>
-                            <div class="news-card__content">
-                                <time class="news-date font-main">11.02.2023</time>
-                                <span class="news-title font-title">Обновление документов системы</span>
-                                <p class="news-excerpt font-main">Но ключевые особенности структуры проекта набирают популярность среди определенных слоев населения.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-            <div aria-hidden="true" class="lines grid" style="z-index:-2">
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-            </div>
-        </section>
-        <section class="demo grid gutter gt" id="demo" data-fade-group>
-            <div class="demo__content cols-8 fade-in">
-                <div class="demo__text-block">
-                <span class="demo__title font-title">
-                    Узнать больше
-                </span>
-                <p class="demo__description">
-                    Благодаря уникальной архитектуре и использованию low-code технологий «Этос» быстро адаптируется под любые изменения законодательства, с каждой новой версией предоставляя пользователям всё новые и новые возможности по управлению проектами.
-                </p>
-            </div>
-            <div class="demo__buttons">
-                    <button class="demo__button button adapt-btn" onclick="window.location.href='#distributor'">
-                        <span class="button__text">Заказать презентацию</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
-                            <path d="M22 4L3 23" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
-                            <path d="M23 23V3H3" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
-                        </svg>
-                    </button>
-                    <button class="demo__button button button-2" onclick="window.location.href='https://docs.etos-pro.ru/services/idoc/'">
-                        <span class="button__text">База знаний</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none">
-                            <path d="M22 4L3 23" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
-                            <path d="M23 23V3H3" stroke="#4C0000" stroke-width="3" stroke-linecap="square"/>
-                        </svg>
-                    </button>
-            </div>
-            </div>
-            <div class="demo__image cols-8 fade-in">
-                <picture>
-                    <source 
-                        srcset="
-                        /img/demo.avif 1x,
-                        /img/demo@2x.avif 2x
-                        "
-                        type="image/avif"
-                    >
-                    <source 
-                        srcset="
-                        /img/demo.webp 1x,
-                        /img/demo@2x.webp 2x
-                        "
-                        type="image/webp"
-                    >
-                    
-                    <!-- Фолбэк -->
-                    <img
-                        src="/img/demo.jpg"
-                        srcset="
-                        /img/demo.jpg 1x,
-                        /img/demo@2x.jpg 2x
-                        "
-                        alt="Современная крупная стройка с техникой и зданиями на разных этапах возведения"
-                        loading="lazy"
-                    >
-                </picture>
-            </div>
-            <div aria-hidden="true" class="lines grid" style="z-index:-2">
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-                <div class="cols-4 line"></div>
-            </div>
-        </section>
-        <section class="distributors grid gutter gt" id="distributor" data-fade-group>
-            <h2 class="font-medium" id="dynamic-title" fade-in>Дистрибьютеры</h2>
-                <div class="distributors__container grid fade-in">
-                    <div class="distributors__content cols-8">
-                        <span class="distributors__name font-title">
-                            ООО  «ЦСИ «ИНТЕРА»
-                        </span>
-                        <div class="distributors__information">
-                            <div class="distributors__contact">
-                                <a class="distributors__email font-main" href="mailto:info@sysintera.ru">info@sysintera.ru</a>
-                                <a class="distributors__number font-main" href="tel:+78129822217">8 (812) 982-22-17</a>
-                            </div>
-                            <div class="distributors__locations">
-                                <a class="font-main" href="https://yandex.ru/maps/-/CHcLvYyV&z=17&mode=search">г. Санкт&#8209;Петербург: пр&#8209;кт&nbsp;Королева,&nbsp;7</a>
-                                <a class="font-main" href="https://yandex.ru/maps/-/CHcLzSnZ&z=17&mode=search">г. Новосибирск: ул.&nbsp;Немировича&#8209;Данченко,&nbsp;165</a>
-                                <a class="font-main" href="https://yandex.ru/maps/-/CHcLzP0d&z=17&mode=search">г. Иркутск: ул.&nbsp;Свердлова,&nbsp;40</a>
-                            </div>  
-                        </div>
-                    </div>
-                    <div id="map" class="distributors__map cols-8"></div>
-                </div>
-                <div aria-hidden="true" class="lines grid fade-in" style="z-index:-2">
-                    <div class="cols-4 line"></div>
-                    <div class="cols-4 line"></div>
-                    <div class="cols-4 line"></div>
-                    <div class="cols-4 line"></div>
-                    <div class="cols-4 line"></div>
-                </div>
         </section>
         <footer class="footer grid gutter gt fade-in" id="footer">
             <section class="footer__section cols-4" aria-labelledby="about-heading">
@@ -988,7 +349,6 @@
         </footer>
     </main>
     <script src="/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="/js/modules.js"></script>
 </body>
 </html>
