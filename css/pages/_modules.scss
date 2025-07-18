@@ -60,20 +60,39 @@
             gap: 48px;
         }
 
-        &__collaps-wrapper {
+        &__collaps-wrapper, &__collaps-header {
             gap: 24px;
+        }
+
+        &__collaps-wrapper {
+            transition: opacity 0.6s;
             opacity: 0.5;
-            @include mixin.transition(opacity);
             
             &:hover {
                 opacity: 1;
             }
+
+            &.open {
+                opacity: 1;
+            }
+
         }
 
         &__collaps-header {
             display: flex;
             align-items: center;
-            gap: 24px;
+
+            svg {
+                transform-origin: center center;
+                transition: transform 0.3s ease;
+                flex-shrink: 0;
+                will-change: transform;
+                transform: rotate(0);
+
+                &.rotated {
+                    transform: rotate(45deg);
+                }
+            }
 
             span {
                 text-align: left;
@@ -85,10 +104,10 @@
             opacity: 0;
             height: 0;
             overflow: hidden;
-            transition: opacity 0.6s ease-in-out, height 1s ease-in-out;
+            transition: height 0.6s, opacity 0.8s;
             
             &.open {
-                height: 100%;
+                height: 500px;
                 opacity: 1;
             }
         }
