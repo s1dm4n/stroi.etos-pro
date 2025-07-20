@@ -1173,6 +1173,63 @@ button {
   color: #ffffff;
   margin: 0;
 }
+.modules-style .accordion__image, .modules-style .accordion__content {
+  border: 1px solid var(--line-style);
+}
+.modules-style .accordion__image {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+  background-size: 24px 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line-style);
+}
+@media (max-width: 1168px) {
+  .modules-style .accordion__image {
+    order: -1;
+    grid-column: -1/1;
+    height: 520px;
+  }
+}
+.modules-style .accordion__slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.modules-style .accordion__slides {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modules-style .accordion__slide {
+  position: absolute;
+  width: 80%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.modules-style .accordion__slide img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain; /* Сохраняет пропорции */
+}
+.modules-style .accordion__slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+.modules-style .accordion__content {
+  padding: clamp(1.5rem, 0.85rem + 2.7735vw, 2.625rem);
+}
+@media (max-width: 1168px) {
+  .modules-style .accordion__content {
+    grid-column: -1/1;
+  }
+}
 .modules-style .accordion__content, .modules-style .accordion__collaps-box, .modules-style .accordion__collaps-wrapper {
   display: flex;
   flex-direction: column;

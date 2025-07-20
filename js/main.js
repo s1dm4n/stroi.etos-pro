@@ -254,6 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
   observer.observe(slider);
   checkSliderState();
 });
+
 document.addEventListener('DOMContentLoaded', function() {
   const videos = document.querySelectorAll('.lazy-video');
   let activeVideo = null;
