@@ -170,6 +170,10 @@
     grid-column-gap: 0;
 }
 
+.row {
+    grid-column: -1/1;
+}
+
 .cols-4 {
     grid-column-end: span 4;
 }

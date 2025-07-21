@@ -320,9 +320,6 @@ document.addEventListener('DOMContentLoaded', function() {
           centerVideo.classList.add('active');
           activeVideo = centerVideo;
         })
-        .catch(error => {
-          console.error('Ошибка воспроизведения видео:', error);
-        });
     }
 
     // Если активное видео вышло из центра, но не найдено новое
